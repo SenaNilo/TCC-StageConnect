@@ -1,14 +1,18 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
-	<title>Login V1</title>
+	<title>Login | Stage Connect</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
-	<!-- Objetivo: Tirar os arquivos desnecessarios e transferir as classes bootstraps para o css puro, as fontes e os ícones: pegar da internet nao sendo como arquivo -->
-	
-	<link rel="stylesheet" href="//use.fontawesome.com/releases/v5.0.7/css/all.css">
-	
+	{{-- Icone Aba --}}
+	<link rel="icon" type="image/ico" href="{{ asset('images/LogoSFundo.ico') }}">
+
+
+	{{-- Font Awesome --}}
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+	{{-- Css's --}}
 	<link rel="stylesheet" type="text/css" href="{{ asset('css/util.css') }}">
 	<link rel="stylesheet" type="text/css" href="{{ asset('css/login.css') }}">
 	
@@ -57,7 +61,7 @@
 					</div>
 
 					<div class="text-center p-t-136">
-						<a class="txt2" href="#">
+						<a class="txt2" href="{{ uri('/cadastro') }}">
 							Criar sua Conta
 						</a>
 					</div>

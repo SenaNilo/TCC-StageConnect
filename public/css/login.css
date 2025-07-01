@@ -362,6 +362,8 @@ section.login .login-form-btn {
 
   .image-tilt {
     width: 35%;
+    height: fit-content;
+    transform: translateY(20%);
   }
 
   .form {

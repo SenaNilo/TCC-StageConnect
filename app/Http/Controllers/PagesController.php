@@ -7,15 +7,15 @@ use Illuminate\Http\Request;
 
 class PagesController extends Controller
 {
-    public function index(){
-        return view('pages/test');
-    }
+    // public function index(){
+    //     return view('');
+    // }
 
     public function login(){
-        return view('login');
+        return view('auth/login');
     }
 
     public function cadastro(){
-        return view('cadastro');
+        return view('auth/cadastro');
     }
 }

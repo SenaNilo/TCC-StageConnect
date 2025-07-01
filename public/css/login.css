@@ -166,6 +166,13 @@ section.login {
   background: linear-gradient(-135deg, rgb(var(--primary-blue)), rgb(var(--primary-red)));
 }
 
+section.login.cadastrar-background {
+  background: -webkit-linear-gradient(45deg, rgb(var(--primary-blue)), rgb(var(--primary-red)));
+  background: -o-linear-gradient(45deg, rgb(var(--primary-blue)), rgb(var(--primary-red)));
+  background: -moz-linear-gradient(45deg, rgb(var(--primary-blue)), rgb(var(--primary-red)));
+  background: linear-gradient(45deg, rgb(var(--primary-blue)), rgb(var(--primary-red)));
+}
+
 .login-box {
   width: 960px;
   background: #fff;

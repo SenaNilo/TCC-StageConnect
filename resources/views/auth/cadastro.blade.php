@@ -52,6 +52,14 @@
 							<i class="fa fa-lock" aria-hidden="true"></i>
 						</span>
 					</div>
+
+					<div class="group-input validate-input" data-validate = "Necessário confirmação de senha">
+						<input class="input" type="password" name="pass" placeholder="Confirmar senha">
+						<span class="focus-input"></span>
+						<span class="symbol-input">
+							<i class="fa fa-unlock" aria-hidden="true"></i>
+						</span>
+					</div>
 					
 					<div class="login-form-btn">
 						<button class="form-btn">

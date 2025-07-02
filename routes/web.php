@@ -12,3 +12,8 @@ Route::get('/', function(){
 Route::get('/login', [PagesController::class, 'login']);
 
 Route::get('/cadastro', [PagesController::class, 'cadastro']);
+
+// Aponta para o método 'storeCadastro' no PagesController
+Route::post('/cadastro', [PagesController::class, 'storeCadastro']);
+
+Route::get('/stage-connect', [PagesController::class, 'stageconnect']);//->name('stageconnect')

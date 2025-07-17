@@ -52,4 +52,6 @@ class Usuario extends Authenticatable
         return $this->password_user;
     }
 
+    public $timestamps = false;
+
 }

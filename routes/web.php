@@ -8,12 +8,24 @@ use App\Http\Controllers\PagesController;
 Route::get('/', function(){
     return view('index');
 });
-// Route::get('/in', [PagesController::class, 'index']);
+
+// Login
 Route::get('/login', [PagesController::class, 'login'])->name('login');
+Route::post('/login', [PagesController::class, 'authenticate'])->name('login.authenticate');
 
-Route::get('/cadastro', [PagesController::class, 'cadastro'])->name('storeCadastro');
-
+// Cadastro
+Route::get('/cadastro', [PagesController::class, 'cadastro'])->name('cadastro');
 // Aponta para o método 'storeCadastro' no PagesController
 Route::post('/cadastro', [PagesController::class, 'storeCadastro'])->name('storeCadastro');
 
-Route::get('/stage-connect', [PagesController::class, 'stageconnect'])->name('stageconnect');
+// Logout
+Route::post('/logout', [PagesController::class, 'logout'])->name('logout');
+
+
+// Route::get('/stage-connect', [PagesController::class, 'stageconnect'])->name('stageconnect');
+
+Route::get('/stage-connect', [PagesController::class, 'stageconnect'])      
+->middleware('auth')
+->name('stageconnect');
+
+

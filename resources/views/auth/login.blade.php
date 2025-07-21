@@ -24,12 +24,32 @@
 			<div class="login-box">
 				<img class="image-tilt js-tilt" src="{{ asset('images/FundoBrancopng.png') }}" alt="Logo da Stage Connect" data-tilt>
 
-				<form class="form validate-form">
+				<form class="form validate-form"  method="POST" action="{{ route('login.authenticate') }}">
+					@csrf <!-- Token CSRF seguranca -->
+
 					<h1 class="form-title">
 						Login
 					</h1>
 
-					<div class="group-input validate-input" data-validate = "Email necessário: usuario@email.com">
+					{{-- Exibir mensagens de erro de validação --}}
+                    @if ($errors->any())
+                        <div class="alert-danger" style="color: red; margin-bottom: 15px;">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
+
+                    {{-- Exibir mensagem de sucesso --}}
+                    @if (session('success'))
+                        <div class="alert-success" style="color: green; margin-bottom: 15px;">
+                            {{ session('success') }}
+                        </div>
+                    @endif
+
+					<div class="group-input validate-input {{ $errors->has('email') ? 'alert-validate' : '' }}"" data-validate = "Email necessário: usuario@email.com">
 						<input class="input" type="text" name="email" placeholder="Email">
 						<span class="focus-input"></span>
 						<span class="symbol-input">
@@ -37,8 +57,8 @@
 						</span>
 					</div>
 
-					<div class="group-input validate-input" data-validate = "Necessário senha">
-						<input class="input" type="password" name="pass" placeholder="Senha">
+					<div class="group-input validate-input {{ $errors->has('password') ? 'alert-validate' : '' }}" data-validate = "Necessário senha">
+						<input class="input" type="password" name="password" placeholder="Senha">
 						<span class="focus-input"></span>
 						<span class="symbol-input">
 							<i class="fa fa-lock" aria-hidden="true"></i>
@@ -53,15 +73,15 @@
 
 					<div class="text-center p-t-12">
 						<span class="txt1">
-							Esqueci seu
+							Esqueci minha
 						</span>
 						<a class="txt2" href="#">
-							Email / Senha?
+							Senha
 						</a>
 					</div>
 
 					<div class="text-center p-t-136">
-						<a class="txt2" href="{{ uri('/cadastro') }}">
+						<a class="txt2" href="{{ route('cadastro') }}">
 							Criar sua Conta
 						</a>
 					</div>

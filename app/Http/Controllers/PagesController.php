@@ -27,6 +27,9 @@ class PagesController extends Controller
         return view('pages/stageconnect');
     }
 
+    /**
+     * Cadastrar a pessoa no banco de dados
+     */
     public function storeCadastro(Request $request)
     {
         // 1. Validação dos dados de entrada
@@ -67,7 +70,50 @@ class PagesController extends Controller
         Auth::login($usuario);
         
         // Redireciona para a rota 'stageconnect' (nome da rota em web.php)
-        return redirect()->route('stageconnect')->with('success', 'Usuário cadastrado com sucesso!');
+        return redirect()->route('login')->with('success', 'Usuário cadastrado com sucesso!');
+    }
+
+    /**
+     * Login e start da sessao
+     */
+    public function authenticate(Request $request)
+    {
+        // validação dos dados de entrada
+        $credentials = $request->validate([
+            'email' => ['required', 'email'],
+            'password' => ['required'],
+        ], [
+            'email.required' => 'O campo Email é obrigatório.',
+            'email.email' => 'Por favor, insira um email válido.',
+            'password.required' => 'O campo Senha é obrigatório.',
+        ]);
+
+        // autenticar o usuário com o banco
+        if (Auth::attempt(['email' => $credentials['email'], 'password' => $credentials['password']])) {
+            // regenera a sessão para evitar session fixation attacks
+            $request->session()->regenerate();
+
+            // Redireciona para a página 'stageconnect' após o login bem-sucedido
+            return redirect()->route('stageconnect')->with('success', 'Login realizado com sucesso!');
+        }
+
+        // caso der erro
+        return back()->withErrors([
+            'email' => 'As credenciais fornecidas não correspondem aos nossos registros.',
+        ])->onlyInput('email'); // Mantém o email preenchido no formulário
+    }
+
+    /**
+     * Logout da sessao
+     */
+    public function logout(Request $request)
+    {
+        Auth::logout(); // Desloga o usuário
+
+        $request->session()->invalidate(); // Invalida a sessão atual
+        $request->session()->regenerateToken(); // Regenera o token CSRF
+
+        return redirect()->route('stageconnect')->with('success', 'Você foi desconectado.'); // Redireciona para a página inicial
     }
 
 }

@@ -16,15 +16,19 @@ class PagesController extends Controller
     // }
 
     public function login(){
-        return view('auth/login');
+        return view('auth.login');
     }
 
     public function cadastro(){
-        return view('auth/cadastro');
+        return view('auth.cadastro');
     }
 
     public function stageconnect(){
-        return view('pages/stageconnect');
+        return view('pages.aluno.index');
+    }
+
+    public function adminIndex(){
+        return view('pages.admin.index');
     }
 
     /**
@@ -32,13 +36,13 @@ class PagesController extends Controller
      */
     public function storeCadastro(Request $request)
     {
-        // 1. Validação dos dados de entrada
+        // Validação dos dados
         $validator = Validator::make($request->all(), [
             'name_user' => ['required', 'string', 'max:25'],
             'email' => ['required', 'string', 'email', 'max:20', 'unique:usuarios,email'], // 'unique:tabela,coluna'
             'password' => ['required', 'string', 'min:6', 'confirmed'], // 'confirmed' exige um campo 'password_confirmation'
         ], [
-            // Mensagens de erro personalizadas
+            // Mensagens de erro para ir para formualrio
             'name_user.required' => 'O campo Nome é obrigatório.',
             'name_user.max' => 'O Nome não pode ter mais de 25 caracteres.',
             'email.required' => 'O campo Email é obrigatório.',
@@ -66,7 +70,7 @@ class PagesController extends Controller
             'active_user' => TRUE, // Define o usuário como ativo por padrão
         ]);
 
-        // Opcional: Logar o usuário automaticamente após o registro
+        // login apos o cadastro
         Auth::login($usuario);
         
         // Redireciona para a rota 'stageconnect' (nome da rota em web.php)
@@ -90,8 +94,16 @@ class PagesController extends Controller
 
         // autenticar o usuário com o banco
         if (Auth::attempt(['email' => $credentials['email'], 'password' => $credentials['password']])) {
-            // regenera a sessão para evitar session fixation attacks
             $request->session()->regenerate();
+
+            $user = Auth::user();
+
+            // 3. Verifica o tipo de usuário e redireciona para a página apropriada
+            if ($user->type_user === 'ADM') {
+                return redirect()->route('admin')->with('success', 'Bem-vindo, Administrador!');
+            } elseif ($user->type_user === 'ALU') {
+                return redirect()->route('stageconnect')->with('success', 'Bem-vindo, Aluno!');
+            }
 
             // Redireciona para a página 'stageconnect' após o login bem-sucedido
             return redirect()->route('stageconnect')->with('success', 'Login realizado com sucesso!');

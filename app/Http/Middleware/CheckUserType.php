@@ -23,7 +23,7 @@ class CheckUserType
         }
 
         // Obtém o usuário logado
-        $user = Auth::user();
+        $user = Auth::usuario();
 
         // Verifica se o tipo de usuário logado corresponde ao tipo esperado
         // Lembre-se que o campo no seu modelo é 'type_user'
@@ -35,7 +35,7 @@ class CheckUserType
         // Se o tipo não corresponder, redireciona para uma página de erro ou para a home
         // Você pode personalizar este redirecionamento e mensagem
         // ARRUMAR DPS
-        return redirect()->route('index')->with('error', 'Você não tem permissão para acessar esta página.');
+        return redirect()->route('login')->with('error', 'Você não tem permissão para acessar esta página.');
 
     }
 }

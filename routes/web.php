@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PagesController;
 
 
+
 Route::get('/', function(){
     return view('index');
 });
@@ -22,10 +23,12 @@ Route::post('/cadastro', [PagesController::class, 'storeCadastro'])->name('store
 Route::post('/logout', [PagesController::class, 'logout'])->name('logout');
 
 
-// Route::get('/stage-connect', [PagesController::class, 'stageconnect'])->name('stageconnect');
-
+// Middleware para barrar usuarios nao autenticados
 Route::get('/stage-connect', [PagesController::class, 'stageconnect'])      
 ->middleware('auth')
 ->name('stageconnect');
 
-
+// Pagina inicial do admin
+Route::get('/admin', [PagesController::class, 'adminIndex'])
+    ->middleware('check.type:ADM') // Aplica o middleware para verificar se é ADM
+    ->name('admin');

@@ -1,5 +1,3 @@
-<!-- (Registro do Middleware) -->
-
 <?php
 
 namespace App\Http;
@@ -62,6 +60,6 @@ class Kernel extends HttpKernel
         'signed' => \Illuminate\Routing\Middleware\ValidateSignature::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
-        'check.type' => \App\Http\Middleware\CheckUserType::class, // <-- Adicione esta linha
+        'check.type' => \App\Http\Middleware\CheckUserType::class,
     ];
 }

@@ -6,7 +6,7 @@ use App\Http\Controllers\PagesController;
 
 
 
-Route::get('/', function(){
+Route::get('/', action: function(){
     return view('index');
 });
 
@@ -24,11 +24,7 @@ Route::post('/logout', [PagesController::class, 'logout'])->name('logout');
 
 
 // Middleware para barrar usuarios nao autenticados
-Route::get('/stage-connect', [PagesController::class, 'stageconnect'])      
-->middleware('auth')
-->name('stageconnect');
+Route::get('/stage-connect', [PagesController::class, 'stageconnect'])->name('stageconnect');
 
 // Pagina inicial do admin
-Route::get('/admin', [PagesController::class, 'adminIndex'])
-    ->middleware('check.type:ADM') // Aplica o middleware para verificar se é ADM
-    ->name('admin');
+Route::get('/admin', [PagesController::class, 'adminIndex'])->name('admin');

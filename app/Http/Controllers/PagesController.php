@@ -24,11 +24,45 @@ class PagesController extends Controller
     }
 
     public function stageconnect(){
-        return view('pages.aluno.index');
+        // rota -> return view('pages.aluno.index');
+
+        // 1. Verifica se o usuário está logado
+        if (!Auth::check()) {
+            return redirect()->route('login')->with('error', 'Você precisa estar logado para acessar esta página.');
+        }
+
+        // 2. Obtém o usuário logado
+        $user = Auth::user();
+
+        // 3. Verifica se o tipo de usuário é ADM ou ALU
+        if ($user->type_user === 'ADM' || $user->type_user === 'ALU') {
+            return view('pages.aluno.index');
+        }
+
+        // Se o tipo de usuário não for nem ADM nem ALU, redireciona
+        return redirect()->route('login')->with('error', 'Você não tem permissão para acessar esta página.');
+
     }
 
     public function adminIndex(){
-        return view('pages.admin.index');
+        // rota -> return view('pages.admin.index');
+
+        // 1. Verifica se o usuário está logado
+        if (!Auth::check()) {
+            return redirect()->route('login')->with('error', 'Você precisa estar logado para acessar esta página.');
+        }
+
+        // 2. Obtém o usuário logado
+        $user = Auth::user();
+
+        // 3. Verifica se o tipo de usuário é ADM
+        if ($user->type_user === 'ADM') {
+            return view('pages.admin.index');
+        }
+
+        // Se o tipo de usuário não for ADM, redireciona
+        return redirect()->route('stageconnect')->with('error', 'Você não tem permissão para acessar esta página.');
+
     }
 
     /**

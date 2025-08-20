@@ -16,11 +16,11 @@ return new class extends Migration
             $table->increments('id'); // Laravel's equivalent for INT(10) auto_increment PRIMARY KEY
 
             // Nome do usuário, VARCHAR(25) not null
-            $table->string('name_user', 25)->nullable(false);
+            $table->string('name_user', 65)->nullable(false);
 
             // Email do usuário, VARCHAR(20) not null unique
             // ATENÇÃO: VARCHAR(20) para email é muito curto. Considere aumentar para 255.
-            $table->string('email', 20)->unique()->nullable(false);
+            $table->string('email', 50)->unique()->nullable(false);
 
             // Senha do usuário, VARCHAR(100) not null
             $table->string('password_user', 100)->nullable(false);

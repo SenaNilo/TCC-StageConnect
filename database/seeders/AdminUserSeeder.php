@@ -21,7 +21,7 @@ class AdminUserSeeder extends Seeder
         // Se o usuário não existe, nós o criamos.
         if (!$adminUser) {
             Usuario::create([
-                'name_user' => 'Administrador StageConnect',
+                'name_user' => 'Admin',
                 'email' => 'admin@gmail.com',
                 'password_user' => Hash::make('123'), // Use uma senha padrão forte aqui
                 'type_user' => 'ADM',

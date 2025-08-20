@@ -2,6 +2,7 @@
 <html>
 <head>
     <title>Home | Administrador</title>
+    {{-- Dashboard --}}
 </head>
 <body>
     <h1> Pagina secreta para admins </h1>

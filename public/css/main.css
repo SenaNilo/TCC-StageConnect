@@ -1,0 +1,504 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap');
+
+* {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #FEFBFB;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 25px;
+    background-color: #000;
+}
+
+nav {
+    /* border: 1px solid red;  */
+    display: flex;
+    align-items: center;
+    margin-right: 20px;
+}
+
+ul {
+    display: flex;
+    list-style: none;
+    padding: 0px;
+    margin: 0;
+    /* background-color: pink; */
+    align-items: center;
+}
+
+.titulo-header {
+    color: #fff;
+    z-index: 10000;
+    font-weight: 500;
+    font-size: 20px;
+}
+
+.menu-header {
+    /* padding: 0px 10px 20px 20px; */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo-header {
+    margin-left: 20px;
+    width: 65px;
+}
+
+.lista-header {
+    margin-right: 30px;
+    /* color: #fff; */
+    font-size: 18px;
+    color: #fff;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.lista-header:hover {
+    border-bottom: solid 3px #fff;
+    cursor: pointer;
+}
+
+.botao-nav {
+    width: 100px;
+    height: 45px;
+    background-color: #d9d9d9;
+    font-weight: 500;
+    color: #000;
+    border: none;
+    border-radius: 4px;
+    font-size: 15px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+/* Dropdown navbar */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    position: absolute;
+    top: 100%;
+    /* left: 50; */
+    background: white;
+    min-width: 140px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: all 0.3s;
+    /* pointer-events: none;  */
+    border-radius: 3px;
+}
+
+.dropdown:hover .dropdown-content {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+
+.dropdown-content a {
+    color: #374151;
+    padding: 0.5rem 1rem;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {
+    background: #f3f4f6;
+}
+
+.principal-container {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    height: 70vh;
+    /* border: 1px solid red; */
+}
+
+.parte-direita-principal {
+    /* border: 1px solid blue; */
+    margin-left: 50px;
+    font-size: 22px;
+    max-width: 600px;
+}
+
+.logo-principal {
+    width: 400px;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.15));
+    margin-right: 10%;
+    /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
+}
+
+.titulo-princcipal .descricao-principal {
+    font-size: 50px;
+    color: #000;
+}
+
+/* Responsividade da primeira parte */
+
+@media (max-width: 768px) {
+    .header {
+        flex-direction: row-reverse !important;
+    }
+
+    .principal-container {
+        margin-top: 15px;
+        flex-direction: column;
+        text-align: center;
+        height: auto;
+    }
+
+    .parte-direita-principal {
+        max-width: 100%;
+        text-align: center;
+        margin: 0 20px;
+    }
+
+    .logo-principal {
+        max-width: 300px;
+        /* encolhe a logo */
+        width: 100%;
+        height: auto;
+    }
+
+    .nav-desktop {
+        display: none;
+        /* esconde o menu desktop */
+    }
+
+    .btn-abrir-menu {
+        display: block !important;
+        z-index: 10000;
+        position: relative;
+        /* mostra o hamburger */
+    }
+}
+
+/* Botão abrir menu (hamburger) */
+.btn-abrir-menu {
+    display: none;
+}
+
+.btn-abrir-menu i {
+    color: #fff;
+    font-size: 30px;
+}
+
+/* Menu mobile */
+.menu-mobile {
+    background-color: #000;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 9999;
+    width: 0%;
+    overflow: hidden;
+    transition: 0.5s;
+}
+
+.menu-mobile.abrir-menu {
+    width: 70%;
+}
+
+.menu-mobile nav ul {
+    text-align: right;
+    padding-top: 50px;
+    display: block;
+}
+
+.menu-mobile nav ul li a {
+    color: #fff;
+    font-size: 20px;
+    font-weight: 300;
+    padding: 20px 4%;
+    display: block;
+    text-decoration: none;
+}
+
+.menu-mobile nav ul li a:hover {
+    background-color: #9C00CC;
+}
+
+.menu-mobile .btn-fechar {
+    padding: 20px 5%;
+    cursor: pointer;
+}
+
+.menu-mobile .btn-fechar i {
+    color: #9b04c9;
+    font-size: 30px;
+}
+
+/* Overlay */
+.overlay-menu {
+    background-color: rgba(0, 0, 0, 0.6);
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 8888;
+    display: none;
+}
+
+/* Blocos da segunda seção */
+.container-objetivos {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    /* align-items: flex-start; */
+    margin: 50px auto;
+    text-align: center;
+}
+
+.card {
+    width: 28%;
+    background-color: #F8FBFE;
+    border-radius: 8px;
+    z-index: 1;
+    color: #000;
+    padding: 0;
+}
+
+.bloco-orientar {
+    /* width: 30%; */
+    background-color: #FDFDFD;
+    color: #000;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+
+    /* padding: 20px;
+            border-radius: 10px;
+            margin-right: 20px; */
+}
+
+.bloco-conectar {
+    /* width: 30%; */
+    background-color: #FDFDFD;
+    color: #000;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    /* padding: 20px;
+            border-radius: 10px;
+            margin-right: 20px; */
+}
+
+.bloco-impulsionar {
+    /* width: 30%; */
+    background-color: #FDFDFD;
+    color: #000;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    /* padding: 20px;
+            border-radius: 10px; */
+}
+
+.titulo-objetivos {
+    text-align: center;
+    margin: 50px 0;
+    font-size: 36px;
+    color: #000;
+    font-weight: 500;
+}
+
+/* Estilos do card original */
+.tools {
+    display: flex;
+    align-items: center;
+    padding: 9px;
+    background-color: #F8FBFE;
+    border-radius: 8px 8px 0 0;
+    /* Borda arredondada só no topo */
+}
+
+.circle {
+    padding: 0 4px;
+}
+
+.box {
+    display: inline-block;
+    align-items: center;
+    width: 10px;
+    height: 10px;
+    padding: 1px;
+    border-radius: 50%;
+}
+
+.red {
+    background-color: #ff605c;
+}
+
+.yellow {
+    background-color: #ffbd44;
+}
+
+.green {
+    background-color: #00ca4e;
+}
+
+/* Conteúdo dentro do card */
+.card__content {
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    justify-content: flex-start;
+    height: 55vh;
+    /* align-items: center; */
+    /* Adiciona o padding que estava nos blocos antigos */
+}
+
+.icone-bloco {
+    font-size: 70px;
+    margin-left: 30px;
+    margin-bottom: 15px;
+    color: #000;
+    align-self: flex-start;
+}
+
+/* Estilos de texto */
+.titulo-blocos {
+    font-size: 24px;
+    margin-bottom: 10px;
+    color: inherit;
+    text-align: left;
+    ;
+}
+
+.descricao-blocos {
+    font-size: 16px;
+    line-height: 1.5;
+    color: inherit;
+    text-align: left;
+}
+
+.footer {
+    background-color: #000;
+    color: #fff;
+    padding: 40px 20px;
+    /* Adiciona um pouco de padding geral */
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-around;
+    /* Espaça as colunas igualmente */
+    width: 100%;
+    /* max-width: 1200px; */
+    /* Limita a largura do container para telas grandes */
+    margin: 0 auto;
+    /* Centraliza o container */
+    flex-wrap: wrap;
+    /* Permite que as colunas quebrem para a próxima linha em telas menores */
+}
+
+.footer-logo {
+    text-align: left;
+}
+
+.footer-logo img {
+    width: 50px;
+    /* Ajuste o tamanho da logo */
+    vertical-align: middle;
+    /* Alinha verticalmente com o texto */
+    margin-right: 10px;
+}
+
+.footer-logo p {
+    display: inline;
+    /* Para ficar na mesma linha da logo */
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+.footer-informacoes {
+    text-align: left;
+}
+
+.footer-informacoes h3 {
+    border-bottom: 1px solid #fff;
+    padding-bottom: 5px;
+    margin-bottom: 10px;
+}
+
+.footer-informacoes ul {
+    list-style: none;
+    display: block;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-informacoes ul li {
+    margin-bottom: 5px;
+}
+
+.footer-informacoes ul li a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.footer-informacoes ul li a:hover {
+    text-decoration: underline;
+}
+
+.footer-contatos {
+    text-align: left;
+}
+
+.footer-contatos h3 {
+    border-bottom: 1px solid #fff;
+    padding-bottom: 5px;
+    margin-bottom: 10px;
+}
+
+.footer-contatos p {
+    margin-bottom: 10px;
+}
+
+.footer-contatos i {
+    margin-right: 5px;
+}
+
+/* Responsividade para telas menores */
+@media (max-width: 768px) {
+    .footer-container {
+        justify-content: space-around;
+        text-align: center;
+    }
+
+    .footer-logo,
+    .footer-informacoes,
+    .footer-contatos {
+        width: 45%;
+        /* Ocupam quase metade da largura */
+        margin-bottom: 20px;
+        text-align: center;
+    }
+
+    .footer-informacoes ul {
+        text-align: center;
+    }
+
+    .footer-logo {
+        width: 100%;
+        /* A logo ocupa a largura total */
+    }
+}
+
+@media (max-width: 480px) {
+
+    .footer-informacoes,
+    .footer-contatos {
+        width: 100%;
+        /* Ocupam a largura total */
+    }
+}

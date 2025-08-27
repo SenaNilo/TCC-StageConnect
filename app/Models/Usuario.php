@@ -51,6 +51,10 @@ class Usuario extends Authenticatable
     {
         return $this->password_user;
     }
+    public function getNameAttribute(): string
+    {
+        return $this->attributes['name_user'];
+    }
 
     public $timestamps = false;
 

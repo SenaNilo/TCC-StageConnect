@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\PagesController;
+use App\Providers\Filament\FilamentPanelProvider;
 
 
 
@@ -27,4 +28,9 @@ Route::post('/logout', [PagesController::class, 'logout'])->name('logout');
 Route::get('/stage-connect', [PagesController::class, 'stageconnect'])->name('stageconnect');
 
 // Pagina inicial do admin
-Route::get('/admin', [PagesController::class, 'adminIndex'])->name('admin');
+//// Route::get('/admin', [FilamentPanelProvider::class, 'adminIndex'])->name('admin');
+Route::redirect('/admin', '/filament'); // Esta é a rota que criamos antes para o redirecionamento
+// Route::get('/filament', function () {
+//     return redirect()->route('filament.auth.login');
+// })->name('filament');
+

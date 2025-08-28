@@ -93,7 +93,7 @@
                         </button>
                     </div>
 
-                    <div class="text-center p-t-136">
+                    <div class="text-center p-t-96">
                         <a class="txt2" href="{{ route('login') }}">
                             Já tenho uma conta!
                         </a>

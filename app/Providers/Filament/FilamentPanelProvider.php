@@ -26,8 +26,9 @@ class FilamentPanelProvider extends PanelProvider
         return $panel
             ->id('filament')
             ->path('filament')
+            ->authGuard('web')
             ->colors([
-                'primary' => Color::Amber,
+                'primary' => Color::Fuchsia,
             ])
             ->discoverResources(in: app_path('Filament/Filament/Resources'), for: 'App\Filament\Filament\Resources')
             ->discoverPages(in: app_path('Filament/Filament/Pages'), for: 'App\Filament\Filament\Pages')

@@ -5,10 +5,13 @@ namespace App\Models;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Notifications\Notifiable;
+use Filament\Models\Contracts\FilamentUser;
+use Filament\Panel;
+use Illuminate\Support\Facades\Redirect;
 // use Laravel\Sanctum\HasApiTokens;
 
 
-class Usuario extends Authenticatable
+class Usuario extends Authenticatable implements FilamentUser
 {
     
     use HasFactory, Notifiable;
@@ -58,4 +61,13 @@ class Usuario extends Authenticatable
 
     public $timestamps = false;
 
+
+    public function canAccessPanel(Panel $panel): bool
+    {
+        if($this->type_user != 'ADM'){
+            Redirect::to('/login')->send();
+            return false;
+        }
+        return true;
+    }
 }

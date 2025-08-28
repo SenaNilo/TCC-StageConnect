@@ -134,8 +134,8 @@ class PagesController extends Controller
 
             // 3. Verifica o tipo de usuário e redireciona para a página apropriada
             if ($user->type_user === 'ADM') {
-                return redirect()->route('admin')->with('success', 'Bem-vindo, Administrador!');
-            } elseif ($user->type_user === 'ALU') {
+                return redirect('/filament')->with('success', 'Bem-vindo, Administrador!');
+            } else if ($user->type_user === 'ALU') {
                 return redirect()->route('stageconnect')->with('success', 'Bem-vindo, Aluno!');
             }
 

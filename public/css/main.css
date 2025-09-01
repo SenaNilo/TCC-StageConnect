@@ -19,6 +19,10 @@ header {
     background-color: #000;
 }
 
+/* .typed-text {
+    font-family: 'Arvo', sans-serif; 
+} */
+
 nav {
     /* border: 1px solid red;  */
     display: flex;
@@ -60,11 +64,12 @@ ul {
     font-size: 18px;
     color: #fff;
     cursor: pointer;
-    transition: 0.3s;
+    transition: color 0.3s, border-bottom 0.3s;
+    border-bottom: solid 2px transparent;
 }
 
 .lista-header:hover {
-    border-bottom: solid 3px #fff;
+    border-bottom: solid 2px #fff;
     cursor: pointer;
 }
 
@@ -85,6 +90,7 @@ ul {
 .dropdown {
     position: relative;
     display: inline-block;
+    z-index: 100; 
 }
 
 .dropdown-content {
@@ -112,6 +118,7 @@ ul {
     padding: 0.5rem 1rem;
     text-decoration: none;
     display: block;
+    border-radius: 3px;
 }
 
 .dropdown-content a:hover {
@@ -256,15 +263,17 @@ ul {
 /* Blocos da segunda seção */
 .container-objetivos {
     display: flex;
+    /* justify-content: space-around;
+    gap: 50px; */
     justify-content: center;
-    gap: 20px;
+    gap: 50px;
     /* align-items: flex-start; */
     margin: 50px auto;
     text-align: center;
 }
 
 .card {
-    width: 28%;
+    max-width: 350px;
     background-color: #F8FBFE;
     border-radius: 8px;
     z-index: 1;
@@ -320,6 +329,11 @@ ul {
     /* Borda arredondada só no topo */
 }
 
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
 .circle {
     padding: 0 4px;
 }
@@ -352,7 +366,7 @@ ul {
     flex-direction: column;
     align-items: left;
     justify-content: flex-start;
-    height: 55vh;
+    /* height: 55vh; */
     /* align-items: center; */
     /* Adiciona o padding que estava nos blocos antigos */
 }
@@ -407,9 +421,7 @@ ul {
 
 .footer-logo img {
     width: 50px;
-    /* Ajuste o tamanho da logo */
     vertical-align: middle;
-    /* Alinha verticalmente com o texto */
     margin-right: 10px;
 }
 
@@ -425,7 +437,7 @@ ul {
 }
 
 .footer-informacoes h3 {
-    border-bottom: 1px solid #fff;
+    border-bottom: 2px solid #fff;
     padding-bottom: 5px;
     margin-bottom: 10px;
 }
@@ -444,10 +456,12 @@ ul {
 .footer-informacoes ul li a {
     color: #fff;
     text-decoration: none;
+    transition: border-bottom 0.3s ease;
+    border-bottom: solid 2px transparent;
 }
 
 .footer-informacoes ul li a:hover {
-    text-decoration: underline;
+    border-bottom: solid 2px #fff;
 }
 
 .footer-contatos {
@@ -479,7 +493,6 @@ ul {
     .footer-informacoes,
     .footer-contatos {
         width: 45%;
-        /* Ocupam quase metade da largura */
         margin-bottom: 20px;
         text-align: center;
     }
@@ -500,5 +513,32 @@ ul {
     .footer-contatos {
         width: 100%;
         /* Ocupam a largura total */
+    }
+}
+
+/* Efeito de escrita */
+.cursor {
+    display: inline-block;
+    width: 3px;
+    height: 1.2em;
+    background-color: black;
+    margin-left: 5px;
+    animation: blink 0.8s infinite;
+}
+.cursor.typing {
+    animation: none;
+}
+/* --- Animação de piscar --- */
+@keyframes blink {
+    0% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
     }
 }

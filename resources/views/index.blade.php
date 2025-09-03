@@ -35,7 +35,7 @@
             <div class="dropdown">
                 <button class="botao-nav">Comece já</button>
                 <div class="dropdown-content">
-                    <a href="#">Login</a>
+                    <a href="{{ route('login') }}">Login</a>
                     <a href="#">Cadastro</a>
                 </div>
             </div>
@@ -52,7 +52,7 @@
                     <li><a href="#">Objetivo</a></li>
                     <li><a href="#">Informações</a></li>
                     <li><a href="{{ url('/sobre-nos') }}">Sobre nós</a></li>
-                    <li><a href="#">Login</a></li>
+                    <li><a href="{{ route('login') }}">Login</a></li>
                     <li><a href="#">Cadastro</a></li>
                 </ul>
             </nav>

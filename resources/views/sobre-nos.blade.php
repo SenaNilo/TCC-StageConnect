@@ -18,7 +18,7 @@
 <body>
 
     <header>
-        <img src="{{ asset('images/LogoSFundo.png') }}" alt="Logo StageConnect" class="logo-header">
+        <a href="{{ url('/') }}"><img src="{{ asset('images/LogoSFundo.png') }}" alt="Logo StageConnect" class="logo-header"></a>
         <!-- <h2 class="titulo-header"> StageConnect </h2> -->
 
         <!-- Botão Hamburger -->
@@ -50,7 +50,7 @@
             </div>
             <nav>
                 <ul>
-                    <li><a href="#">Home</a></li>
+                    <li><a href="{{ url('/') }}">Home</a></li>
                     <li><a href="#">Objetivo</a></li>
                     <li><a href="#">Informações</a></li>
                     <li><a href="#">Sobre nós</a></li>
@@ -138,7 +138,27 @@
         </div>
     </footer>
 
+   <script>
+        const btnAbrir = document.getElementById("btn-abrir-menu");
+        const btnFechar = document.getElementById("btn-fechar-menu");
+        const menuMobile = document.getElementById("menu-mobile");
+        const overlay = document.getElementById("overlay-menu");
 
+        btnAbrir.addEventListener("click", () => {
+            menuMobile.classList.add("abrir-menu");
+            overlay.style.display = "block";
+        });
+
+        btnFechar.addEventListener("click", () => {
+            menuMobile.classList.remove("abrir-menu");
+            overlay.style.display = "none";
+        });
+
+        overlay.addEventListener("click", () => {
+            menuMobile.classList.remove("abrir-menu");
+            overlay.style.display = "none";
+        });
+    </script>
 </body>
 
 </html>

@@ -155,6 +155,9 @@ ul {
 /* Responsividade da primeira parte */
 
 @media (max-width: 768px) {
+    nav {
+        display: block;
+    }
     .header {
         flex-direction: row-reverse !important;
     }
@@ -164,6 +167,8 @@ ul {
         flex-direction: column;
         text-align: center;
         height: auto;
+        align-items: center;
+        justify-content: center;
     }
 
     .parte-direita-principal {
@@ -177,6 +182,8 @@ ul {
         /* encolhe a logo */
         width: 100%;
         height: auto;
+        justify-content: center;
+        align-items: center;
     }
 
     .nav-desktop {
@@ -189,6 +196,12 @@ ul {
         z-index: 10000;
         position: relative;
         /* mostra o hamburger */
+    }
+
+    .container-objetivos {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
     }
 }
 
@@ -220,7 +233,8 @@ ul {
 }
 
 .menu-mobile nav ul {
-    text-align: right;
+    text-align: left;
+    align-items: left;
     padding-top: 50px;
     display: block;
 }
@@ -235,7 +249,7 @@ ul {
 }
 
 .menu-mobile nav ul li a:hover {
-    background-color: #9C00CC;
+    background-color: #A6121F;
 }
 
 .menu-mobile .btn-fechar {
@@ -244,7 +258,7 @@ ul {
 }
 
 .menu-mobile .btn-fechar i {
-    color: #9b04c9;
+    color: #fff;
     font-size: 30px;
 }
 

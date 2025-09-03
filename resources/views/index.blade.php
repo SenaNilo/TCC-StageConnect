@@ -16,7 +16,7 @@
 <body>
 
     <header>
-        <img src="{{ asset('images/LogoSFundo.png') }}" alt="Logo StageConnect" class="logo-header">
+        <a href="{{ url('/') }}"><img src="{{ asset('images/LogoSFundo.png') }}" alt="Logo StageConnect" class="logo-header"></a>
         <!-- <h2 class="titulo-header"> StageConnect </h2> -->
 
         <!-- Botão Hamburger -->

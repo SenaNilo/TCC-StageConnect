@@ -4,10 +4,12 @@
 <head>
     <meta charset='utf-8'>
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-    <title>Página inicial - StageConnect </title>
+    <title>Sobre nós - StageConnect</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <link rel="icon" type="image/png" href="{{ asset('images/LogoSFundo.png') }}" />
     <link rel="stylesheet" href="{{ asset('css/main.css') }}">
+      <link rel="icon" type="image/png" href="{{ asset('images/LogoSFundo.png') }}"/>
+    <link rel="stylesheet" href="{{ asset('css/sobre-nos.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/swiper-bundle.min.css') }}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     {{-- <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
     <script src='main.js'></script> --}}
@@ -27,15 +29,15 @@
         <!-- Menu desktop -->
         <nav class="nav-desktop">
             <ul class="menu-header">
-                <li class="lista-header">Home</li>
+                <li class="lista-header"><a href="{{ url('/') }}">Home</a></li>
                 <li class="lista-header">Objetivo</li>
                 <li class="lista-header">Informações</li>
-                <li class="lista-header"><a href="{{ url('/sobre-nos') }}">Sobre nós</a></li>
+                <li class="lista-header">Sobre nós</li>
             </ul>
             <div class="dropdown">
                 <button class="botao-nav">Comece já</button>
                 <div class="dropdown-content">
-                    <a href="{{ route('login') }}">Login</a>
+                    <a href="#">Login</a>
                     <a href="#">Cadastro</a>
                 </div>
             </div>
@@ -48,11 +50,11 @@
             </div>
             <nav>
                 <ul>
-                    <li><a href="#">Home</a></li>
+                    <li><a href="{{ url('/') }}">Home</a></li>
                     <li><a href="#">Objetivo</a></li>
                     <li><a href="#">Informações</a></li>
-                    <li><a href="{{ url('/sobre-nos') }}">Sobre nós</a></li>
-                    <li><a href="{{ route('login') }}">Login</a></li>
+                    <li><a href="#">Sobre nós</a></li>
+                    <li><a href="#">Login</a></li>
                     <li><a href="#">Cadastro</a></li>
                 </ul>
             </nav>
@@ -61,74 +63,56 @@
         <div class="overlay-menu" id="overlay-menu"></div>
     </header>
 
-    <section class="principal-container">
+    <section class="us-principal">
+        <div class="container-principal">
 
-        <div class="parte-direita-principal">
-            <h1 class="titulo-principal"> StageConnect: </h1>
-            <p class="descricao-principal">
-                <span class="typed-text"> </span> <span class="cursor">&nbsp; </span>
-            </p>
+            <div class="card-container">
+                <div class="card__background">
+                </div>
+                <div class="card__avatar">
+                    <img src="{{ asset('images/larissafoto.jpg') }}" alt="Larissa Fernanda">
+                </div>
+                <div class="card__title">Larissa Fernanda</div>
+                <div class="card__subtitle">Desenvolvedora FullStack</div>
+                <div class="card__wrapper">
+                    <button class="card__btn">LinkedIn</button>
+                    <button class="card__btn card__btn-solid"> Ver mais</button>
+                </div>
+            </div>
+
+            <div class="card-container">
+                <div class="card__background">
+                </div>
+                <div class="card__avatar">
+                    <img src="{{ asset('images/danilofoto.jpg') }}" alt="Danilo Sena">
+                </div>
+                <div class="card__title">Danilo Sena</div>
+                <div class="card__subtitle">Desenvolvedor FullStack</div>
+                <div class="card__wrapper">
+                    <button class="card__btn">LinkedIn</button>
+                    <button class="card__btn card__btn-solid">Ver mais</button>
+                </div>
+            </div>
+
+            <div class="card-container">
+                <div class="card__background">
+                </div>
+                <div class="card__avatar">
+                    <img src="{{ asset('images/cristoferfoto.jpg') }}" alt="Larissa Fernanda">
+                </div>
+                <div class="card__title">Cristhofer Chow </div>
+                <div class="card__subtitle">Infraestrutura </div>
+                <div class="card__wrapper">
+                    <button class="card__btn">LinkedIn</button>
+                    <button class="card__btn card__btn-solid">Ver mais</button>
+                </div>
+            </div>
+
         </div>
-
-        <div class="logo-principal">
-            <img src="{{ asset('images/LogoSFundo.png') }}" alt="Logo StageConnect" class="logo-principal">
-        </div>
-
     </section>
-
-    <section class="section-objetivos">
-        <h1 class="titulo-objetivos"> Qual é o nosso objetivo? </h1>
-        <div class="container-objetivos">
-
-            <div class="card bloco-orientar">
-                <div class="tools">
-                    <div class="circle"><span class="red box"></span></div>
-                    <div class="circle"><span class="yellow box"></span></div>
-                    <div class="circle"><span class="green box"></span></div>
-                </div>
-                <div class="card__content">
-                    <i class="bi bi-compass icone-bloco"></i>
-                    <h2 class="titulo-blocos">Orientar</h2>
-                    <p class="descricao-blocos">
-                        Ajudar estudantes de TI a entender melhor as áreas da tecnologia, com conteúdo prático sobre entrevistas, testes técnicos e o dia a dia da profissão.
-                    </p>
-                </div>
-            </div>
-
-            <div class="card bloco-conectar">
-                <div class="tools">
-                    <div class="circle"><span class="red box"></span></div>
-                    <div class="circle"><span class="yellow box"></span></div>
-                    <div class="circle"><span class="green box"></span></div>
-                </div>
-                <div class="card__content">
-                    <i class="bi bi-link icone-bloco"> </i>
-                    <h2 class="titulo-blocos">Conectar</h2>
-                    <p class="descricao-blocos">
-                        Aproximar estudantes do mundo profissional, apresentando conteúdos e ferramentas que ligam teoria à prática, com foco em preparação real para o mercado de TI.
-                    </p>
-                </div>
-            </div>
-
-            <div class="card bloco-impulsionar">
-                <div class="tools">
-                    <div class="circle"><span class="red box"></span></div>
-                    <div class="circle"><span class="yellow box"></span></div>
-                    <div class="circle"><span class="green box"></span></div>
-                </div>
-                <div class="card__content">
-                    <i class="bi bi-rocket icone-bloco"></i>
-                    <h2 class="titulo-blocos">Impulsionar</h2>
-                    <p class="descricao-blocos">
-                        Despertar a confiança e o protagonismo de aspirantes na área por meio de conteúdo que motiva, informa e direciona para um futuro profissional promissor.
-                    </p>
-                </div>
-            </div>
-
-        </div>
-
-    </section>
-
+    <!-- <script src="{{ asset('js/swiper-bundle.min.js') }}"></script>
+    <script src="{{ asset('js/sobre-nos.js') }}"></script>
+    -->
     <footer class="footer footer-container">
         <div class="footer-logo">
             <img src="{{ asset('images/LogoSFundo.png') }}" alt="Logo StageConnect">
@@ -153,8 +137,8 @@
             <p><i class="bi bi-envelope-fill"></i> email@gmail.com</p>
         </div>
     </footer>
-  <script src="{{ asset('js/write-effect.js') }}"></script>
-    <script>
+
+   <script>
         const btnAbrir = document.getElementById("btn-abrir-menu");
         const btnFechar = document.getElementById("btn-fechar-menu");
         const menuMobile = document.getElementById("menu-mobile");

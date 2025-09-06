@@ -11,6 +11,11 @@ Route::get('/', action: function(){
     return view('index');
 });
 
+Route::get('/sobre-nos', function () {
+    return view('sobre-nos');
+});
+// Route::get('/in', [PagesController::class, 'index']);
+
 // Login
 Route::get('/login', [PagesController::class, 'login'])->name('login');
 Route::post('/login', [PagesController::class, 'authenticate'])->name('login.authenticate');

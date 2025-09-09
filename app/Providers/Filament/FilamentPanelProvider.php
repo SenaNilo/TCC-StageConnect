@@ -28,7 +28,7 @@ class FilamentPanelProvider extends PanelProvider
             ->path('filament')
             ->authGuard('web')
             ->colors([
-                'primary' => Color::Fuchsia,
+                'primary' => Color::hex('#a6121f'),
             ])
             ->discoverResources(in: app_path('Filament/Filament/Resources'), for: 'App\Filament\Filament\Resources')
             ->discoverPages(in: app_path('Filament/Filament/Pages'), for: 'App\Filament\Filament\Pages')

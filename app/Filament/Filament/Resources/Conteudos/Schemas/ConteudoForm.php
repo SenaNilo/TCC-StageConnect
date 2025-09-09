@@ -6,6 +6,7 @@ use Filament\Schemas\Schema;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\Toggle;
+use Filament\Forms\Components\Hidden;
 
 class ConteudoForm
 {
@@ -25,6 +26,8 @@ class ConteudoForm
                     ->default(true)
                     ->onColor('success')
                     ->offColor('danger'),
+                Hidden::make('autor_id')
+                    ->default(fn () => auth()->id()),
             ]);
     }
 }

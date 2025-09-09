@@ -19,8 +19,8 @@ class ConteudosTable
                 //TextColumn::make('id')
                 //    ->sortable()
                 //    ->searchable(),
-                TextColumn::make('autor_id')
-                    ->label('Autor ID')
+                TextColumn::make('autor.name_user')
+                    ->label('Autor')
                     ->sortable()
                     ->searchable(),
                 TextColumn::make('titulo')

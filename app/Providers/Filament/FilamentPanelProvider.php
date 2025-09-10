@@ -30,6 +30,11 @@ class FilamentPanelProvider extends PanelProvider
             ->colors([
                 'primary' => Color::hex('#a6121f'),
             ])
+            //Marca
+            ->brandName('StageConnect')
+            ->brandLogo(asset('images/LogoSFundo.png'))
+            ->brandLogoHeight('40px')
+            ->favicon(asset('images/LogoSFundo.ico'))
             ->discoverResources(in: app_path('Filament/Filament/Resources'), for: 'App\Filament\Filament\Resources')
             ->discoverPages(in: app_path('Filament/Filament/Pages'), for: 'App\Filament\Filament\Pages')
             ->pages([

@@ -22,10 +22,10 @@ return new class extends Migration
             $table->unsignedInteger('autor_id')->nullable();
 
             // Título do conteúdo, VARCHAR(30)
-            $table->string('titulo', 30)->nullable();
+            $table->string('titulo', 255)->nullable();
 
             // Descrição do conteúdo, VARCHAR(55)
-            $table->string('descricao', 55)->nullable();
+            $table->string('descricao', 9999)->nullable();
 
             // Data de criação, DATETIME default CURRENT_TIMESTAMP
             $table->timestamp('dt_created')->useCurrent();

@@ -16,20 +16,25 @@ class UsuarioForm
         return $schema
             ->components([
                 TextInput::make('name_user')
+                    ->label('Nome')
                     ->required(),
                 TextInput::make('email')
-                    ->label('Email address')
+                    ->label('Email')
                     ->email()
                     ->required(),
                 TextInput::make('password_user')
+                    ->label('Senha')
                     ->password()
                     ->dehydrated(fn(string $state): bool => filled($state))
                     ->dehydrateStateUsing(fn(string $state): string => Hash::make($state))
                     ->required(),
                 Select::make('type_user')
-                    ->options(['ADM' => 'A d m', 'ALU' => 'A l u'])
+                    ->label('Tipo de Usuario')
+                    ->options(['ADM' => 'Admin', 'ALU' => 'Aluno'])
                     ->required(),
                 Toggle::make('active_user')
+                    ->label('Usuario ativo')
+                    ->default(true)
                     ->required(),
             ]);
     }

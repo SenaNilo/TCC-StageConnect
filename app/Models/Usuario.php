@@ -70,4 +70,9 @@ class Usuario extends Authenticatable implements FilamentUser
         }
         return true;
     }
+
+    public function conteudos()
+    {
+        return $this->hasMany(Conteudo::class, 'autor_id');
+    }
 }

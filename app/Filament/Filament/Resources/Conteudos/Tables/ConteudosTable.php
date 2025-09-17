@@ -16,11 +16,11 @@ class ConteudosTable
         return $table
             ->columns([
                 //
-                TextColumn::make('id')
-                    ->sortable()
-                    ->searchable(),
-                TextColumn::make('autor_id')
-                    ->label('Autor ID')
+                //TextColumn::make('id')
+                //    ->sortable()
+                //    ->searchable(),
+                TextColumn::make('autor.name_user')
+                    ->label('Autor')
                     ->sortable()
                     ->searchable(),
                 TextColumn::make('titulo')
@@ -28,14 +28,17 @@ class ConteudosTable
                     ->searchable(),
                 TextColumn::make('descricao')
                     ->sortable()
+                    ->limit(50)
                     ->searchable(),
                 BooleanColumn::make('active_content')
                     ->label('Ativo'),
                 TextColumn::make('dt_created')
                     ->label('Data de Criação')
+                    ->dateTime()
                     ->sortable(),
                 TextColumn::make('dt_updated')
                     ->label('Data de Atualização')
+                    ->dateTime()
                     ->sortable(),
             ])
             ->filters([

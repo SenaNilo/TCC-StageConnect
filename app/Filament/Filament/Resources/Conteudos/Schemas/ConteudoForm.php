@@ -5,6 +5,8 @@ namespace App\Filament\Filament\Resources\Conteudos\Schemas;
 use Filament\Schemas\Schema;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Textarea;
+use Filament\Forms\Components\Toggle;
+use Filament\Forms\Components\Hidden;
 
 class ConteudoForm
 {
@@ -18,7 +20,14 @@ class ConteudoForm
                     ->maxLength(255),
                 Textarea::make('descricao')
                     ->required()
-                    ->columnSpanFull(),
+                    ->columnSpanFull(),   
+                Toggle::make('active_content')
+                    ->required()
+                    ->default(true)
+                    ->onColor('success')
+                    ->offColor('danger'),
+                Hidden::make('autor_id')
+                    ->default(fn () => auth()->id()),
             ]);
     }
 }

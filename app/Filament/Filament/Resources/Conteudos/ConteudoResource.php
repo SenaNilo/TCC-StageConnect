@@ -13,7 +13,7 @@ use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Table;
-use Illuminate\Support\Facades\Auth;
+//use Illuminate\Support\Facades\Auth;
 
 class ConteudoResource extends Resource
 {
@@ -51,7 +51,7 @@ class ConteudoResource extends Resource
 
     protected static function mutateFormDataBeforeCreate(array $data): array 
     {
-        $data['autor_id'] = Auth::id();
+        $data['autor_id'] = auth()->id();
         $data['active_content'] = true;
 
         return $data;

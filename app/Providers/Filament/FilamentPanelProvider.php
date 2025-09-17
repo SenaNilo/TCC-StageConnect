@@ -24,6 +24,7 @@ class FilamentPanelProvider extends PanelProvider
     public function panel(Panel $panel): Panel
     {
         return $panel
+            ->default()
             ->id('filament')
             ->path('filament')
             ->authGuard('web')

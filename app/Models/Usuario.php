@@ -29,6 +29,7 @@ class Usuario extends Authenticatable implements FilamentUser
         'password_user',
         'type_user', 
         'active_user',
+        'foto_perfil',
     ];
 
     // Define os atributos que devem ser ocultados ao serializar o modelo para arrays/JSON.

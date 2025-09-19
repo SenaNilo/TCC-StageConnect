@@ -5,10 +5,11 @@ namespace App\Filament\Filament\Resources\Conteudos\Tables;
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
+use Filament\Actions\ViewAction;
 use Filament\Tables\Table;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Columns\BooleanColumn;
-
+use Filament\Tables\Columns\ImageColumn;
 class ConteudosTable
 {
     public static function configure(Table $table): Table
@@ -23,6 +24,10 @@ class ConteudosTable
                     ->label('Autor')
                     ->sortable()
                     ->searchable(),
+                ImageColumn::make('img')
+                    ->label('Imagem')
+                    ->height(80) // Define uma altura para a miniatura
+                    ->disk('public'),
                 TextColumn::make('titulo')
                     ->sortable()
                     ->searchable(),
@@ -30,6 +35,25 @@ class ConteudosTable
                     ->sortable()
                     ->limit(50)
                     ->searchable(),
+
+                // Nova coluna para Categorias
+                TextColumn::make('categorias.name_category')
+                    ->label('Categorias')
+                    ->badge()
+                    ->color('info')
+                    ->listWithLineBreaks()
+                    ->limit(50)
+                    ->searchable(),
+
+                // Nova coluna para Tags
+                TextColumn::make('tags.name_tag')
+                    ->label('Tags')
+                    ->badge()
+                    ->color('success')
+                    ->listWithLineBreaks()
+                    ->limit(50)
+                    ->searchable(),
+
                 BooleanColumn::make('active_content')
                     ->label('Ativo'),
                 TextColumn::make('dt_created')
@@ -45,6 +69,7 @@ class ConteudosTable
                 //
             ])
             ->recordActions([
+                ViewAction::make(),
                 EditAction::make(),
             ])
             ->toolbarActions([

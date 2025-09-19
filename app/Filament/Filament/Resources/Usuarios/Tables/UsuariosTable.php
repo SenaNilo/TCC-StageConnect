@@ -9,6 +9,7 @@ use Filament\Actions\ViewAction;
 use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
+use Filament\Tables\Columns\ImageColumn;
 
 class UsuariosTable
 {
@@ -16,6 +17,11 @@ class UsuariosTable
     {
         return $table
             ->columns([
+                ImageColumn::make('foto_perfil')
+                    ->label('Foto')
+                    ->circular()
+                    ->disk('public')
+                    ->url(fn ($record) => asset('storage/' . $record->foto_perfil)), // Corrigido,
                 TextColumn::make('name_user')
                     ->searchable(),
                 TextColumn::make('email')

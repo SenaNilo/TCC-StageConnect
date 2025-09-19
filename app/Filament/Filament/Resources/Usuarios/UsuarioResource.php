@@ -20,7 +20,7 @@ class UsuarioResource extends Resource
 {
     protected static ?string $model = Usuario::class;
 
-    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
+    protected static string|BackedEnum|null $navigationIcon = Heroicon::User;
 
     protected static ?string $recordTitleAttribute = 'name_user';
 

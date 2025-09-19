@@ -58,6 +58,7 @@ class FilamentPanelProvider extends PanelProvider
             ])
             ->authMiddleware([
                 Authenticate::class,
-            ]);
+            ])
+            ->default();
     }
 }

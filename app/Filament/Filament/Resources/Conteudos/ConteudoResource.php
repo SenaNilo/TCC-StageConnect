@@ -6,6 +6,7 @@ use App\Filament\Filament\Resources\Conteudos\Pages\CreateConteudo;
 use App\Filament\Filament\Resources\Conteudos\Pages\EditConteudo;
 use App\Filament\Filament\Resources\Conteudos\Pages\ListConteudos;
 use App\Filament\Filament\Resources\Conteudos\Schemas\ConteudoForm;
+use App\Filament\Filament\Resources\Conteudos\Schemas\ConteudosInfolist;
 use App\Filament\Filament\Resources\Conteudos\Tables\ConteudosTable;
 use App\Models\Conteudo;
 use BackedEnum;
@@ -27,6 +28,12 @@ class ConteudoResource extends Resource
     {
         return ConteudoForm::configure($schema);
     }
+
+    public static function infolist(Schema $schema): Schema
+    {
+        return ConteudosInfolist::configure($schema);
+    }
+
 
     public static function table(Table $table): Table
     {

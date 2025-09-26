@@ -8,6 +8,7 @@ use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
 use Filament\Schemas\Schema;
 use Illuminate\Support\Facades\Hash;
+use Filament\Forms\Components\FileUpload;
 
 class UsuarioForm
 {
@@ -28,6 +29,16 @@ class UsuarioForm
                     ->dehydrated(fn(string $state): bool => filled($state))
                     ->dehydrateStateUsing(fn(string $state): string => Hash::make($state))
                     ->required(),
+
+                // Campo para a foto de perfil
+                FileUpload::make('foto_perfil')
+                    ->label('Foto de Perfil')
+                    ->image() // apenas imagens
+                    ->avatar() // avatar circular - fdilament
+                    ->disk('public') // O disco onde o arquivo será salvo
+                    ->directory('fotos_perfil') // O diretório dentro do disco 'public'
+                    ->nullable(), // Permite que o campo seja nulo
+                
                 Select::make('type_user')
                     ->label('Tipo de Usuario')
                     ->options(['ADM' => 'Admin', 'ALU' => 'Aluno'])

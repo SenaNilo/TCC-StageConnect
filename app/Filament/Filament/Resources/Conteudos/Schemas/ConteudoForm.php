@@ -7,6 +7,8 @@ use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\Toggle;
 use Filament\Forms\Components\Hidden;
+use Filament\Forms\Components\Select;
+use Filament\Forms\Components\FileUpload;
 
 class ConteudoForm
 {
@@ -20,7 +22,31 @@ class ConteudoForm
                     ->maxLength(255),
                 Textarea::make('descricao')
                     ->required()
-                    ->columnSpanFull(),   
+                    ->columnSpanFull(), 
+                    
+                     // Campo para Categorias (N:N)
+                Select::make('categorias')
+                    ->relationship('categorias', 'name_category')
+                    ->multiple()
+                    ->required()
+                    ->preload()
+                    ->searchable(),
+
+                // Campo para Tags (N:N)
+                Select::make('tags')
+                    ->relationship('tags', 'name_tag')
+                    ->multiple()
+                    ->preload()
+                    ->searchable(),
+
+                // Campo para a imagem do conteúdo
+                FileUpload::make('img')
+                    ->label('Imagem do Conteúdo')
+                    ->image() // Valida para aceitar apenas imagens
+                    ->disk('public') // Disco de armazenamento
+                    ->directory('imagens_conteudo') // Diretório para as imagens
+                    ->nullable(),
+
                 Toggle::make('active_content')
                     ->required()
                     ->default(true)

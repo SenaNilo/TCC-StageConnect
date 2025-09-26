@@ -20,6 +20,7 @@ class Conteudo extends Model
         'titulo',
         'descricao',
         'active_content',
+        'img',
     ];
 
     // Define os atributos que devem ser convertidos para tipos nativos
@@ -53,5 +54,17 @@ class Conteudo extends Model
     public function autor(): BelongsTo
     {
         return $this->belongsTo(Usuario::class, 'autor_id');
+    }
+
+    // Relacionamento com Categorias (N:N)
+    public function categorias()
+    {
+        return $this->belongsToMany(Categoria::class, 'conteudo_categoria', 'id_conteudo', 'id_categoria');
+    }
+
+    // Relacionamento com Tags (N:N)
+    public function tags()
+    {
+        return $this->belongsToMany(Tag::class, 'conteudo_tag', 'id_conteudo', 'id_tag');
     }
 }

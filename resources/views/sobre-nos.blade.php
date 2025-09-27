@@ -17,50 +17,8 @@
 
 <body>
 
-    <header>
-        <a href="{{ url('/') }}"><img src="{{ asset('images/LogoSFundo.png') }}" alt="Logo StageConnect" class="logo-header"></a>
-        <!-- <h2 class="titulo-header"> StageConnect </h2> -->
-
-        <!-- Botão Hamburger -->
-        <div class="btn-abrir-menu" id="btn-abrir-menu">
-            <i class="bi bi-list"></i>
-        </div>
-
-        <!-- Menu desktop -->
-        <nav class="nav-desktop">
-            <ul class="menu-header">
-                <li class="lista-header"><a href="{{ url('/') }}">Home</a></li>
-                <li class="lista-header">Objetivo</li>
-                <li class="lista-header">Informações</li>
-                <li class="lista-header">Sobre nós</li>
-            </ul>
-            <div class="dropdown">
-                <button class="botao-nav">Comece já</button>
-                <div class="dropdown-content">
-                    <a href="#">Login</a>
-                    <a href="#">Cadastro</a>
-                </div>
-            </div>
-        </nav>
-
-        <!-- Menu mobile -->
-        <div class="menu-mobile" id="menu-mobile">
-            <div class="btn-fechar" id="btn-fechar-menu">
-                <i class="bi bi-x-lg"></i>
-            </div>
-            <nav>
-                <ul>
-                    <li><a href="{{ url('/') }}">Home</a></li>
-                    <li><a href="#">Objetivo</a></li>
-                    <li><a href="#">Informações</a></li>
-                    <li><a href="#">Sobre nós</a></li>
-                    <li><a href="#">Login</a></li>
-                    <li><a href="#">Cadastro</a></li>
-                </ul>
-            </nav>
-        </div>
-
-        <div class="overlay-menu" id="overlay-menu"></div>
+    <header class="finisher-header" style="position: relative;">
+        @include('components.navbar.navbarPrincipal')
     </header>
 
     <section class="us-principal">
@@ -157,6 +115,45 @@
         overlay.addEventListener("click", () => {
             menuMobile.classList.remove("abrir-menu");
             overlay.style.display = "none";
+        });
+    </script>
+    <script src="{{ asset('js/finisher-header.es5.min.js') }}" type="text/javascript"></script>
+    <script type="text/javascript">
+        new FinisherHeader({
+        "count": 150,
+        "size": {
+            "min": 2,
+            "max": 6,
+            "pulse": 0.1
+        },
+        "speed": {
+            "x": {
+            "min": 0,
+            "max": 0.5
+            },
+            "y": {
+            "min": 0,
+            "max": 0.6
+            }
+        },
+        "colors": {
+            "background": "#000000",
+            "particles": [
+            "#c30a19",
+            "#224e59",
+            "#00ca4e"
+            ]
+        },
+        "blending": "overlay",
+        "opacity": {
+            "center": 1,
+            "edge": 0.35
+        },
+        "skew": 0,
+        "shapes": [
+            "s",
+            "t"
+        ]
         });
     </script>
 </body>

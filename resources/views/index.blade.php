@@ -15,66 +15,24 @@
 
 <body>
 
-    <header>
-        <a href="{{ url('/') }}"><img src="{{ asset('images/LogoSFundo.png') }}" alt="Logo StageConnect" class="logo-header"></a>
-        <!-- <h2 class="titulo-header"> StageConnect </h2> -->
+    <header class="finisher-header index">
+        @include('components.navbar.navbarPrincipal')
 
-        <!-- Botão Hamburger -->
-        <div class="btn-abrir-menu" id="btn-abrir-menu">
-            <i class="bi bi-list"></i>
-        </div>
+        <section class="principal-container">
 
-        <!-- Menu desktop -->
-        <nav class="nav-desktop">
-            <ul class="menu-header">
-                <li class="lista-header">Home</li>
-                <li class="lista-header">Objetivo</li>
-                <li class="lista-header">Informações</li>
-                <li class="lista-header"><a href="{{ url('/sobre-nos') }}">Sobre nós</a></li>
-            </ul>
-            <div class="dropdown">
-                <button class="botao-nav">Comece já</button>
-                <div class="dropdown-content">
-                    <a href="{{ route('login') }}">Login</a>
-                    <a href="#">Cadastro</a>
-                </div>
+            <div class="parte-direita-principal">
+                <h1 class="titulo-principal"> StageConnect: </h1>
+                <p class="descricao-principal">
+                    <span class="typed-text"> </span> <span class="cursor">&nbsp; </span>
+                </p>
             </div>
-        </nav>
 
-        <!-- Menu mobile -->
-        <div class="menu-mobile" id="menu-mobile">
-            <div class="btn-fechar" id="btn-fechar-menu">
-                <i class="bi bi-x-lg"></i>
+            <div class="logo-principal">
+                <img src="{{ asset('images/LogoSFundo.png') }}" alt="Logo StageConnect" class="logo-principal">
             </div>
-            <nav>
-                <ul>
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">Objetivo</a></li>
-                    <li><a href="#">Informações</a></li>
-                    <li><a href="{{ url('/sobre-nos') }}">Sobre nós</a></li>
-                    <li><a href="{{ route('login') }}">Login</a></li>
-                    <li><a href="#">Cadastro</a></li>
-                </ul>
-            </nav>
-        </div>
 
-        <div class="overlay-menu" id="overlay-menu"></div>
+        </section>
     </header>
-
-    <section class="principal-container">
-
-        <div class="parte-direita-principal">
-            <h1 class="titulo-principal"> StageConnect: </h1>
-            <p class="descricao-principal">
-                <span class="typed-text"> </span> <span class="cursor">&nbsp; </span>
-            </p>
-        </div>
-
-        <div class="logo-principal">
-            <img src="{{ asset('images/LogoSFundo.png') }}" alt="Logo StageConnect" class="logo-principal">
-        </div>
-
-    </section>
 
     <section class="section-objetivos">
         <h1 class="titulo-objetivos"> Qual é o nosso objetivo? </h1>
@@ -153,7 +111,8 @@
             <p><i class="bi bi-envelope-fill"></i> email@gmail.com</p>
         </div>
     </footer>
-  <script src="{{ asset('js/write-effect.js') }}"></script>
+
+    <script src="{{ asset('js/write-effect.js') }}"></script>
     <script>
         const btnAbrir = document.getElementById("btn-abrir-menu");
         const btnFechar = document.getElementById("btn-fechar-menu");
@@ -173,6 +132,45 @@
         overlay.addEventListener("click", () => {
             menuMobile.classList.remove("abrir-menu");
             overlay.style.display = "none";
+        });
+    </script>
+    <script src="{{ asset('js/finisher-header.es5.min.js') }}" type="text/javascript"></script>
+    <script type="text/javascript">
+        new FinisherHeader({
+        "count": 150,
+        "size": {
+            "min": 2,
+            "max": 6,
+            "pulse": 0.1
+        },
+        "speed": {
+            "x": {
+            "min": 0,
+            "max": 0.5
+            },
+            "y": {
+            "min": 0,
+            "max": 0.6
+            }
+        },
+        "colors": {
+            "background": "#000000",
+            "particles": [
+            "#c30a19",
+            "#224e59",
+            "#00ca4e"
+            ]
+        },
+        "blending": "overlay",
+        "opacity": {
+            "center": 1,
+            "edge": 0.35
+        },
+        "skew": 1,
+        "shapes": [
+            "s",
+            "t"
+        ]
         });
     </script>
 </body>

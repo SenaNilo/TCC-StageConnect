@@ -11,12 +11,13 @@ body {
     background-color: #FEFBFB;
 }
 
-header {
+.headernav-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 25px;
-    background-color: #000;
+    padding: 25px 70px;
+    position: relative;
+    /* background-color: #000; */
 }
 
 /* .typed-text {
@@ -54,8 +55,12 @@ ul {
 }
 
 .logo-header {
-    margin-left: 20px;
+    /* margin-left: 20px; */
     width: 65px;
+    transition: transform 0.3s ease;
+}
+.logo-header:hover {
+    transform: scale(1.1);
 }
 
 .lista-header {
@@ -71,6 +76,7 @@ ul {
 .lista-header:hover {
     border-bottom: solid 2px #fff;
     cursor: pointer;
+    scale: 1.05;
 }
 
 .botao-nav {
@@ -126,16 +132,21 @@ ul {
 }
 
 .principal-container {
+    position: relative;
     align-items: center;
     display: flex;
     justify-content: space-between;
-    height: 70vh;
+    gap: 20px;
+    /* height: 70vh; */
+    margin-bottom: 8rem;
+    padding: 0 70px;
     /* border: 1px solid red; */
 }
 
 .parte-direita-principal {
     /* border: 1px solid blue; */
-    margin-left: 50px;
+    color: white;
+    /* margin-left: 50px; */
     font-size: 22px;
     max-width: 600px;
 }
@@ -143,13 +154,21 @@ ul {
 .logo-principal {
     width: 400px;
     filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.15));
-    margin-right: 10%;
+    transition: transform 0.7s ease;
+    /* margin-right: 10%; */
     /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
+}
+.logo-principal:hover {
+    transform: scale(1.03);
 }
 
 .titulo-princcipal .descricao-principal {
     font-size: 50px;
     color: #000;
+}
+
+.finisher-header.index{
+    height: 80vh;
 }
 
 /* Responsividade da primeira parte */
@@ -160,6 +179,9 @@ ul {
     }
     .header {
         flex-direction: row-reverse !important;
+    }
+    .headernav-container{
+        padding: 25px;
     }
 
     .principal-container {
@@ -193,8 +215,9 @@ ul {
 
     .btn-abrir-menu {
         display: block !important;
-        z-index: 10000;
+        z-index: 100;
         position: relative;
+        padding: 8px;
         /* mostra o hamburger */
     }
 
@@ -282,7 +305,7 @@ ul {
     justify-content: center;
     gap: 50px;
     /* align-items: flex-start; */
-    margin: 50px auto;
+    margin: 50px auto 8rem;
     text-align: center;
 }
 
@@ -293,6 +316,7 @@ ul {
     z-index: 1;
     color: #000;
     padding: 0;
+    transition: transform 0.3s ease;
 }
 
 .bloco-orientar {
@@ -314,6 +338,10 @@ ul {
     /* padding: 20px;
             border-radius: 10px;
             margin-right: 20px; */
+}
+
+.card:hover{
+    transform: scale(1.05);
 }
 
 .bloco-impulsionar {

@@ -101,6 +101,11 @@
   color: var(--main-color);
 }
 
+.finisher-header canvas{
+   /* Adicionado para posicionamento relativo */
+   top: auto!important;
+}
+
 /*Copyright - 2025 Frank Esteban and andrew-demchenck0 (A) */
 
 /* Sobre nós - Responsivo */

@@ -7,46 +7,39 @@
     <title>Área do aluno - StageConnect</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <link rel="icon" type="image/png" href="{{ asset('images/LogoSFundo.png') }}" />
-    @vite(['resources/css/alunos/aluno.css', 'resources/js/alunos/script-aluno.js',  'resources/js/alunos/modalSair.js'])
+    @vite(['resources/css/alunos/entrevistas.css', 'resources/css/alunos/aluno.css', 'resources/js/alunos/script-aluno.js', 'resources/js/alunos/modalSair.js'])
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
 </head>
 
 <body>
-    <!-- Sidebar-nav mobile -->
+
     <nav class="site-nav">
         <button class="sidebar-toggle">
             <span class="material-symbols-rounded"> menu </span>
         </button>
     </nav>
-    <!-- Sidebar-nav mobile Fim -->
 
-    <!-- Sidebar -->
     <div class="container">
-             <x-aluno.sidebarAluno />
+        <x-aluno.sidebarAluno />
 
-        <!-- Começo do main content (Site) -->
+        <!-- Site main content -->
         <div class="main-content">
-            <div class="main-inicial">
-                <h1 class="page-title">Olá, {{ Auth::user()->name }}! </h1>
-                <img src="{{ asset('images/larissafoto.jpg') }}" alt="Imagem de boas-vindas" class="perfil-img">
-            </div>
 
+            <section class="welcome-header">
+                <h1 class="page-title">Olá, {{ Auth::user()->name ?? 'Larissa' }}!</h1>
+                <img src="{{ asset('images/larissafoto.jpg') }}" alt="Foto do Perfil" class="profile-picture">
+            </section>
+  
 
-            <div class="cards-principais">
-                <div class="card">Conteúdo</div>
-                <div class="card"> Saiba Mais </div>
-                <div class="card"> Entrevistas </div>
-            </div>
         </div>
     </div>
-    <!-- Fim do main content (Site) -->
 
     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
         @csrf
     </form>
 
-    <!-- Modal de Sair -->
     <div id="logout-modal" class="modal-overlay modal-hidden">
         <div class="card-cancelar">
             <div class="header-cancelar">
@@ -66,7 +59,6 @@
             </div>
         </div>
     </div>
-    <!-- Final de Modal de Sair -->
 
 </body>
 

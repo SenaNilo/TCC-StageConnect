@@ -1,0 +1,113 @@
+/* Remova o display: flex e outras propriedades de alinhamento do card */
+.card-principal {
+    width: 100%;
+    background-color: #fff;
+    color: #000;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    height: 100%;
+}
+
+/* O título pode ficar separado */
+.titulo-configuracoes {
+    margin-bottom: 24px; /* Adiciona um espaço abaixo do título */
+    text-align: center; /* Centraliza o título */
+}
+
+/* Agora, o formulário é o nosso container flex! */
+.form-configuracoes {
+    display: flex;
+    justify-content: space-between; /* ISSO vai separar os dois blocos */
+    align-items: flex-start; /* Alinha os itens no topo */
+    gap: 40px; /* Uma forma moderna de adicionar espaço entre os blocos */
+    width: 100%;
+}
+
+/* Define um tamanho para cada bloco */
+.form-fields {
+    flex: 2; /* Faz este bloco ocupar 2/3 do espaço */
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.profile-picture-section {
+    flex: 1; /* Faz este bloco ocupar 1/3 do espaço */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Estilos adicionais para a foto de perfil (sugestão) */
+.profile-picture-preview {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #eee;
+}
+
+.file-upload-label {
+    cursor: pointer;
+    color: #007bff;
+    font-weight: bold;
+}
+
+.file-upload-label:hover {
+    text-decoration: underline;
+}
+
+/* Estilos para os campos do formulário (sugestão) */
+.group-labels {
+    display: flex;
+    flex-direction: column;
+}
+
+.group-labels label {
+    margin-bottom: 5px;
+    font-weight: 500;
+}
+
+.group-labels input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 100%;
+}
+
+@media (max-width: 768px) {
+
+    .form-configuracoes {
+        /* Muda a direção do flex para coluna e inverte a ordem visual */
+        flex-direction: column-reverse;
+        
+        /* Centraliza os itens na coluna para um visual mais agradável */
+        align-items: center; 
+    }
+
+}
+/* --- Estilo do Botão de Submissão --- */
+.btn-submit-form {
+    /* Faz o botão ser um item flex para alinhar-se corretamente */
+    flex-basis: 100%; /* Ocupa toda a largura da linha no container flex */
+    
+    padding: 12px 20px;
+    margin-top: 20px; /* Espaço acima do botão */
+    
+    background-color: #007bff; /* Cor principal (azul, por exemplo) */
+    color: white; /* Texto branco */
+    font-size: 16px;
+    font-weight: bold;
+    
+    border: none; /* Remove a borda padrão */
+    border-radius: 8px; /* O arredondamento que você pediu */
+    
+    cursor: pointer; /* Muda o cursor para indicar que é clicável */
+    transition: background-color 0.3s ease; /* Efeito suave na transição */
+}
+
+.btn-submit-form:hover {
+    background-color: #0056b3; /* Cor um pouco mais escura ao passar o mouse */
+}

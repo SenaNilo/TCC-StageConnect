@@ -1,0 +1,32 @@
+
+.welcome-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* margin-bottom: 2rem; 32px */
+}
+.titulo-pagina {
+    font-size: 2rem; /* 32px */
+    font-weight: 700;
+    margin-bottom: 0.5rem; /* 8px */
+}
+.subtitulo-pagina {
+    font-size: 1.5rem; /* 32px */
+    font-weight: 500;
+    margin-bottom: 0.5rem; /* 8px */
+}
+
+.page-title {
+    font-size: 1.5rem; /* 24px */
+    font-weight: 600;
+}
+
+.profile-picture {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+
+

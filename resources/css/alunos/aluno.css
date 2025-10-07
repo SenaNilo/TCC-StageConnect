@@ -204,7 +204,12 @@ body {
     pointer-events: none;
 }
 
-.menu-list .menu-link:is(:hover, .active) {
+.menu-list .menu-link:hover {
+    color: #fff;
+    background: var(--color-hover-primary);
+}
+
+.menu-list .menu-link.active {
     color: #fff;
     background: var(--color-hover-primary);
 }
@@ -305,7 +310,9 @@ body.dark-theme .theme-toggle-indicator {
 }
 
 .container .main-content {
-    width: 100%;
+    /* width: 100%; */
+    flex: 1;
+    min-width: 0;
     padding: 30px;
     color: var(--color-text-primary);
 }
@@ -428,7 +435,7 @@ body.dark-theme .theme-toggle-indicator {
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 1000; /* Garante que fique por cima de tudo */
+    z-index: 1000;
     opacity: 1;
     transition: opacity 0.3s ease;
 }
@@ -537,3 +544,4 @@ body.dark-theme .theme-toggle-indicator {
 .modal-overlay button {
     cursor: pointer;
 }
+

@@ -15,17 +15,9 @@ use App\Models\Categoria;
 
 
 class ConteudoForm
-{
-    
-    
+{    
     public static function configure(Schema $schema): Schema
     {
-        $topicos_principais_ids = Categoria::whereIn('name_category', [
-            'Orientação Profissional/Material de Apoio',
-            'Áreas de Atuação e Requisitos Técnicos',
-            'Conteúdo Técnico Específico',
-        ])->pluck('id')->toArray();
-
         return $schema
             ->components([
                 //components do form
@@ -42,20 +34,8 @@ class ConteudoForm
                     ->multiple()
                     ->required()
                     ->preload()
-                    ->searchable()
-                    ->rules([
-                        // Validação customizada para garantir que APENAS UM TÓPICO PRINCIPAL seja escolhido
-                        function ($attribute, $value, $fail) use ($topicos_principais_ids) {
-                            
-                            // Verifica a interseção: quais IDs selecionados são tópicos principais
-                            $intersecao = array_intersect($value, $topicos_principais_ids);
-                            
-                            // Se o número de itens na interseção for diferente de 1, falha a validação
-                            if (count($intersecao) !== 1) {
-                                $fail('O conteúdo deve ter EXATAMENTE UMA (1) categoria principal selecionada.');
-                            }
-                        },
-                    ]),
+                    ->searchable(),
+                    // Para personalizar a mensagem de erro, defina no FormRequest ou Resource
                 // Campo para Tags (N:N)
                 Select::make('tags')
                     ->relationship('tags', 'name_tag')

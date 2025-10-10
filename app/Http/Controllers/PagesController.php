@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Usuario;
+use App\Models\Conteudo; 
+use App\Models\Categoria;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
@@ -24,7 +26,9 @@ class PagesController extends Controller
     }
 
     public function stageconnect(){
-        // rota -> return view('pages.aluno.index');
+        $categoriaOrientacao = Categoria::where('name_category', 'Orientação Profissional/Material de Apoio')->first();
+        $categoriaRequisitos = Categoria::where('name_category', 'Áreas de Atuação e Requisitos Técnicos')->first();
+        $categoriaTecnico = Categoria::where('name_category', 'Conteúdo Técnico Específico')->first();
 
         // 1. Verifica se o usuário está logado
         if (!Auth::check()) {
@@ -36,12 +40,66 @@ class PagesController extends Controller
 
         // 3. Verifica se o tipo de usuário é ADM ou ALU
         if ($user->type_user === 'ADM' || $user->type_user === 'ALU') {
-            return view('pages.aluno.index');
+            return view('pages.aluno.index', compact('categoriaOrientacao', 'categoriaRequisitos', 'categoriaTecnico'));
         }
 
         // Se o tipo de usuário não for nem ADM nem ALU, redireciona
         return redirect()->route('login')->with('error', 'Você não tem permissão para acessar esta página.');
 
+    }
+
+    // Orientação Profissional/Material de Apoio
+    public function orientacaoProfissional()
+    {
+        $categoria = Categoria::where('name_category', 'Orientação Profissional/Material de Apoio')->firstOrFail();
+        
+        $conteudos = Conteudo::whereHas('categorias', function ($query) use ($categoria) {
+            $query->where('id_categoria', $categoria->id);
+        })
+        ->where('active_content', true) // Filtra apenas conteúdos ativos
+        ->orderBy('dt_created', 'desc') // Ordena por mais recente
+        ->get();
+
+        return view('pages.aluno.conteudos', [
+            'conteudos' => $conteudos,
+            'titulo' => $categoria->name_category
+        ]);
+    }
+
+    // Áreas de Atuação e Requisitos Técnicos
+    public function requisitosTecnicos()
+    {
+        $categoria = Categoria::where('name_category', 'Áreas de Atuação e Requisitos Técnicos')->firstOrFail();
+        
+        $conteudos = Conteudo::whereHas('categorias', function ($query) use ($categoria) {
+            $query->where('id_categoria', $categoria->id);
+        })
+        ->where('active_content', true)
+        ->orderBy('dt_created', 'desc')
+        ->get();
+
+        return view('pages.aluno.conteudos', [
+            'conteudos' => $conteudos,
+            'titulo' => $categoria->name_category
+        ]);
+    }
+
+    // Conteúdo Técnico Específico
+    public function conteudoTecnico()
+    {
+        $categoria = Categoria::where('name_category', 'Conteúdo Técnico Específico')->firstOrFail();
+        
+        $conteudos = Conteudo::whereHas('categorias', function ($query) use ($categoria) {
+            $query->where('id_categoria', $categoria->id);
+        })
+        ->where('active_content', true)
+        ->orderBy('dt_created', 'desc')
+        ->get();
+
+        return view('pages.aluno.conteudos', [
+            'conteudos' => $conteudos,
+            'titulo' => $categoria->name_category
+        ]);
     }
 
     public function adminIndex(){

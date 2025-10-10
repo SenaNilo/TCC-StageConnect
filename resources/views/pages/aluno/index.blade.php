@@ -122,7 +122,7 @@
 
 
             <div class="cards-principais">
-                <div class="card">Orientação Profissional/Material de Apoio</div>
+                <div class="card"><a href="{{ route('aluno.orientacao') }}">Orientação Profissional/Material de Apoio</a></div>
                 <div class="card">Áreas de Atuação e Requisitos Técnicos</div>
                 <div class="card">Conteúdo Técnico Específico</div>
             </div>

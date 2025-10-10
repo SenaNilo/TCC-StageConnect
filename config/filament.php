@@ -30,6 +30,19 @@ return [
 
     ],
 
+    'auth' => [
+    'guard' => env('FILAMENT_AUTH_GUARD', 'web'),
+    'pages' => [
+            // ...
+        ],
+        'providers' => [
+            'users' => [
+                'driver' => 'eloquent',
+                'model' => \App\Models\Usuario::class, // Verifique se esta linha está correta
+            ],
+        ],
+    ],
+
     /*
     |--------------------------------------------------------------------------
     | Default Filesystem Disk

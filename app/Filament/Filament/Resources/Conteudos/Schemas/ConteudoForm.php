@@ -9,11 +9,23 @@ use Filament\Forms\Components\Toggle;
 use Filament\Forms\Components\Hidden;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\FileUpload;
+use Illuminate\Validation\Rule;
+use App\Models\Categoria;
+
+
 
 class ConteudoForm
 {
+    
+    
     public static function configure(Schema $schema): Schema
     {
+        $topicos_principais_ids = Categoria::whereIn('name_category', [
+            'Orientação Profissional/Material de Apoio',
+            'Áreas de Atuação e Requisitos Técnicos',
+            'Conteúdo Técnico Específico',
+        ])->pluck('id')->toArray();
+
         return $schema
             ->components([
                 //components do form
@@ -30,8 +42,20 @@ class ConteudoForm
                     ->multiple()
                     ->required()
                     ->preload()
-                    ->searchable(),
-
+                    ->searchable()
+                    ->rules([
+                        // Validação customizada para garantir que APENAS UM TÓPICO PRINCIPAL seja escolhido
+                        function ($attribute, $value, $fail) use ($topicos_principais_ids) {
+                            
+                            // Verifica a interseção: quais IDs selecionados são tópicos principais
+                            $intersecao = array_intersect($value, $topicos_principais_ids);
+                            
+                            // Se o número de itens na interseção for diferente de 1, falha a validação
+                            if (count($intersecao) !== 1) {
+                                $fail('O conteúdo deve ter EXATAMENTE UMA (1) categoria principal selecionada.');
+                            }
+                        },
+                    ]),
                 // Campo para Tags (N:N)
                 Select::make('tags')
                     ->relationship('tags', 'name_tag')

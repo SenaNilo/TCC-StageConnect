@@ -122,9 +122,9 @@
 
 
             <div class="cards-principais">
-                <div class="card">Conteúdo</div>
-                <div class="card"> Saiba Mais </div>
-                <div class="card"> Sei la</div>
+                <div class="card">Orientação Profissional/Material de Apoio</div>
+                <div class="card">Áreas de Atuação e Requisitos Técnicos</div>
+                <div class="card">Conteúdo Técnico Específico</div>
             </div>
         </div>
     </div>

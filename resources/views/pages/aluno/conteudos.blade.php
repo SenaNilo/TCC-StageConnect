@@ -47,32 +47,6 @@
             
             <div class="posts-grid">
 
-                <div class="blog-card">
-                    <div class="meta">
-                        <div class="photo" style="background-image: url(https://storage.googleapis.com/chydlx/codepen/blog-cards/image-1.jpg)"></div>
-                        <ul class="details">
-                            <li class="author">John Doe</li>
-                            <li class="date">Aug. 24, 2015</li>
-                            <li class="tags">
-                            <ul>
-                                <li>Learn</li>
-                                <li>Code</li>
-                                <li>HTML</li>
-                                <li>CSS</li>
-                            </ul>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="description">
-                        <h1>Learning to Code</h1>
-                        <h2>Opening a door to the future</h2>
-                        <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad eum dolorum architecto obcaecati enim dicta praesentium, quam nobis! Neque ad aliquam facilis numquam. Veritatis, sit.</p>
-                        <p class="read-more">
-                            <a href="#">Read More</a>
-                        </p>
-                    </div>
-                </div>
-
 
                 @forelse ($conteudos as $conteudo)
 
@@ -105,7 +79,7 @@
                             {{-- <h2>Opening a door to the future</h2> SUBTITULO --}}
                             <p> {{ Str::limit($conteudo->descricao, 100) }} </p>
                             <p class="read-more">
-                                <a href="#">Read More</a>
+                                <a href="{{ route('aluno.conteudo.detalhe', $conteudo->id) }}">Read More</a>
                             </p>
                         </div>
                     </div>

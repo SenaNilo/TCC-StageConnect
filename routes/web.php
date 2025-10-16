@@ -34,6 +34,7 @@ Route::get('/stage-connect', [PagesController::class, 'stageconnect'])->name('st
     Route::get('/stage-connect/orientacao', [PagesController::class, 'orientacaoProfissional'])->name('aluno.orientacao');
     Route::get('/stage-connect/requisitos', [PagesController::class, 'requisitosTecnicos'])->name('aluno.requisitos');
     Route::get('/stage-connect/tecnico', [PagesController::class, 'conteudoTecnico'])->name('aluno.tecnico');
+    Route::get('/stage-connect/conteudo/{id}', [PagesController::class, 'mostrarDetalheConteudo'])->name('aluno.conteudo.detalhe');
 
 // Pagina inicial do admin
 //// Route::get('/admin', [FilamentPanelProvider::class, 'adminIndex'])->name('admin');

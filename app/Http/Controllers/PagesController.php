@@ -102,6 +102,16 @@ class PagesController extends Controller
         ]);
     }
 
+    public function mostrarDetalheConteudo($id)
+    {
+        // Busca o conteúdo pelo ID, garantindo que esteja ativo e carregando os relacionamentos
+        $conteudo = Conteudo::with('autor', 'tags')
+            ->where('active_content', true)
+            ->findOrFail($id);
+
+        return view('pages.aluno.conteudo-detalhe', compact('conteudo'));
+    }
+
     public function adminIndex(){
         // rota -> return view('pages.admin.index');
 

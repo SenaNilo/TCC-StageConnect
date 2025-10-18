@@ -26,9 +26,10 @@ class UsuarioForm
                 TextInput::make('password_user')
                     ->label('Senha')
                     ->password()
-                    ->dehydrated(fn(string $state): bool => filled($state))
-                    ->dehydrateStateUsing(fn(string $state): string => Hash::make($state))
-                    ->required(),
+                    ->required(fn (string $operation): bool => $operation === 'create')
+                    
+                    ->dehydrated(fn (?string $state): bool => filled($state))
+                    ->dehydrateStateUsing(fn (string $state): string => Hash::make($state)),
 
                 // Campo para a foto de perfil
                 FileUpload::make('foto_perfil')

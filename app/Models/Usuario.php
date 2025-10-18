@@ -8,10 +8,11 @@ use Illuminate\Notifications\Notifiable;
 use Filament\Models\Contracts\FilamentUser;
 use Filament\Panel;
 use Illuminate\Support\Facades\Redirect;
+use Filament\Models\Contracts\HasAvatar;
 // use Laravel\Sanctum\HasApiTokens;
 
 
-class Usuario extends Authenticatable implements FilamentUser
+class Usuario extends Authenticatable implements FilamentUser, HasAvatar
 {
     
     use HasFactory, Notifiable;
@@ -75,5 +76,20 @@ class Usuario extends Authenticatable implements FilamentUser
     public function conteudos()
     {
         return $this->hasMany(Conteudo::class, 'autor_id');
+    }
+
+    public function getFilamentAvatarUrl(): ?string
+    {
+        // 1. Verifica se a coluna 'foto_perfil' tem algum valor (não é nulo)
+        if ($this->foto_perfil) {
+            // 2. Se tiver, retorna a URL pública do caminho salvo no banco de dados.
+            //    O asset() usa a APP_URL correta (http://127.0.0.1:8000)
+            //    A concatenação '/storage/' é necessária, pois o Filament armazena o caminho
+            //    relativo a 'storage/app/public' (ex: fotos_perfil/imagem.jpg)
+            return asset('storage/' . $this->foto_perfil);
+        }
+
+        // 3. Se não tiver, retorna null, e o Filament usará o avatar padrão (iniciais ou ícone).
+        return null; 
     }
 }

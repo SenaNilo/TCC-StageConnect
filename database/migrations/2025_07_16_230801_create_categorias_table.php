@@ -16,7 +16,7 @@ return new class extends Migration
             $table->increments('id'); // Laravel's equivalent for INT(10) auto_increment PRIMARY KEY
 
             // Nome da categoria, VARCHAR(25)
-            $table->string('name_category', 25)->nullable(); // VARCHAR(25)
+            $table->string('name_category', 255)->nullable(); // VARCHAR(25)
         });
     }
 

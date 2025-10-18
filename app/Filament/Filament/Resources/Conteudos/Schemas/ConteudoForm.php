@@ -9,9 +9,13 @@ use Filament\Forms\Components\Toggle;
 use Filament\Forms\Components\Hidden;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\FileUpload;
+use Illuminate\Validation\Rule;
+use App\Models\Categoria;
+
+
 
 class ConteudoForm
-{
+{    
     public static function configure(Schema $schema): Schema
     {
         return $schema
@@ -31,7 +35,7 @@ class ConteudoForm
                     ->required()
                     ->preload()
                     ->searchable(),
-
+                    // Para personalizar a mensagem de erro, defina no FormRequest ou Resource
                 // Campo para Tags (N:N)
                 Select::make('tags')
                     ->relationship('tags', 'name_tag')

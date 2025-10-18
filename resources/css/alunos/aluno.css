@@ -332,6 +332,34 @@ body.dark-theme .theme-toggle-indicator {
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
+.card .title-card {
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    padding-bottom: 5px;
+}
+.card {
+    /* padding: 25px; */
+    display: flex;
+    flex-direction: column;
+    height: 350px;;
+}
+.btn-card {
+    margin-top: auto;
+    width: 100%;
+    padding: 10px 20px;
+    background-color: #A6121F;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-card:hover {
+    background-color: #870917;
+}
 .main-inicial {
     display: flex;
     align-items: center;
@@ -447,7 +475,7 @@ body.dark-theme .theme-toggle-indicator {
 }
 
 
-/* --- A partir daqui, o seu CSS para o conteúdo do Modal --- */
+/* --- A partir daqui, o  CSS para o conteúdo do Modal --- */
 
 .card-cancelar {
     overflow: hidden;

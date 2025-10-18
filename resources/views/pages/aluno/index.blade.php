@@ -34,9 +34,22 @@
 
 
             <div class="cards-principais">
-                <div class="card">Conteúdo</div>
-                <div class="card"> Saiba Mais </div>
-                <div class="card"> Entrevistas </div>
+                <div class="card">
+                    <h2 class="title-card"> Conteúdo </h2> 
+                    <p class="description-card"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
+                    <button class="btn-card"> Acessar </button>
+                </div>
+
+                <div class="card"> 
+                  <h2 class="title-card">  Saiba Mais </h2>
+                    <p class="description-card"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed </p>
+                    <button class="btn-card"> Acessar </button>
+                 </div>
+                <div class="card"> 
+                   <h2 class="title-card"> Entrevistas </h2>
+                    <p class="description-card"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
+                    <button class="btn-card"> Acessar </button> 
+                </div>
             </div>
         </div>
     </div>

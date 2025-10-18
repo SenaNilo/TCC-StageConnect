@@ -23,20 +23,20 @@
     <div class="container">
         <x-aluno.sidebarAluno />
 
-        <!-- Site main content -->
+        <!-- Site main content - corpo do site -->
         <div class="main-content">
             <section class="card-principal">
                 <h1 class="titulo-configuracoes">Configurações do Usuário</h1>
-
+        
                 <form class="form-configuracoes" method="#" action="#">
                     <div class="form-fields">
                         <div class="group-labels">
-                            <label for="nome">Nome:</label>
+                            <label for="nome">Nome</label>
                             <input type="text" id="nome" name="nome" value="{{ Auth::user()->name }}" disabled>
                         </div>
 
                         <div class="group-labels">
-                            <label for="email">Email:</label>
+                            <label for="email">Email</label>
                             <input type="email" id="email" name="email" value="{{ Auth::user()->email }}">
                         </div>
 
@@ -56,6 +56,8 @@
                         <label for="profilePicture" class="file-upload-label">Alterar Foto</label>
                         <input type="file" id="profilePicture" name="profilePicture" accept="image/*" style="display: none;">
                     </div>
+
+                    <button type="submit" class="confirm-button">Confirmar Alterações</button>
                 </form>
             </section>
 

@@ -31,31 +31,31 @@ Route::post('/logout', [PagesController::class, 'logout'])->name('logout');
 
 
 // Middleware para barrar usuarios nao autenticados
-Route::get('/stage-connect', [PagesController::class, 'stageconnect'])->name('stageconnect');
-    Route::get('/stage-connect/orientacao', [PagesController::class, 'orientacaoProfissional'])->name('aluno.orientacao');
-    Route::get('/stage-connect/requisitos', [PagesController::class, 'requisitosTecnicos'])->name('aluno.requisitos');
-    Route::get('/stage-connect/tecnico', [PagesController::class, 'conteudoTecnico'])->name('aluno.tecnico');
-    Route::get('/stage-connect/conteudo/{id}', [PagesController::class, 'mostrarDetalheConteudo'])->name('aluno.conteudo.detalhe');
+// Route::get('/stage-connect', [PagesController::class, 'stageconnect'])->name('stageconnect');
+//     Route::get('/stage-connect/orientacao', [PagesController::class, 'orientacaoProfissional'])->name('aluno.orientacao');
+//     Route::get('/stage-connect/requisitos', [PagesController::class, 'requisitosTecnicos'])->name('aluno.requisitos');
+//     Route::get('/stage-connect/tecnico', [PagesController::class, 'conteudoTecnico'])->name('aluno.tecnico');
+//     Route::get('/stage-connect/conteudo/{id}', [PagesController::class, 'mostrarDetalheConteudo'])->name('aluno.conteudo.detalhe');
 
 // Pagina inicial do admin
-//// Route::get('/admin', [FilamentPanelProvider::class, 'adminIndex'])->name('admin');
 Route::redirect('/admin', '/filament'); // Esta é a rota que criamos antes para o redirecionamento
-// Route::get('/filament', function () {
-//     return redirect()->route('filament.auth.login');
-// })->name('filament');
+
 // Rotas para a área do aluno
 Route::middleware(['auth'])->prefix('aluno')->name('aluno.')->group(function () {
 
-    // Rota para a página de 'Entrevistas e testes'
-    // A URL será /aluno/entrevistas
+    Route::get('/orientacao', [PagesController::class, 'orientacaoProfissional'])->name('orientacao');
+    Route::get('/requisitos', [PagesController::class, 'requisitosTecnicos'])->name('requisitos');
+    Route::get('/tecnico', [PagesController::class, 'conteudoTecnico'])->name('tecnico');
+    
     Route::get('/', [AlunoController::class, 'showIndex'])->name('index');
     Route::get('/entrevistas', [AlunoController::class, 'showEntrevistas'])->name('entrevistas');
 
+    // Rotas para a seção de conteúdos
+    Route::get('/conteudos', [PagesController::class, 'mostrarConteudos'])->name('conteudos');
+    Route::get('/conteudo/{id}', [PagesController::class, 'mostrarDetalheConteudo'])->name('conteudo.detalhe');
+
     // Rota para a página de 'Áreas técnicas'
-    // A URL será /aluno/areas-tecnicas
     Route::get('/areas-tecnicas', [AlunoController::class, 'showAreasTecnicas'])->name('areastecnicas');
     Route::get('/configuracoes', [AlunoController::class, 'showConfiguracoes'])->name('userSettings');
 
-    // Você pode adicionar a home do aluno aqui também
-    // Ex: Route::get('/home', [AlunoController::class, 'showHome'])->name('home');
 });

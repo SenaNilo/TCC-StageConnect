@@ -102,6 +102,25 @@ class PagesController extends Controller
         ]);
     }
 
+    public function mostrarConteudos()
+    {
+        // Busca todos os conteúdos ativos, ordenados pelos mais recentes
+        $conteudos = Conteudo::with('autor', 'tags') // Carrega relacionamentos para a view
+            ->where('active_content', true)
+            ->orderBy('dt_created', 'desc') // Ordena pelos mais novos
+            ->get();
+            
+        // Define um título para a página
+        $titulo = "Todos os Conteúdos"; 
+
+        // Retorna a view 'pages.aluno.conteudos' (plural) 
+        // passando a lista de conteúdos e o título
+        return view('pages.aluno.conteudos', [
+            'conteudos' => $conteudos,
+            'titulo' => $titulo
+        ]);
+    }
+    
     public function mostrarDetalheConteudo($id)
     {
         // Busca o conteúdo pelo ID, garantindo que esteja ativo e carregando os relacionamentos
@@ -204,11 +223,8 @@ class PagesController extends Controller
             if ($user->type_user === 'ADM') {
                 return redirect('/filament')->with('success', 'Bem-vindo, Administrador!');
             } else if ($user->type_user === 'ALU') {
-                return redirect()->route('stageconnect')->with('success', 'Bem-vindo, Aluno!');
+                return redirect()->route('aluno.index')->with('success', 'Bem-vindo, Aluno!');
             }
-
-            // Redireciona para a página 'stageconnect' após o login bem-sucedido
-            return redirect()->route('stageconnect')->with('success', 'Login realizado com sucesso!');
         }
 
         // caso der erro
@@ -227,7 +243,7 @@ class PagesController extends Controller
         $request->session()->invalidate(); // Invalida a sessão atual
         $request->session()->regenerateToken(); // Regenera o token CSRF
 
-        return redirect()->route('stageconnect')->with('success', 'Você foi desconectado.'); // Redireciona para a página inicial
+        return redirect()->route('login')->with('success', 'Você foi desconectado.'); // Redireciona para a página inicial
     }
 
 }

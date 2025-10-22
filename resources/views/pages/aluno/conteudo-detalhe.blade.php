@@ -9,11 +9,11 @@
     <!-- <link rel="stylesheet" href="{{ asset('css/main.css') }}"> -->
     <link rel="icon" type="image/png" href="{{ asset('images/LogoSFundo.png') }}" />
     {{-- Adicione a diretiva Vite --}}
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    @vite(['resources/css/alunos/aluno.css','resources/css/alunos/conteudos.css', 'resources/js/alunos/script-aluno.js'])
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     {{-- <script src='script-aluno.js'></script> --}}
-    
+
 </head>
 
 <body>
@@ -24,20 +24,24 @@
         </button>
     </nav>
 
-    <div id="container">
-        {{-- Sidebar --}}
-        @include('components.navbar.alunoNavbar')
+    <div class="container">
+        <x-aluno.sidebarAluno />
 
 
         <div class="main-content">
+            @php
+            // Prepara a URL da imagem (com fallback para a imagem padrão)
+            $coverImageUrl = $conteudo->img
+            ? asset('storage/' . $conteudo->img)
+            : asset('images/default_cover.jpg');
+            @endphp
             <div class="blog-container">
                 <div class="blog-header">
                     {{-- Lógica da Imagem como Background --}}
-                    <div class="blog-cover" 
-                        style="background-image: url({{ $conteudo->img ? asset('storage/' . $conteudo->img) : asset('images/default_cover.jpg') }})">
-                        
+                    {{-- Usa a variável preparada. O linter entende isso. --}}
+                    <div class="blog-cover"
+                        style="background-image: url('{{ $coverImageUrl }}')">
                         <div class="blog-author">
-                            {{-- Nome do Autor --}}
                             <h3>{{ $conteudo->autor->name_user }}</h3>
                         </div>
                     </div>
@@ -52,17 +56,17 @@
                         {{-- Conteúdo (Descrição Completa) --}}
                         <p>{{ $conteudo->descricao }}</p>
                     </div>
-                    
+
                     <div class="blog-tags">
                         <ul>
                             @foreach ($conteudo->tags as $tag)
-                                {{-- Tags --}}
-                                <li><a href="#">{{ $tag->name_tag }}</a></li>
+                            {{-- Tags --}}
+                            <li><a href="#">{{ $tag->name_tag }}</a></li>
                             @endforeach
                         </ul>
                     </div>
                 </div>
-                
+
                 <div class="blog-footer">
                     <ul>
                         {{-- Data de Publicação --}}
@@ -75,6 +79,5 @@
         </div>
     </div>
 </body>
+
 </html>
-
-

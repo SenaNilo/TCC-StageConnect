@@ -44,21 +44,21 @@
 
             <div class="cards-principais">
                 <div class="card">
-                    <h2 class="title-card"> Conteúdo </h2>
-                    <p class="description-card"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
-                    <a href="{{ route('aluno.conteudos') }}" class="btn-card"> Acessar </a>
+                    <h2 class="title-card"> Orientação Profissional/Material de apoio </h2>
+                    <p class="description-card"> Guias de carreira, dicas de currículo e entrevistas, e materiais para desenvolver suas soft skills. </p>
+                    <a href="{{ route('aluno.orientacao') }}" class="btn-card"> Acessar </a>
                 </div>
 
                 <div class="card">
-                    <h2 class="title-card"> Saiba Mais </h2>
-                    <p class="description-card"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed </p>
-                    <a href="{{ route('aluno.orientacao' )}}" class="btn-card"> Acessar </a>
+                    <h2 class="title-card"> Áreas de atuação e Requisitos Técnicos  </h2>
+                    <p class="description-card"> Explore as principais áreas do mercado e descubra as funções e ferramentas essenciais para cada uma. </p>
+                    <a href="{{ route('aluno.requisitos' )}}" class="btn-card"> Acessar </a>
 
                 </div>
                 <div class="card">
-                    <h2 class="title-card"> Entrevistas </h2>
-                    <p class="description-card"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
-                    <a href="{{ route('aluno.entrevistas') }}" class="btn-card"> Acessar </a>
+                    <h2 class="title-card"> Conteúdo técnico específico </h2>
+                    <p class="description-card"> Tutoriais e artigos focados em linguagens, frameworks e tecnologias que o mercado procura. </p>
+                    <a href="{{ route('aluno.tecnico') }}" class="btn-card"> Acessar </a>
                 </div>
             </div>
         </div>

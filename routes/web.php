@@ -5,8 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PagesController;
 use App\Providers\Filament\FilamentPanelProvider;
 use App\Http\Controllers\AlunoController;
-
-
+use App\Http\Controllers\ConfiguracoesController;
 
 Route::get('/', action: function () {
     return view('index');
@@ -56,6 +55,11 @@ Route::middleware(['auth'])->prefix('aluno')->name('aluno.')->group(function () 
 
     // Rota para a página de 'Áreas técnicas'
     Route::get('/areas-tecnicas', [AlunoController::class, 'showAreasTecnicas'])->name('areastecnicas');
-    Route::get('/configuracoes', [AlunoController::class, 'showConfiguracoes'])->name('userSettings');
+
+    //Rotas de edição de configuração
+    Route::get('/configuracoes', [ConfiguracoesController::class, 'edit'])->name('userSettings');
+    Route::put('/configuracoes/updated', [ConfiguracoesController::class, 'updatedProfile'])->name('config.updatedProfile');
+    Route::delete('/configuracoes/deactivate', [ConfiguracoesController::class, 'deactivateAccount'])->name('config.deactivate');
+
 
 });

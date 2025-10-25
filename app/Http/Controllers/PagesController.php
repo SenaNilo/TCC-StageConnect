@@ -62,7 +62,8 @@ class PagesController extends Controller
 
         return view('pages.aluno.conteudos', [
             'conteudos' => $conteudos,
-            'titulo' => $categoria->name_category
+            'titulo' => $categoria->name_category,
+            'origem' => 'orientacao',
         ]);
     }
 
@@ -80,7 +81,8 @@ class PagesController extends Controller
 
         return view('pages.aluno.conteudos', [
             'conteudos' => $conteudos,
-            'titulo' => $categoria->name_category
+            'titulo' => $categoria->name_category,
+            'origem' => 'requisitos'
         ]);
     }
 
@@ -98,7 +100,8 @@ class PagesController extends Controller
 
         return view('pages.aluno.conteudos', [
             'conteudos' => $conteudos,
-            'titulo' => $categoria->name_category
+            'titulo' => $categoria->name_category,
+            'origem' => 'tecnico'
         ]);
     }
 
@@ -117,7 +120,8 @@ class PagesController extends Controller
         // passando a lista de conteúdos e o título
         return view('pages.aluno.conteudos', [
             'conteudos' => $conteudos,
-            'titulo' => $titulo
+            'titulo' => $titulo,
+            'origem' => 'todos',
         ]);
     }
     

@@ -1,435 +1,525 @@
-/* =================================================== */
-/* === CÓDIGO DO 'CONNECTIONS' (CONVERTIDO DE SASS) === */
-/* =================================================== */
-@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css');
-/* --- Estilos do Blog Card (Listagem) --- */
-.blog-card {
-    color: #000;
+/* === ESTILOS PARA A LISTAGEM DE CONTEÚDOS === */
+
+/* Card Principal Branco */
+.content-listing-card {
+    width: 90%; /* Ocupa mais espaço */
+    max-width: 1200px; /* Limite máximo */
+    background-color: var(--color-bg-sidebar, #fff); /* Usa variável ou branco */
+    color: var(--color-text-primary, #333); /* Usa variável ou cor escura */
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    padding: 25px 30px; /* Mais padding interno */
+    margin: 20px auto; /* Centraliza e adiciona espaço vertical */
+}
+
+/* Cabeçalho */
+.content-header {
     display: flex;
-    flex-direction: column;
-    margin: 1rem auto;
-    box-shadow: 0 3px 7px -1px rgba(0, 0, 0, .1);
-    margin-bottom: 1.6%;
-    background: #fff;
-    line-height: 1.4;
-    font-family: "Poppins", sans-serif;
-    border-radius: 5px;
-    overflow: hidden;
-    min-height: 300px;
-    z-index: 0;
+    flex-wrap: wrap; /* Permite quebrar linha em telas pequenas */
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px; /* Espaço entre título e busca/filtros */
+    margin-bottom: 20px;
 }
 
-.blog-card a {
-    color: inherit;
-}
-
-.blog-card a:hover {
-    color: var(--color-hover-primary);
-}
-
-.blog-card:hover .photo {
-    transform: scale(1.3) rotate(3deg);
-}
-
-.blog-card .meta {
-    position: relative;
-    z-index: 0;
-    height: 200px;
-}
-
-.blog-card .photo {
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    background-size: cover;
-    background-position: center;
-    transition: transform .2s;
-}
-
-.blog-card .photo-placeholder {
-    background-color: #ccc; /* Cor de fundo para indicar a ausência de imagem */
-    display: flex; /* Habilita o Flexbox */
-    justify-content: center; /* Centraliza horizontalmente */
-    align-items: center; /* Centraliza verticalmente */
-    text-align: center;
-    color: #555;
-    font-weight: bold;
-}
-
-/* Opcional: Garante que o texto se ajuste */
-.blog-card .photo-placeholder span {
-    display: block;
-    padding: 10px;
-}
-
-.blog-card .details,
-.blog-card .details ul {
-    margin: auto;
-    padding: 0;
-    list-style: none;
-}
-
-.blog-card .details {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: -100%;
-    margin: auto;
-    transition: left .2s;
-    background: rgba(0, 0, 0, 0.6);
-    color: #fff;
-    padding: 10px;
-    width: 100%;
-    font-size: .9rem;
-}
-
-.blog-card .details a {
-    text-decoration: dotted underline;
-}
-
-.blog-card .details ul li {
-    display: inline-block;
-}
-
-.blog-card .details li {
-    margin-bottom: 10px;
-}
-
-.blog-card .details .author:before {
-    font-family: FontAwesome; /* Certifique-se que FontAwesome está carregado */
-    margin-right: 10px;
-    content: "\f007";
-}
-
-.blog-card .details .date:before {
-    font-family: FontAwesome; /* Certifique-se que FontAwesome está carregado */
-    margin-right: 10px;
-    content: "\f133";
-}
-
-.blog-card .details .tags ul:before {
-    font-family: FontAwesome; /* Certifique-se que FontAwesome está carregado */
-    content: "\f02b";
-    margin-right: 10px;
-}
-
-.blog-card .details .tags li {
-    color: #ff626f;
-    margin-right: 2px;
-}
-
-.blog-card .details .tags li:first-child {
-    margin-left: -4px;
-}
-
-.blog-card .description {
-    padding: 1rem;
-    background: #fff;
-    position: relative;
-    z-index: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end; /* Alterado de flex-end para garantir que o conteúdo cresça */
-    flex-grow: 1; /* Adicionado para garantir que a descrição preencha o espaço */
-}
-
-.blog-card .description h1,
-.blog-card .description h2 {
-    font-family: Poppins, sans-serif;
-}
-
-.blog-card .description h1 {
-    line-height: 1;
-    margin: 0;
-    font-size: 1.7rem;
+.content-title {
+    font-size: 24px;
     font-weight: 600;
+    margin: 0; /* Remove margem padrão do h1 */
 }
 
-.blog-card .description h2 {
-    font-size: 1rem;
-    font-weight: 300;
-    text-transform: uppercase;
-    color: #626262;
-    margin-top: 5px;
-}
-
-.blog-card .description .read-more {
-    margin-top: auto; /* Empurra o botão "Read More" para baixo */
-    padding-top: 15px; /* Adiciona espaço acima do botão */
-    text-align: right;
-}
-
-.blog-card .description .read-more a {
-    color: var(--color-hover-primary);
-    display: inline-block;
-    position: relative;
-}
-
-.blog-card .description .read-more a:after {
-    content: "\f061"; /* Certifique-se que FontAwesome está carregado */
-    font-family: FontAwesome;
-    margin-left: -10px;
-    opacity: 0;
-    vertical-align: middle;
-    transition: margin .3s, opacity .3s;
-}
-
-.blog-card .description .read-more a:hover:after {
-    margin-left: 5px;
-    opacity: 1;
-}
-
-.blog-card p {
-    position: relative;
-    margin: 1rem 0 0;
-}
-
-.blog-card .description p:first-of-type { /* Seleciona o primeiro P dentro da descrição */
-    margin-top: 1.25rem;
-}
-
-.blog-card .description p:first-of-type:before { /* Adiciona a linha vermelha */
-    content: "";
-    position: absolute;
-    height: 5px;
-    background: var(--color-hover-primary);
-    width: 35px;
-    top: -0.75rem;
-    border-radius: 3px;
-}
-
-.blog-card:hover .details {
-    left: 0%;
-}
-
-
-/* --- Estilos da Página de Detalhe --- */
-.blog-container {
-    background: #fff;
-    border-radius: 5px;
-    box-shadow: rgba(0, 0, 0, .2) 0 4px 2px -2px;
-    font-family: "adelle-sans", sans-serif; /* Considere usar Poppins aqui também */
-    font-weight: 100;
-    margin: 48px auto;
-    width: 20rem;
-    color: var(--color-text-primary); /* Adiciona cor do texto base */
-}
-
-/* Media queries para o .blog-container */
-@media screen and (min-width: 480px) {
-    .blog-container {
-        width: 28rem;
-    }
-}
-@media screen and (min-width: 767px) {
-    .blog-container {
-        width: 40rem;
-    }
-}
-@media screen and (min-width: 959px) {
-    .blog-container {
-        width: 50rem;
-    }
-}
-
-.blog-container a {
-    color: #4d4dff;
-    text-decoration: none;
-    transition: .25s ease;
-}
-
-.blog-container a:hover {
-    /* border-color: #ff4d4d; */ /* Bordas em links geralmente não são desejadas */
-    color: #ff4d4d;
-}
-
-/* // Blog header */
-.blog-cover {
-    /* background: url("..."); */ /* Removido - A imagem vem do style inline */
-    background-size: cover;
-    background-position: center center;
-    border-radius: 5px 5px 0 0;
-    height: 15rem;
-    box-shadow: inset rgba(0, 0, 0, .2) 0 64px 64px 16px;
-    position: relative; /* Para posicionar o autor */
-}
-
-.blog-author {
-    position: absolute; /* Posiciona sobre a imagem de capa */
-    bottom: 0; /* Alinha na base da imagem */
-    left: 0;
-    width: 100%;
-    padding: 1rem; /* Adiciona espaçamento */
-    background-image: linear-gradient(to top, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0) 100%); /* Gradiente de baixo para cima */
-    box-sizing: border-box; /* Garante que o padding não aumente o tamanho */
-    display: flex; /* Para alinhar o H3 */
-    justify-content: center; /* Centraliza o H3 (se for o único filho) */
-}
-
-/* Removido o ::before que colocava uma imagem fixa de autor */
-/* .blog-author h3::before { ... } */
-
-.blog-author h3 {
-    color: #fff;
-    font-weight: 500; /* Um pouco mais de peso para legibilidade */
-    margin: 0; /* Remove margens padrão */
-    font-size: 1.1rem;
-    text-align: center;
-}
-
-/* // Blog body */
-.blog-body {
-    margin: 0 auto;
-    width: 90%; /* Aumentei um pouco para dar mais espaço */
-    padding: 1.5rem 0; /* Adiciona espaçamento vertical */
-}
-
-.blog-title h1 {
-    color: #333; /* Pode usar var(--color-text-primary) */
-    font-weight: 600; /* Mais peso para o título */
-    margin-bottom: 1rem;
-}
-
-.blog-summary p {
-    color: #555; /* Um cinza mais escuro */
-    line-height: 1.6; /* Melhora a legibilidade */
-    margin-bottom: 1.5rem; /* Espaço entre parágrafos */
-}
-
-.blog-tags ul {
+.search-and-filters {
     display: flex;
-    flex-direction: row;
     flex-wrap: wrap;
-    list-style: none;
-    padding-left: 0;
-    margin-top: 1.5rem; /* Espaço acima das tags */
+    gap: 15px; /* Espaço entre busca e filtros */
+    align-items: center;
 }
 
-.blog-tags li {
-     margin-right: .5rem; /* Espaço entre as tags */
-     margin-bottom: .5rem; /* Permite quebrar linha corretamente */
-}
-/* Removido: .blog-tags li + li { margin-left: .5rem; } */
-
-
-.blog-tags a {
-    border: 1px solid #ccc; /* Borda mais clara */
-    border-radius: 15px; /* Mais arredondado */
-    color: #777; /* Cor mais suave */
-    font-size: .75rem;
-    /* height: 1.5rem; */ /* Altura fixa pode cortar texto */
-    line-height: 1.5rem;
-    letter-spacing: 0.5px; /* Menos espaçamento */
-    padding: 2px .75rem; /* Ajuste no padding */
-    text-align: center;
-    text-transform: uppercase;
-    white-space: nowrap;
-    /* width: 5rem; */ /* Largura fixa pode cortar texto */
-    display: inline-block; /* Garante padding correto */
-    transition: background-color 0.2s, color 0.2s; /* Adiciona transição */
-}
-
-.blog-tags a:hover {
-    background-color: var(--color-hover-primary);
-    color: #fff;
-    border-color: var(--color-hover-primary);
-}
-
-/* // Blog footer */
-.blog-footer {
-    border-top: 1px solid var(--color-border-hr); /* Usa variável de tema */
-    margin: 1.5rem auto 0 auto; /* Adiciona margem acima */
-    padding: 1rem 0; /* Adiciona padding vertical */
-    width: 90%; /* Mesma largura do blog-body */
-    box-sizing: border-box;
-}
-
-.blog-footer ul {
-    list-style: none;
+/* Barra de Busca */
+.search-bar {
     display: flex;
-    flex-flow: row wrap;
-    justify-content: flex-end;
-    padding-left: 0;
-    margin: 0; /* Remove margem padrão da ul */
+    align-items: center;
+    background-color: transparent; /* Fundo da busca */
+    border: 1px solid #ccc;
+    border-radius: 20px; /* Cantos arredondados */
+    padding: 5px 12px;
+    flex-grow: 1; 
+    width: 600px;
+    transition: border-color 0.3s ease, background-color 0.3s ease;
 }
 
-.blog-footer li:first-child {
-    margin-right: auto; /* Empurra a data para a esquerda */
+.search-bar .material-symbols-rounded {
+    color: var(--color-text-placeholder, #999);
+    font-size: 20px;
+    margin-right: 8px;
+    transition: color 0.3s ease;
 }
 
-.blog-footer li + li {
-    margin-left: 1rem; /* Aumenta o espaço entre itens */
+.search-bar input[type="search"] {
+    border: none;
+    outline: none;
+    background: transparent;
+    color: var(--color-text-primary, #333);
+    font-size: 14px;
+    padding: 5px 0; /* Ajuste vertical */
+    width: 100%; /* Largura inicial */
+}
+.search-bar input[type="search"]::placeholder {
+    color: var(--color-text-placeholder, #999);
 }
 
-.blog-footer li {
-    color: var(--color-text-placeholder); /* Usa variável de tema */
-    font-size: .75rem;
-    letter-spacing: 1px;
-    line-height: 1.5rem; /* Ajusta conforme necessário */
-    text-transform: uppercase;
-    white-space: nowrap;
+/* Botões de Filtro */
+.filter-buttons {
+    display: flex;
+    gap: 10px;
 }
 
-.blog-footer li a {
-    color: var(--color-text-placeholder); /* Links no footer com a mesma cor */
+.filter-btn {
+    display: inline-flex; /* Para alinhar ícone e texto */
+    align-items: center;
+    gap: 5px; /* Espaço entre ícone e texto */
+    background-color: transparent;
+    border: 1px solid #bbb;
+    color: var(--color-text-secondary, #555);
+    padding: 8px 15px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    white-space: nowrap; /* Impede quebra de linha */
+    transition: background-color 0.2s, color 0.2s, border-color 0.2s;
 }
 
-.blog-footer li a:hover {
-    color: var(--color-hover-primary); /* Hover no link do footer */
+.filter-btn:hover {
+    /* CORRIGIDO: Usa a cor primária vermelha */
+    background-color: var(--color-primary-red, #A6121F); 
+    /* CORRIGIDO: Usa a cor primária vermelha */
+    border-color: var(--color-primary-red, #A6121F);     
+    /* Texto branco (já estava certo) */
+    color: white; 
+}
+
+.filter-btn .material-symbols-rounded {
+    font-size: 18px;
+}
+
+body.dark-theme .filter-btn {
+    /* Borda Branca */
+    border-color: #fff; 
+    /* Texto Branco */
+    color: #fff; 
+}
+
+/* Hover - Modo Escuro */
+body.dark-theme .filter-btn:hover {
+    /* Fundo Branco */
+    background-color: #fff; 
+    border-color: #fff;
+    /* Texto Vermelho (ou cor escura do tema) */
+    color: var(--color-primary-red, #A6121F); 
+}
+/* Linha Divisória */
+.content-divider {
+    border: none;
+    border-top: 1px solid var(--color-border-hr, #eee);
+    margin: 25px 0; /* Espaçamento da linha */
+}
+
+/* Grid de Conteúdo */
+.content-grid {
+    display: grid;
+    /* Define 4 colunas em telas grandes, 3, 2, 1 em menores */
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
+    gap: 25px; /* Espaço entre os cards */
+}
+
+/* Card Individual de Conteúdo */
+.content-item-card {
+    background-color: var(--color-bg-primary, #f9f9f9); /* Fundo um pouco diferente */
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
+    overflow: hidden; /* Garante que a imagem não vaze */
+    display: flex;
+    flex-direction: column; /* Organiza imagem, corpo */
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.content-item-card:hover {
+    transform: translateY(-5px); /* Efeito de levantar */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.12);
+}
+
+/* Thumbnail (Imagem ou Ícone) */
+.card-thumbnail {
+    background-color: var(--color-bg-secondary, #e0e0e0); /* Cor de fundo para o ícone */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 150px; /* Altura fixa para a área da imagem/ícone */
+    color: var(--color-text-secondary, #888);
+}
+.card-thumbnail img { /* Se usar imagem */
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Cobre a área sem distorcer */
+}
+.card-thumbnail .material-symbols-rounded { /* Se usar ícone */
+    font-size: 60px; /* Tamanho grande para o ícone */
 }
 
 
-.published-date {
-   /* border: 1px solid var(--color-border-hr); */ /* Borda geralmente não necessária */
-   /* border-radius: 3px; */
-   padding: 0 .5rem;
+/* Corpo do Card (Título, Descrição, Botão) */
+.card-body {
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1; /* Faz o corpo ocupar o espaço restante */
 }
 
-/* Removidos estilos não utilizados ou problemáticos */
-/* .comments { margin-right: 1rem; } */
-/* .numero { position: relative; top: -0.5rem; } */
-/* .icon-star, .icon-bubble { ... } */
-@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css');
+.card-title {
+    font-size: 16px;
+    font-weight: 600;
+    margin: 0 0 8px 0; /* Tira margem de cima, adiciona embaixo */
+    color: var(--color-text-primary, #333);
+}
 
+.card-description {
+    font-size: 14px;
+    color: var(--color-text-secondary, #666);
+    line-height: 1.5;
+    margin-bottom: 15px;
+    /* Limita a 2 linhas (opcional) */
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;  
+    overflow: hidden;
+    text-overflow: ellipsis;
+    flex-grow: 1; /* Ocupa espaço antes do botão */
+}
 
+/* Botão "Ver mais" */
+.card-button {
+    display: inline-block; /* Comportamento de link/botão */
+    background-color: transparent; /* Fundo transparente */
+    color: var(--color-primary-red, #A6121F); /* Cor do link */
+    border: 1px solid var(--color-primary-red, #A6121F);
+    padding: 8px 15px;
+    border-radius: 5px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    transition: background-color 0.2s, color 0.2s;
+    margin-top: auto; /* Empurra o botão para o final do card */
+    align-self: flex-start; /* Alinha à esquerda */
+}
 
-/* --- Ajustes Responsivos para Blog Card (se necessário) --- */
-@media (min-width: 640px) {
-    /* Mantém os estilos originais para telas maiores */
-    .blog-card {
-        flex-direction: row;
-        max-width: 900px; /* Ou ajuste conforme seu layout */
+.card-button:hover {
+    background-color: var(--color-primary-red, #A6121F);
+    color: white;
+}
+
+/* Estilo Hover (Modo Claro) */
+.card-button:hover {
+    /* Fundo: Vermelho */
+    background-color: var(--color-primary-red, #A6121F); 
+    /* Texto: Branco */
+    color: #fff; 
+}
+
+/* === Sobrescrita para Modo Escuro === */
+body.dark-theme .card-button {
+    /* Cor do texto: Branco */
+    color: #fff; 
+    /* Borda: Branca */
+    border-color: #fff; 
+    /* Background continua transparente */
+}
+
+/* Estilo Hover (Modo Escuro) */
+body.dark-theme .card-button:hover {
+    /* Fundo: Branco */
+    background-color: #fff; 
+    /* Texto: Vermelho (para contraste) ou Preto/Cor escura do tema */
+    color: #000; 
+    /* Ou, se preferir texto escuro do tema no hover: */
+    /* color: var(--color-bg-primary, #111827); */
+}
+
+/* --- Responsividade Adicional (O grid já é responsivo) --- */
+@media (max-width: 768px) {
+    .content-listing-card {
+        width: 95%;
+        padding: 20px;
     }
-    .blog-card .meta {
-        flex-basis: 40%;
-        height: auto; /* Altura automática para caber o conteúdo */
+    .content-header {
+        flex-direction: column; /* Título acima da busca/filtros */
+        align-items: stretch; /* Ocupa largura total */
     }
-    .blog-card .description {
-        flex-basis: 60%;
-        display: flex; /* Garante flexbox para alinhamento */
-        flex-direction: column; /* Organiza o conteúdo verticalmente */
+    .search-and-filters {
+        flex-direction: column;
+        align-items: stretch; /* Ocupa largura total */
     }
-    .blog-card .description:before {
-        transform: skewX(-3deg);
-        content: "";
-        background: #fff; /* Ou var(--color-bg-sidebar) */
-        width: 30px;
-        position: absolute;
-        left: -10px;
-        top: 0;
-        bottom: 0;
-        z-index: -1;
+    .search-bar input[type="search"] {
+        width: 100%; /* Busca ocupa largura total */
+        box-sizing: border-box; /* Garante padding correto */
     }
-    /* Estilos para a variação 'alt' se você a usar */
-    .blog-card.alt {
-        flex-direction: row-reverse;
+    .filter-buttons {
+        justify-content: center; /* Centraliza botões */
     }
-    .blog-card.alt .description:before {
-        left: inherit;
-        right: -10px;
-        transform: skew(3deg);
+    .content-grid {
+        gap: 15px; /* Menos espaço entre cards */
     }
-    /* .blog-card.alt .details { padding-left: 25px; } */ /* Pode não ser necessário */
+}
+
+/* === ESTILOS ADICIONAIS PARA O CARD DE CONTEÚDO === */
+
+/* Container dos Metadados (Autor e Data) */
+.card-meta {
+    display: flex;
+    flex-wrap: wrap; /* Permite quebrar linha se não couber */
+    gap: 15px; /* Espaço entre Autor e Data */
+    color: var(--color-text-secondary, #777);
+    font-size: 13px; /* Tamanho menor */
+    margin-bottom: 10px; /* Espaço abaixo dos metadados */
+    align-items: center; /* Alinha ícones e texto verticalmente */
+}
+
+.meta-item {
+    display: inline-flex; /* Alinha ícone e texto na mesma linha */
+    align-items: center;
+    gap: 4px; /* Espaço pequeno entre ícone e texto */
+}
+
+/* Ícones dentro dos metadados e tags */
+.card-meta .icon,
+.card-tags .icon {
+    font-size: 16px; /* Tamanho dos ícones pequenos */
+    /* position: relative; top: 2px; Descomente se precisar ajustar o alinhamento vertical */
+}
+
+/* Container das Tags */
+.card-tags {
+    display: flex;
+    flex-wrap: wrap; /* Permite que as tags quebrem linha */
+    gap: 6px; /* Espaço entre as tags e entre o ícone e a primeira tag */
+    margin-bottom: 12px; /* Espaço abaixo das tags */
+    align-items: center;
+}
+
+.card-tags .icon {
+    color: var(--color-text-secondary, #777); /* Cor do ícone de tag */
+}
+
+/* Estilo individual de cada Tag */
+.tag-item {
+    background-color: var(--color-bg-secondary, #e0e0e0); /* Fundo da tag */
+    color: var(--color-text-secondary, #555); /* Cor do texto da tag */
+    padding: 3px 8px; /* Padding interno */
+    border-radius: 12px; /* Cantos arredondados */
+    font-size: 12px; /* Tamanho bem pequeno */
+    white-space: nowrap; /* Impede que o texto da tag quebre linha */
+}
+
+/* Ajuste na descrição para vir depois dos metadados */
+.card-description {
+    /* margin-bottom: 15px; (Já definido antes) */
+    /* flex-grow: 1; (Já definido antes) */
+    /* Ajuste o limite de linhas se necessário (já está com 2) */
+    -webkit-line-clamp: 2; 
+}
+
+/* Garante que o corpo do card use todo o espaço vertical */
+.card-body {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1; 
+    /* padding: 15px; (Já definido antes) */
+}
+
+/* === ESTILOS PARA FILTROS E MODAL (ADICIONAL) === */
+
+/* Estilo para botão de filtro ATIVO (quando um filtro está aplicado) */
+.filter-btn.active {
+    background-color: var(--color-primary-red, #A6121F);
+    border-color: var(--color-primary-red, #A6121F);
+    color: white;
+}
+body.dark-theme .filter-btn.active {
+     background-color: #fff;
+     border-color: #fff;
+     color: var(--color-primary-red, #A6121F);
+}
+
+/* Card do Modal de Filtro */
+/* (Estilos .modal-overlay e .modal-hidden já devem existir no seu aluno.css) */
+.card-filter {
+    background-color: var(--color-bg-sidebar, #fff);
+    color: var(--color-text-primary, #333);
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    max-width: 400px; /* Largura do modal */
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    max-height: 80vh; /* Limita altura máxima para caber na tela */
+
+    /* Animação de fade/scale (opcional, igual ao modal de sucesso) */
+    opacity: 1;
+    transform: scale(1);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+/* Esconder o card quando o overlay estiver escondido */
+.modal-overlay.modal-hidden .card-filter {
+    opacity: 0;
+    transform: scale(0.95);
+}
+
+
+/* Cabeçalho do Modal */
+.filter-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    border-bottom: 1px solid var(--color-border-hr, #eee);
+    flex-shrink: 0; /* Impede que o header encolha */
+}
+
+.filter-title {
+    font-size: 18px;
+    font-weight: 600;
+    margin: 0;
+}
+
+.filter-close-btn {
+    background: none;
+    border: none;
+    color: var(--color-text-secondary, #777);
+    cursor: pointer;
+    padding: 5px;
+    display: flex; /* Para alinhar o ícone */
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: background-color 0.2s, color 0.2s;
+}
+.filter-close-btn:hover {
+    background-color: var(--color-bg-secondary, #eee);
+    color: var(--color-text-primary, #333);
+}
+body.dark-theme .filter-close-btn {
+     color: var(--color-text-placeholder, #A6B7D2); /* Ajuste cor no dark mode */
+}
+body.dark-theme .filter-close-btn:hover {
+     background-color: var(--color-bg-secondary, #3D4859);
+     color: var(--color-text-primary, #F1F5F9);
+}
+
+/* Corpo do Modal (com scroll) */
+.filter-body {
+    padding: 20px;
+    overflow-y: auto; /* Adiciona scroll se a lista de tags for longa */
+    flex-grow: 1; /* Ocupa o espaço vertical disponível */
+}
+
+.filter-instructions {
+    font-size: 14px;
+    color: var(--color-text-secondary, #666);
+    margin-bottom: 15px;
+}
+body.dark-theme .filter-instructions {
+    color: var(--color-text-placeholder, #A6B7D2);
+}
+
+/* Lista de Checkboxes de Tags */
+.tag-selection-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px; /* Espaço vertical entre as tags */
+}
+
+.tag-checkbox-label {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    font-size: 14px;
+    color: var(--color-text-primary, #333); /* Cor do texto da tag */
+}
+body.dark-theme .tag-checkbox-label {
+    color: var(--color-text-primary, #F1F5F9);
+}
+
+.tag-checkbox-label input[type="checkbox"] {
+    margin-right: 10px; /* Espaço entre checkbox e texto */
+    cursor: pointer;
+    /* Estilização que usa a cor primária vermelha */
+    accent-color: var(--color-primary-red, #A6121F);
+    width: 16px; /* Tamanho do checkbox */
+    height: 16px;
+}
+
+.tag-checkbox-label .tag-name {
+    /* Estilos adicionais se precisar */
+}
+
+/* Rodapé do Modal */
+.filter-footer {
+    display: flex;
+    justify-content: space-between; /* Botões nas extremidades */
+    padding: 15px 20px;
+    border-top: 1px solid var(--color-border-hr, #eee);
+    background-color: var(--color-bg-primary, #f9fafb); /* Fundo sutil */
+    border-bottom-left-radius: 8px; /* Arredonda cantos inferiores */
+    border-bottom-right-radius: 8px;
+    flex-shrink: 0; /* Impede que o footer encolha */
+}
+body.dark-theme .filter-footer {
+     background-color: var(--color-bg-secondary, #3D4859);
+     border-top-color: var(--color-border-hr, #3B475C);
+}
+
+.filter-action-btn {
+    padding: 8px 15px;
+    border: none;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s, color 0.2s, opacity 0.2s, border-color 0.2s;
+}
+
+/* Botão Limpar Filtros */
+.clear-btn {
+    background-color: transparent;
+    color: var(--color-text-secondary, #666);
+    border: 1px solid var(--color-border-hr, #ccc);
+}
+.clear-btn:hover {
+    background-color: var(--color-bg-secondary, #eee);
+    border-color: #bbb; /* Borda mais escura no hover */
+    color: var(--color-text-primary, #333);
+}
+body.dark-theme .clear-btn {
+     color: var(--color-text-placeholder, #A6B7D2);
+     border-color: var(--color-border-hr, #3B475C);
+}
+body.dark-theme .clear-btn:hover {
+     background-color: var(--color-bg-secondary, #3D4859);
+     border-color: #5a6a85; /* Borda mais clara no hover */
+     color: var(--color-text-primary, #F1F5F9);
+}
+
+/* Botão Aplicar Filtros */
+.apply-btn {
+    background-color: var(--color-primary-red, #A6121F);
+    color: white;
+    border: 1px solid var(--color-primary-red, #A6121F);
+}
+.apply-btn:hover {
+    opacity: 0.85; /* Leve transparência no hover */
+}
+
+a { 
+    text-decoration: none;;
 }

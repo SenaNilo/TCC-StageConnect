@@ -40,6 +40,7 @@
         @csrf
     </form>
 
+    <!-- Modal de sair -->
     <div id="logout-modal" class="modal-overlay modal-hidden">
         <div class="card-cancelar">
             <div class="header-cancelar">

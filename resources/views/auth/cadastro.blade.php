@@ -1,31 +1,36 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+
 <head>
-	<title>Cadastro | Stage Connect</title>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Cadastro | Stage Connect</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-	{{-- Icone Aba --}}
-	<link rel="icon" type="image/ico" href="{{ asset('images/LogoSFundo.ico') }}">
+    {{-- Icone Aba --}}
+    <link rel="icon" type="image/ico" href="{{ asset('images/LogoSFundo.ico') }}">
 
 
-	{{-- Font Awesome --}}
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    {{-- Font Awesome --}}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-	{{-- Css's --}}
+    {{-- Css's --}}
     <link rel="stylesheet" type="text/css" href="{{ asset('css/init.css') }}">
-	<link rel="stylesheet" type="text/css" href="{{ asset('css/util.css') }}">
-	<link rel="stylesheet" type="text/css" href="{{ asset('css/login.css') }}">
-	
-</head>
-<body>
-	
-	<main>
-		<section class="login cadastrar-background">
-			<div class="login-box">
-				<img class="image-tilt js-tilt" src="{{ asset('images/FundoBrancopng.png') }}" alt="Logo da Stage Connect" data-tilt>
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/util.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/login.css') }}">
 
-				<form class="form validate-form" method="POST" action="{{ route('storeCadastro') }}">
+</head>
+
+<body>
+
+    <main>
+        <section class="login cadastrar-background">
+            <a href="{{ url('/') }}" class="back-arrow">
+                <i class="fa fa-arrow-left"></i>
+            </a>
+            <div class="login-box">
+                <img class="image-tilt js-tilt" src="{{ asset('images/FundoBrancopng.png') }}" alt="Logo da Stage Connect" data-tilt>
+
+                <form class="form validate-form" method="POST" action="{{ route('storeCadastro') }}">
                     @csrf {{-- Token CSRF para segurança --}}
 
                     <h1 class="form-title">
@@ -34,9 +39,9 @@
 
                     {{-- Exibe mensagens de sucesso, se houver --}}
                     @if (session('success'))
-                        <div class="alert alert-success" style="color: green; text-align: center; margin-bottom: 15px;">
-                            {{ session('success') }}
-                        </div>
+                    <div class="alert alert-success" style="color: green; text-align: center; margin-bottom: 15px;">
+                        {{ session('success') }}
+                    </div>
                     @endif
 
                     {{-- Campo Nome Completo --}}
@@ -48,7 +53,7 @@
                         </span>
                     </div>
                     @error('name_user')
-                        <span class="text-danger" style="color: red; font-size: 0.8em; margin-top: -10px; margin-bottom: 10px; display: block;">{{ $message }}</span>
+                    <span class="text-danger" style="color: red; font-size: 0.8em; margin-top: -10px; margin-bottom: 10px; display: block;">{{ $message }}</span>
                     @enderror
 
                     {{-- Campo Email --}}
@@ -60,7 +65,7 @@
                         </span>
                     </div>
                     @error('email')
-                        <span class="text-danger" style="color: red; font-size: 0.8em; margin-top: -10px; margin-bottom: 10px; display: block;">{{ $message }}</span>
+                    <span class="text-danger" style="color: red; font-size: 0.8em; margin-top: -10px; margin-bottom: 10px; display: block;">{{ $message }}</span>
                     @enderror
 
                     {{-- Campo Senha --}}
@@ -72,7 +77,7 @@
                         </span>
                     </div>
                     @error('password')
-                        <span class="text-danger" style="color: red; font-size: 0.8em; margin-top: -10px; margin-bottom: 10px; display: block;">{{ $message }}</span>
+                    <span class="text-danger" style="color: red; font-size: 0.8em; margin-top: -10px; margin-bottom: 10px; display: block;">{{ $message }}</span>
                     @enderror
 
                     {{-- Campo Confirmar Senha --}}
@@ -84,41 +89,42 @@
                         </span>
                     </div>
                     @error('password_confirmation')
-                        <span class="text-danger" style="color: red; font-size: 0.8em; margin-top: -10px; margin-bottom: 10px; display: block;">{{ $message }}</span>
+                    <span class="text-danger" style="color: red; font-size: 0.8em; margin-top: -10px; margin-bottom: 10px; display: block;">{{ $message }}</span>
                     @enderror
-                    
+
                     <div class="login-form-btn">
                         <button class="form-btn" type="submit">
                             Cadastrar
                         </button>
                     </div>
-
-                    <div class="text-center p-t-96">
+                    <div style="margin-top: auto;"> </div>
+                    <div class="text-center p-t-20">
                         <a class="txt2" href="{{ route('login') }}">
                             Já tenho uma conta!
                         </a>
                     </div>
                 </form>
-			</div>
-		</section>
-	</main>
-	
-	
+            </div>
+        </section>
+    </main>
 
-	
 
-	<!-- Importação Jquery -->
-	<script src="{{ asset('js/imports/jquery-3.2.1.min.js') }}"></script>
-	<!-- Animacao da imagem -->
-	<script src="{{ asset('js/imports/tilt.jquery.min.js') }}"></script>
 
-	<script >
-		$('.js-tilt').tilt({
-			scale: 1.1
-		})
-	</script>
 
-	<script src="{{ asset('js/login.js') }}"></script>
+
+    <!-- Importação Jquery -->
+    <script src="{{ asset('js/imports/jquery-3.2.1.min.js') }}"></script>
+    <!-- Animacao da imagem -->
+    <script src="{{ asset('js/imports/tilt.jquery.min.js') }}"></script>
+
+    <script>
+        $('.js-tilt').tilt({
+            scale: 1.1
+        })
+    </script>
+
+    <script src="{{ asset('js/login.js') }}"></script>
 
 </body>
+
 </html>

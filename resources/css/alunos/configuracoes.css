@@ -1,0 +1,153 @@
+/* Remova o display: flex e outras propriedades de alinhamento do card */
+.main-content{
+   display: flex;
+   justify-content: center;
+   align-items: flex-start; /* Alinha o card no topo (não no meio da página) */
+
+}
+
+.card-principal {
+    width: 60%;
+    max-width: 1000px;
+    background-color: #fff;
+    color: #000;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    background-color: var(--color-bg-sidebar);
+    color: var(--color-text-primary);
+    padding: 20px;
+
+}
+
+/* O título pode ficar separado */
+.titulo-configuracoes {
+    color:var(--color-text-primary);
+    font-size: 24px;
+    margin-bottom: 24px; /* Adiciona um espaço abaixo do título */
+    text-align: center; /* Centraliza o título */
+}
+
+/* Agora, o formulário é o nosso container flex! */
+.form-configuracoes {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between; /* ISSO vai separar os dois blocos */
+    align-items: flex-start; /* Alinha os itens no topo */
+    gap: 40px; /* Uma forma moderna de adicionar espaço entre os blocos */
+    width: 100%;
+}
+
+/* Define um tamanho para cada bloco */
+.form-fields {
+    flex: 2; /* Faz este bloco ocupar 2/3 do espaço */
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    min-width: 300px;;
+}
+
+.profile-picture-section {
+    flex: 1; /* Faz este bloco ocupar 1/3 do espaço */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    padding-bottom: 20px;
+}
+
+
+/* Estilos adicionais para a foto de perfil (sugestão) */
+.profile-picture-preview {
+    width: 230px;
+    height: 230px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #eee;
+}
+
+.file-upload-label {
+    cursor: pointer;
+    color: var(--color-stone-600);
+    font-weight: 500;
+}
+
+.file-upload-label:hover {
+    text-decoration: underline;
+}
+
+/* Estilos para os campos do formulário (sugestão) */
+.group-labels {
+    display: flex;
+    flex-direction: column;
+}
+
+.group-labels label {
+    margin-bottom: 5px;
+    font-weight: 500;
+}
+
+.group-labels input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    width: 100%;
+    background-color: var(--color-bg-primary);
+    border: 1px solid var(--color-border-hr);
+    color: var(--color-text-primary);
+}
+
+.group-labels input::placeholder {
+    color: var(--color-text-placeholder);
+}
+
+@media (max-width: 768px) {
+
+    .form-configuracoes {
+        /* Muda a direção do flex para coluna e inverte a ordem visual */
+        flex-direction: column;
+        align-items: center; 
+    }
+
+    .profile-picture-section {
+        order: 1; 
+        width: 100%; 
+    }
+
+    .form-fields {
+        order: 2; 
+        width: 100%; 
+    }
+
+    .confirm-button {
+        order: 3;
+        width: 100%;
+    }
+
+    .card-principal {
+        width: 95%; /* Ajusta a largura do card para telas menores */
+    }
+
+}
+/* --- Estilo do Botão de Submissão --- */
+.confirm-button {
+    /* Faz o botão ser um item flex para alinhar-se corretamente */
+    flex-basis: 100%; /* Ocupa toda a largura da linha no container flex */
+    
+    padding: 12px 20px;
+    margin-top: 5px; /* Espaço acima do botão */
+    
+    background-color: #A6121F; /* Cor principal (azul, por exemplo) */
+    color: white; /* Texto branco */
+    font-size: 16px;
+    font-weight: 500;
+    
+    border: none; /* Remove a borda padrão */
+    border-radius: 8px; /* O arredondamento que você pediu */
+    
+    cursor: pointer; /* Muda o cursor para indicar que é clicável */
+    transition: background-color 0.3s ease; /* Efeito suave na transição */
+}
+
+.confirm-button:hover {
+    background-color: #8B0F1A; /* Cor mais escura ao passar o mouse */
+}

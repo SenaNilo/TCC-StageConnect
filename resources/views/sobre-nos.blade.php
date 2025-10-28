@@ -68,9 +68,7 @@
 
         </div>
     </section>
-    <!-- <script src="{{ asset('js/swiper-bundle.min.js') }}"></script>
-    <script src="{{ asset('js/sobre-nos.js') }}"></script>
-    -->
+    
     <footer class="footer footer-container">
         <div class="footer-logo">
             <img src="{{ asset('images/LogoSFundo.png') }}" alt="Logo StageConnect">

@@ -14,18 +14,15 @@ const savedTheme = localStorage.getItem("theme");
 const systemPrefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
 const shouldUseDarkTheme = savedTheme === "dark" || (!savedTheme && systemPrefersDark);
 document.body.classList.toggle("dark-theme", shouldUseDarkTheme);
-// updateThemeIcon();
 
 themeToggleBtn.addEventListener("click", () => {
   const isDark = document.body.classList.toggle("dark-theme");
   localStorage.setItem("theme", isDark ? "dark" : "light");
-  // updateThemeIcon();
 });
 
 sidebarToggleBtns.forEach((btn) => {
   btn.addEventListener("click", () => {
     sidebar.classList.toggle("collapsed");
-    // updateThemeIcon();
   });
 });
 

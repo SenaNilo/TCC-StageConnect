@@ -10,7 +10,7 @@
     <!-- Menu desktop -->
     <nav class="nav-desktop">
         <ul class="menu-header">
-            <li class="lista-header">Home</li>
+            <li class="lista-header"><a href="{{ url('/') }}"> Home </a></li>
             <li class="lista-header">Objetivo</li>
             <li class="lista-header">Informações</li>
             <li class="lista-header"><a href="{{ url('/sobre-nos') }}">Sobre nós</a></li>

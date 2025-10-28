@@ -9,6 +9,8 @@ use Filament\Models\Contracts\FilamentUser;
 use Filament\Panel;
 use Illuminate\Support\Facades\Redirect;
 use Filament\Models\Contracts\HasAvatar;
+use Illuminate\Support\Facades\Hash;
+
 // use Laravel\Sanctum\HasApiTokens;
 
 
@@ -56,9 +58,24 @@ class Usuario extends Authenticatable implements FilamentUser, HasAvatar
     {
         return $this->password_user;
     }
-    public function getNameAttribute(): string
+    public function getNameAttribute()
     {
         return $this->attributes['name_user'];
+    }
+
+    public function setNameAttribute($value)
+    {
+        $this->attributes['name_user'] = $value;
+    }
+
+    public function getPasswordAttribute()
+    {
+        return $this->password_user;
+    }
+
+    public function setPasswordAttribute($value)
+    {
+        $this->attributes['password_user'] = Hash::make($value);
     }
 
     public $timestamps = false;
@@ -91,5 +108,17 @@ class Usuario extends Authenticatable implements FilamentUser, HasAvatar
 
         // 3. Se não tiver, retorna null, e o Filament usará o avatar padrão (iniciais ou ícone).
         return null; 
+    }
+
+    public function getAvatarUrl()
+    {
+        if ($this->foto_perfil) {
+            // 1. Retorna a foto salva no storage
+            return asset('storage/' . $this->foto_perfil);
+        }
+
+        // 2. Gera um avatar com as iniciais (ex: "Larissa Santos" -> "LS")
+        // Você pode trocar 'random' por um código de cor (ex: '007bff')
+        return 'https://ui-avatars.com/api/?name=' . urlencode($this->name) . '&background=random&color=fff';
     }
 }

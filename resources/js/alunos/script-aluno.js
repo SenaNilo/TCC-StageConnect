@@ -1,3 +1,30 @@
+document.addEventListener('DOMContentLoaded', () => {
+
+  // === LÓGICA PARA MOSTRAR/ESCONDER SENHA ===
+  const passwordToggles = document.querySelectorAll('.password-toggle-icon');
+
+  passwordToggles.forEach(toggle => {
+    toggle.addEventListener('click', () => {
+      // Encontra o input de senha irmão ou dentro do mesmo wrapper
+      const wrapper = toggle.closest('.password-input-wrapper'); // Se usar o wrapper CSS
+      // Ou, se não usar wrapper: const input = toggle.previousElementSibling.querySelector('input[type="password"], input[type="text"]');
+      const input = wrapper ? wrapper.querySelector('input[type="password"], input[type="text"]') : null;
+
+      if (input) {
+        // Verifica o tipo atual e troca
+        if (input.type === 'password') {
+          input.type = 'text';
+          toggle.textContent = 'visibility_off'; // Muda o ícone para olho fechado
+        } else {
+          input.type = 'password';
+          toggle.textContent = 'visibility'; // Muda o ícone para olho aberto
+        }
+      }
+    });
+  });
+});
+
+
 const sidebarToggleBtns = document.querySelectorAll(".sidebar-toggle");
 const sidebar = document.querySelector(".sidebar");
 const searchForm = document.querySelector(".search-form");

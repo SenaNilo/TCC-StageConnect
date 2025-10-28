@@ -142,11 +142,14 @@ section.login.cadastrar-background {
 }
 
 .login-box {
-  width: 960px;
+  width: 65%;
+  max-width: 1100px;
   background: #fff;
   border-radius: 10px;
-  overflow: hidden;
-
+  /* overflow: auto; */
+  /* height: 90vh; */
+  min-height: 600px;
+  /* height: 85vh; */
   display: -webkit-box;
   display: -webkit-flex;
   display: -moz-box;
@@ -154,9 +157,34 @@ section.login.cadastrar-background {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  padding: 177px 130px 33px 95px;
+  align-items: center;
+  padding: 80px 130px 33px 95px;
 }
 
+.back-arrow {
+  position: absolute;
+  top: 40px;
+  left: 40px;
+  font-size: 24px;
+  color: #fff;
+  z-index: 10;
+  transition: all 0.3s ease;
+
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  text-decoration: none;
+  width: 50px; 
+  height: 50px; 
+  display: flex; 
+  justify-content: center;
+  align-items: center;
+}
+
+.back-arrow:hover {
+  color: #ddd;
+  color: rgba(255, 255, 255, 0.3);
+  transform: scale(1.1);
+}
 /*------------------------------------------------------------------
 [  ]*/
 .image-tilt {
@@ -169,6 +197,8 @@ section.login.cadastrar-background {
 [  ]*/
 .form {
   width: 290px;
+  display: flex;
+  flex-direction: column;
 }
 
 .form-title {
@@ -191,6 +221,10 @@ section.login.cadastrar-background {
   width: 100%;
   z-index: 1;
   margin-bottom: 10px;
+}
+
+.form .validate-form{ 
+  width: 100%;
 }
 
 .input {

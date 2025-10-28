@@ -7,7 +7,7 @@
     <title>Área do aluno - StageConnect</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <link rel="icon" type="image/png" href="{{ asset('images/LogoSFundo.png') }}" />
-    @vite(['resources/css/alunos/aluno.css', 'resources/js/alunos/script-aluno.js',  'resources/js/alunos/modalSair.js'])
+    @vite(['resources/css/alunos/aluno.css', 'resources/js/alunos/script-aluno.js', 'resources/js/alunos/modalSair.js'])
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 </head>
@@ -23,43 +23,42 @@
 
     <!-- Sidebar -->
     <div class="container">
-             <x-aluno.sidebarAluno />
+        <x-aluno.sidebarAluno />
 
         <!-- Começo do main content (Site) -->
         <div class="main-content">
             <div class="main-inicial">
                 <h1 class="page-title">Olá, {{ Auth::user()->name }}! </h1>
-                {{-- <img src="{{ asset('images/larissafoto.jpg') }}" alt="Imagem de boas-vindas" class="perfil-img"> --}}
-    
-                {{-- LÓGICA DA FOTO DE PERFIL --}}
+
                 @if (Auth::user()->foto_perfil)
-                    <img src="{{ asset('storage/' . Auth::user()->foto_perfil) }}" 
-                        alt="Foto de perfil do usuário" 
-                        class="perfil-img">
+                <img src="{{ asset('storage/' . Auth::user()->foto_perfil) }}"
+                    alt="Foto de perfil do usuário"
+                    class="perfil-img">
                 @else
-                    <div class="perfil-img perfil-placeholder">
-                        <i class="fas fa-user-circle fa-4x"></i> 
-                    </div>
+                <div class="perfil-img perfil-placeholder">
+                    <span class="material-symbols-rounded"> account_circle </span>
+                </div>
                 @endif
             </div>
 
 
             <div class="cards-principais">
                 <div class="card">
-                    <h2 class="title-card"> Conteúdo </h2> 
-                    <p class="description-card"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
-                    <button class="btn-card"> Acessar </button>
+                    <h2 class="title-card"> Orientação Profissional/Material de apoio </h2>
+                    <p class="description-card"> Guias de carreira, dicas de currículo e entrevistas, e materiais para desenvolver suas soft skills. </p>
+                    <a href="{{ route('aluno.orientacao') }}" class="btn-card"> Acessar </a>
                 </div>
 
-                <div class="card"> 
-                  <h2 class="title-card">  Saiba Mais </h2>
-                    <p class="description-card"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed </p>
-                    <button class="btn-card"> Acessar </button>
-                 </div>
-                <div class="card"> 
-                   <h2 class="title-card"> Entrevistas </h2>
-                    <p class="description-card"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
-                    <button class="btn-card"> Acessar </button> 
+                <div class="card">
+                    <h2 class="title-card"> Áreas de atuação e Requisitos Técnicos  </h2>
+                    <p class="description-card"> Explore as principais áreas do mercado e descubra as funções e ferramentas essenciais para cada uma. </p>
+                    <a href="{{ route('aluno.requisitos' )}}" class="btn-card"> Acessar </a>
+
+                </div>
+                <div class="card">
+                    <h2 class="title-card"> Conteúdo técnico específico </h2>
+                    <p class="description-card"> Tutoriais e artigos focados em linguagens, frameworks e tecnologias que o mercado procura. </p>
+                    <a href="{{ route('aluno.tecnico') }}" class="btn-card"> Acessar </a>
                 </div>
             </div>
         </div>

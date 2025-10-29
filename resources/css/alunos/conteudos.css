@@ -155,7 +155,7 @@ body.dark-theme .filter-btn:hover {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 150px; /* Altura fixa para a área da imagem/ícone */
+    height: 200px; /* Altura fixa para a área da imagem/ícone */
     color: var(--color-text-secondary, #888);
 }
 .card-thumbnail img { /* Se usar imagem */
@@ -314,7 +314,7 @@ body.dark-theme .card-button:hover {
 /* Estilo individual de cada Tag */
 .tag-item {
     background-color: var(--color-bg-secondary, #e0e0e0); /* Fundo da tag */
-    color: var(--color-text-secondary, #555); /* Cor do texto da tag */
+    color: #ffffff; /* Cor do texto da tag */
     padding: 3px 8px; /* Padding interno */
     border-radius: 12px; /* Cantos arredondados */
     font-size: 12px; /* Tamanho bem pequeno */

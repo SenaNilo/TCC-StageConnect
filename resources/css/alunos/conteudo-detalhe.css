@@ -9,6 +9,7 @@
     margin: 20px auto; /* Centraliza e adiciona espaço */
     max-width: 900px; /* Largura máxima para leitura confortável */
     width: 90%; /* Responsivo */
+    min-height: 90%;
     position: relative; /* Para o botão voltar */
     overflow: hidden; /* Garante que a imagem não vaze */
 }
@@ -43,7 +44,7 @@
 /* Imagem de Capa */
 .content-cover {
     width: 100%;
-    height: 300px; /* Altura da imagem de capa (ajuste conforme necessário) */
+    min-height: 350px; /* Altura da imagem de capa (ajuste conforme necessário) */
     background-size: cover; /* Cobre a área */
     background-position: center; /* Centraliza a imagem */
     background-repeat: no-repeat;

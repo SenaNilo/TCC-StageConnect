@@ -49,21 +49,46 @@ class PagesController extends Controller
     }
 
     // Orientação Profissional/Material de Apoio
-    public function orientacaoProfissional()
+    public function orientacaoProfissional(Request $request)
     {
         $categoria = Categoria::where('name_category', 'Orientação Profissional/Material de Apoio')->firstOrFail();
-        
-        $conteudos = Conteudo::whereHas('categorias', function ($query) use ($categoria) {
-            $query->where('id_categoria', $categoria->id);
+    
+        $query = Conteudo::whereHas('categorias', function ($q) use ($categoria) {
+            $q->where('id_categoria', $categoria->id);
         })
         ->where('active_content', true) // Filtra apenas conteúdos ativos
-        ->orderBy('dt_created', 'desc') // Ordena por mais recente
-        ->get();
+        ->with('autor', 'tags'); // Carrega relacionamentos para a view
+
+        
+        if ($request->filled('search')) {
+            $searchTerm = $request->input('search');
+            
+            // Aplica o filtro WHERE no Query Builder
+            $query->where(function ($q) use ($searchTerm) {
+                $q->where('titulo', 'LIKE', "%{$searchTerm}%")
+                ->orWhere('descricao', 'LIKE', "%{$searchTerm}%")
+                ->orWhereHas('autor', function ($qAutor) use ($searchTerm) {
+                    $qAutor->where('name_user', 'LIKE', "%{$searchTerm}%");
+                });
+            });
+        }
+
+        $orderDirection = $request->input('order', 'desc');
+        $orderDirection = in_array($orderDirection, ['asc', 'desc']) ? $orderDirection : 'desc';
+
+        $query->orderBy('dt_created', $orderDirection);
+
+
+        $conteudos = $query->get();
+
+        // $conteudosOrd = $conteudos->orderBy('dt_created', $orderDirection)->get();
 
         return view('pages.aluno.conteudos', [
-            'conteudos' => $conteudos,
+            'conteudos' => $conteudos, // Usa o resultado final
             'titulo' => $categoria->name_category,
             'origem' => 'orientacao',
+            'orderDirection' => $orderDirection, 
+            'search' => $request->input('search'),
         ]);
     }
 

@@ -21,6 +21,7 @@
 </head>
 
 <body>
+
     {{-- Responsividade --}}
     <nav class="site-nav">
         <button class="sidebar-toggle">
@@ -55,16 +56,32 @@
             {{-- Container para Busca e Filtros --}}
             <div class="search-and-filters">
                 {{-- Barra de Busca --}}
-                <div class="search-bar">
+                <form action="{{ route('aluno.' . $origem) }}" method="GET" class="search-bar">
                     <span class="material-symbols-rounded">search</span>
                     <input type="search" placeholder="Buscar Conteúdos..." name="search" id="content-search"> 
-                </div>
+
+                    <input type="hidden" name="order" value="{{ $orderDirection ?? 'desc' }}">
+                </form>
                 {{-- Botões de Filtro --}}
                 <div class="filter-buttons">
-                    <button class="filter-btn" type="button"> 
+                    {{-- Esse php é pra fazer a logica dos Recentes e antigos --}}
+                    @php
+                        // 1. Define a ordem inversa para o próximo clique
+                        $proximaOrdem = ($orderDirection ?? 'desc') === 'desc' ? 'asc' : 'desc'; 
+                        
+                        // 2. Mantém o termo de busca no link (se existir)
+                        $queryParams = array_merge(request()->except(['order']), ['order' => $proximaOrdem]);
+                        $linkOrdem = route('aluno.' . $origem, $queryParams);
+                    @endphp
+                    <a href="{{ $linkOrdem }}" class="filter-btn" type="button"> 
                         <span class="material-symbols-rounded">schedule</span>
-                        Mais Recentes
-                    </button>
+                        {{-- Texto dinâmico --}}
+                        @if (($orderDirection ?? 'desc') === 'desc')
+                            Mais Recentes
+                        @else
+                            Mais Antigos
+                        @endif
+                    </a>
                     <button class="filter-btn" type="button"> 
                         <span class="material-symbols-rounded">filter_list</span>
                         Filtrar por Área
@@ -115,7 +132,7 @@
                                     <span class="material-symbols-rounded icon">sell</span>
                                     @foreach ($conteudo->tags as $tag)
                                         {{-- Ajuste 'name' para o campo da sua tag --}}
-                                        <span class="tag-item">{{ $tag->name }}</span> 
+                                        <span class="tag-item">{{ $tag->name_tag }}</span> 
                                     @endforeach
                                 </div>
                             @endif

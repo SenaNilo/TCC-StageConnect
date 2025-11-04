@@ -72,6 +72,7 @@
 .filter-buttons {
     display: flex;
     gap: 10px;
+    position: relative;
 }
 
 .filter-btn {
@@ -522,4 +523,55 @@ body.dark-theme .clear-btn:hover {
 
 a { 
     text-decoration: none;;
+}
+
+.menu {
+  border-radius: 8px;
+    height: auto;
+    /* margin-top: 0px; */
+    position: absolute;
+    width: 273px;
+    border: 1px solid;
+    z-index: 999;
+    right: 0;
+    top: 130%;
+    background: rgb(17 24 39 / 95%);
+    pointer-events: none;
+  opacity: 0;
+  
+    padding: 10px 0 15px;
+}
+
+.contents {
+  left: 20px;
+    position: relative;
+    /* top: 48px; */
+    transition: opacity 400ms cubic-bezier(0.4, 0.0, 0.2, 1);
+    width: 234px;
+    z-index: 1000;
+
+}
+.row {
+  align-items: center;
+  border-bottom: 1px solid #cdd0de;
+  cursor: pointer;
+  display: flex;
+  height: 46px;
+
+  padding: 0 5px;
+  user-select: none;
+  -moz-user-select: none;
+}
+.row:hover {
+  background: #f8f8f8;
+  color: #3B475C;
+}
+.row:active {
+  background: #f5f5f5;
+  color: #3B475C;
+}
+.expanded.menu {
+  opacity: 1;
+    pointer-events: all; 
+  transition: opacity 400ms 100ms cubic-bezier(0.4, 0.0, 0.2, 1);
 }

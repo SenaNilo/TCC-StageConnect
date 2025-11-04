@@ -82,11 +82,40 @@
                             Mais Antigos
                         @endif
                     </a>
-                    <button class="filter-btn" type="button"> 
+                    <button class="filter-btn" type="button" onclick="openFilterByArea()"> 
                         <span class="material-symbols-rounded">filter_list</span>
                         Filtrar por Área
                     </button>
-                    {{-- Adicione mais botões aqui se precisar --}}
+                    <div class="menu" id="area-menu">
+                        
+                        <div class="contents">
+                            <div class="row">Here</div>
+                            <div class="row">There</div>
+                            <div class="row">Anywhere</div>
+
+                            {{-- LOOP PARA CRIAR OS CHECKBOXES --}}
+                            @foreach ($allTags as $tag)
+                                <div class="row">
+                                    <label for="tag_{{ $tag->id }}">
+                                        {{ $tag->name_tag }}
+                                    </label>
+                                    {{-- Nome do campo 'tag[]' para enviar um array de IDs --}}
+                                    <input type="checkbox" 
+                                        name="tag[]" 
+                                        id="tag_{{ $tag->id }}"
+                                        value="{{ $tag->id }}"
+                                        {{-- Mantém o checkbox checado se o ID estiver no array $selectedTags --}}
+                                        {{ in_array($tag->id, $selectedTags) ? 'checked' : '' }}> 
+                                </div>
+                            @endforeach
+                            
+                            <div class="row filter-actions">
+                                {{-- Este botão SUBMIT enviará todos os filtros de uma vez --}}
+                                <button type="submit" class="btn-apply">Aplicar Filtros</button>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </div>
@@ -185,7 +214,12 @@
        </div>
     </div>
     
-
+    <script>
+        function openFilterByArea() {
+            const menu = document.querySelector('.menu#area-menu');
+            menu.classList.toggle('expanded');
+        }
+    </script>
 </body>
 
 </html>

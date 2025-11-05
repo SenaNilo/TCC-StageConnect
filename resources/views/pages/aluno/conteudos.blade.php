@@ -87,33 +87,42 @@
                         Filtrar por Área
                     </button>
                     <div class="menu" id="area-menu">
-                        
-                        <div class="contents">
-                            <div class="row">Here</div>
-                            <div class="row">There</div>
-                            <div class="row">Anywhere</div>
-
-                            {{-- LOOP PARA CRIAR OS CHECKBOXES --}}
-                            @foreach ($allTags as $tag)
-                                <div class="row">
-                                    <label for="tag_{{ $tag->id }}">
-                                        {{ $tag->name_tag }}
-                                    </label>
-                                    {{-- Nome do campo 'tag[]' para enviar um array de IDs --}}
-                                    <input type="checkbox" 
-                                        name="tag[]" 
-                                        id="tag_{{ $tag->id }}"
-                                        value="{{ $tag->id }}"
-                                        {{-- Mantém o checkbox checado se o ID estiver no array $selectedTags --}}
-                                        {{ in_array($tag->id, $selectedTags) ? 'checked' : '' }}> 
-                                </div>
-                            @endforeach
+                        <form action="{{ route('aluno.' . $origem) }}" method="GET" id="tag-filter-form">
+                            {{-- CAMPOS OCULTOS PARA MANTER O ESTADO DA BUSCA E ORDEM --}}
+                            <input type="hidden" name="search" value="{{ $search ?? '' }}">
+                            <input type="hidden" name="order" value="{{ $orderDirection ?? 'desc' }}">
                             
-                            <div class="row filter-actions">
-                                {{-- Este botão SUBMIT enviará todos os filtros de uma vez --}}
-                                <button type="submit" class="btn-apply">Aplicar Filtros</button>
+                            <div class="contents">
+
+                                {{-- LOOP PARA CRIAR OS CHECKBOXES --}}
+                                @foreach ($allTags as $tag)
+                                    <div class="row">
+                                        <label  for="tag_{{ $tag->id }}">
+                                            {{ $tag->name_tag }}
+                                        </label>
+                                        {{-- Nome do campo 'tag[]' para enviar um array de IDs --}}
+                                        <input type="checkbox" 
+                                            name="tag[]" 
+                                            id="tag_{{ $tag->id }}"
+                                            value="{{ $tag->id }}"
+                                            {{-- Mantém o checkbox checado se o ID estiver no array $selectedTags --}}
+                                            {{ in_array($tag->id, $selectedTags) ? 'checked' : '' }}>
+                                        <label  for="tag_{{ $tag->id }}">
+                                            <svg viewBox="0 0 64 64" height="2em" width="2em">
+                                                <path d="M 0 16 V 56 A 8 8 90 0 0 8 64 H 56 A 8 8 90 0 0 64 56 V 8 A 8 8 90 0 0 56 0 H 8 A 8 8 90 0 0 0 8 V 16 L 32 48 L 64 16 V 8 A 8 8 90 0 0 56 0 H 8 A 8 8 90 0 0 0 8 V 56 A 8 8 90 0 0 8 64 H 56 A 8 8 90 0 0 64 56 V 16" pathLength="575.0541381835938" class="path"></path>
+                                            </svg>
+                                        </label>
+                                    </div>
+                                @endforeach
+                                
+                                
                             </div>
-                        </div>
+                            <div class="row filter-actions">
+                                    {{-- Este botão SUBMIT enviará todos os filtros de uma vez --}}
+                                <button type="submit" class="card-button">Aplicar Filtros</button>
+                            </div>
+
+                        </form>
                     </div>
 
                 </div>

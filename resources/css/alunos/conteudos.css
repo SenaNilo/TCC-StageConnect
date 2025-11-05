@@ -549,12 +549,34 @@ a {
     transition: opacity 400ms cubic-bezier(0.4, 0.0, 0.2, 1);
     width: 234px;
     z-index: 1000;
+    max-height: 450px;
+    overflow-y: scroll;
+}
+.contents::-webkit-scrollbar-track
+{
+	/* -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); */
+	border-radius: 10px;
+	background-color: #8a8a8a;
+}
 
+.contents::-webkit-scrollbar
+{
+	width: 12px;
+	background-color: transparent;
+}
+
+.contents::-webkit-scrollbar-thumb
+{
+	border-radius: 10px;
+	/* -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3); */
+	background-color: rgb(29, 41, 66);
 }
 .row {
   align-items: center;
   border-bottom: 1px solid #cdd0de;
-  cursor: pointer;
+  justify-content: space-between;
+  margin-top: 5px;
+  /* cursor: pointer; */
   display: flex;
   height: 46px;
 
@@ -562,16 +584,51 @@ a {
   user-select: none;
   -moz-user-select: none;
 }
-.row:hover {
-  background: #f8f8f8;
-  color: #3B475C;
+.row:hover, .row:active{
+  background: rgb(17 24 39 / 95%);
+  color: #accaff;
 }
-.row:active {
-  background: #f5f5f5;
-  color: #3B475C;
+
+form>.row:last-of-type {
+  border-bottom: none;
+  padding: 0 15px;
+}
+.row:last-of-type button.card-button{
+    width: 100% ;
+}
+.row:last-of-type:hover, .row:last-of-type:active{
+    background-color: transparent;
+    color: inherit;
 }
 .expanded.menu {
   opacity: 1;
     pointer-events: all; 
   transition: opacity 400ms 100ms cubic-bezier(0.4, 0.0, 0.2, 1);
+}
+
+.row input {
+  display: none;
+}
+.row label {
+  cursor: pointer;
+}
+
+.row svg {
+  overflow: visible;
+}
+
+.path {
+  fill: none;
+  stroke: white;
+  stroke-width: 6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: stroke-dasharray 0.5s ease, stroke-dashoffset 0.5s ease;
+  stroke-dasharray: 241 9999999;
+  stroke-dashoffset: 0;
+}
+
+.row input:checked ~ label svg .path {
+  stroke-dasharray: 70.5096664428711 9999999;
+  stroke-dashoffset: -262.2723388671875;
 }

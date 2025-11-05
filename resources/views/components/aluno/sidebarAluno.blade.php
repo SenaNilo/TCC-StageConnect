@@ -18,15 +18,22 @@
                         </a>
                     </li>
                     <li class="menu-item">
-                        <a href="{{ route('aluno.entrevistas') }}" class="menu-link {{ request()->routeIs('aluno.entrevistas') ? 'active' : '' }}">
+                        <a href="{{ route('aluno.orientacao') }}" class="menu-link {{ request()->routeIs('aluno.entrevistas') ? 'active' : '' }}">
                             <span class="material-symbols-rounded">article_person</span>
-                            <span class="menu-label">Entrevistas e testes</span>
+                            <span class="menu-label">Perfil Profissional</span>
                         </a>
                     </li>
                     <li class="menu-item">
-                        <a href="#" class="menu-link">
+                        <a href="{{ route('aluno.requisitos' )}}" class="menu-link">
                             <span class="material-symbols-rounded">Folder_Code</span>
-                            <span class="menu-label">Áreas técnicas </span>
+                            <span class="menu-label">Áreas Atuação</span>
+                        </a>
+                    </li>
+
+                    <li class="menu-item">
+                        <a href="{{ route('aluno.tecnico') }}" class="menu-link">
+                            <span class="material-symbols-rounded">Code</span>
+                            <span class="menu-label">Codificação</span>
                         </a>
                     </li>
 

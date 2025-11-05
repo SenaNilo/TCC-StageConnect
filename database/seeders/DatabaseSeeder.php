@@ -15,9 +15,12 @@ class DatabaseSeeder extends Seeder
     {
         $this->call([
             AdminUserSeeder::class,
+            CategoriasPrincipaisSeeder::class,
+            TagsSeeder::class,
+            ConteudoBaseSeeder::class,
         ]);
 
-        $this->call(CategoriasPrincipaisSeeder::class);
+        // $this->call(CategoriasPrincipaisSeeder::class);
 
         // User::factory()->create([
         //     'name' => 'Test User',

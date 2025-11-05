@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Usuario;
 use App\Models\Conteudo; 
 use App\Models\Categoria;
+use App\Models\Tag;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
@@ -48,22 +49,38 @@ class PagesController extends Controller
 
     }
 
-    // Orientação Profissional/Material de Apoio
-    public function orientacaoProfissional(Request $request)
+    // Cria um método privado para a lógica de filtro principal, para não repetir código
+    private function getFilteredContent(Request $request, string $categoryName = null)
     {
-        $categoria = Categoria::where('name_category', 'Orientação Profissional/Material de Apoio')->firstOrFail();
-    
-        $query = Conteudo::whereHas('categorias', function ($q) use ($categoria) {
-            $q->where('id_categoria', $categoria->id);
-        })
-        ->where('active_content', true) // Filtra apenas conteúdos ativos
-        ->with('autor', 'tags'); // Carrega relacionamentos para a view
+        // 1. INICIA O QUERY BUILDER
+        $query = Conteudo::query()
+            ->where('active_content', true)
+            ->with('autor', 'tags');
 
+        // Filtra pela Categoria Principal (se o método for específico)
+        if ($categoryName) {
+            $categoria = Categoria::where('name_category', $categoryName)->firstOrFail();
+            $query->whereHas('categorias', function ($q) use ($categoria) {
+                $q->where('id_categoria', $categoria->id);
+            });
+        }
+
+        // --- 2. LÓGICA DE FILTRO POR TAGS ---
+        $allTags = Tag::orderBy('name_tag')->get();
+        $selectedTags = $request->input('tag', []);
         
+        if (!empty($selectedTags)) {
+            // Filtra o conteúdo que possui PELO MENOS uma das tags selecionadas
+            $query->whereHas('tags', function ($q) use ($selectedTags) {
+                $q->whereIn('tags.id', $selectedTags);
+            });
+        }
+        // ------------------------------------
+
+        // 3. LÓGICA DE BUSCA POR TEXTO (Filtro 'search')
         if ($request->filled('search')) {
             $searchTerm = $request->input('search');
             
-            // Aplica o filtro WHERE no Query Builder
             $query->where(function ($q) use ($searchTerm) {
                 $q->where('titulo', 'LIKE', "%{$searchTerm}%")
                 ->orWhere('descricao', 'LIKE', "%{$searchTerm}%")
@@ -73,82 +90,76 @@ class PagesController extends Controller
             });
         }
 
+        // 4. LÓGICA DE ORDENAÇÃO (Toggle 'order')
         $orderDirection = $request->input('order', 'desc');
         $orderDirection = in_array($orderDirection, ['asc', 'desc']) ? $orderDirection : 'desc';
-
         $query->orderBy('dt_created', $orderDirection);
 
-
+        // 5. EXECUTA A CONSULTA
         $conteudos = $query->get();
 
-        // $conteudosOrd = $conteudos->orderBy('dt_created', $orderDirection)->get();
-
-        return view('pages.aluno.conteudos', [
-            'conteudos' => $conteudos, // Usa o resultado final
-            'titulo' => $categoria->name_category,
-            'origem' => 'orientacao',
-            'orderDirection' => $orderDirection, 
+        return [
+            'conteudos' => $conteudos,
+            'orderDirection' => $orderDirection,
             'search' => $request->input('search'),
-        ]);
+            'allTags' => $allTags,
+            'selectedTags' => $selectedTags,
+            'titulo' => $categoryName ?: "Todos os Conteúdos",
+        ];
     }
 
-    // Áreas de Atuação e Requisitos Técnicos
-    public function requisitosTecnicos()
-    {
-        $categoria = Categoria::where('name_category', 'Áreas de Atuação e Requisitos Técnicos')->firstOrFail();
-        
-        $conteudos = Conteudo::whereHas('categorias', function ($query) use ($categoria) {
-            $query->where('id_categoria', $categoria->id);
-        })
-        ->where('active_content', true)
-        ->orderBy('dt_created', 'desc')
-        ->get();
 
-        return view('pages.aluno.conteudos', [
-            'conteudos' => $conteudos,
-            'titulo' => $categoria->name_category,
-            'origem' => 'requisitos'
-        ]);
+    // 1. Orientação Profissional/Material de Apoio
+    public function orientacaoProfissional(Request $request)
+    {
+        $data = $this->getFilteredContent($request, 'Orientação Profissional/Material de Apoio');
+        $data['origem'] = 'orientacao';
+        return view('pages.aluno.conteudos', $data);
     }
 
-    // Conteúdo Técnico Específico
-    public function conteudoTecnico()
+    // 2. Áreas de Atuação e Requisitos Técnicos
+    public function requisitosTecnicos(Request $request) // [ADICIONADO Request]
     {
-        $categoria = Categoria::where('name_category', 'Conteúdo Técnico Específico')->firstOrFail();
-        
-        $conteudos = Conteudo::whereHas('categorias', function ($query) use ($categoria) {
-            $query->where('id_categoria', $categoria->id);
-        })
-        ->where('active_content', true)
-        ->orderBy('dt_created', 'desc')
-        ->get();
-
-        return view('pages.aluno.conteudos', [
-            'conteudos' => $conteudos,
-            'titulo' => $categoria->name_category,
-            'origem' => 'tecnico'
-        ]);
+        $data = $this->getFilteredContent($request, 'Áreas de Atuação e Requisitos Técnicos');
+        $data['origem'] = 'requisitos';
+        return view('pages.aluno.conteudos', $data);
     }
 
-    public function mostrarConteudos()
+    // 3. Conteúdo Técnico Específico
+    public function conteudoTecnico(Request $request) // [ADICIONADO Request]
     {
-        // Busca todos os conteúdos ativos, ordenados pelos mais recentes
-        $conteudos = Conteudo::with('autor', 'tags') // Carrega relacionamentos para a view
-            ->where('active_content', true)
-            ->orderBy('dt_created', 'desc') // Ordena pelos mais novos
-            ->get();
+        $data = $this->getFilteredContent($request, 'Conteúdo Técnico Específico');
+        $data['origem'] = 'tecnico';
+        return view('pages.aluno.conteudos', $data);
+    }
+
+    // 4. Todos os Conteúdos (Se você tiver uma rota que lista tudo)
+    public function mostrarConteudos(Request $request)
+    {
+        $data = $this->getFilteredContent($request, null);
+        $data['origem'] = 'todos';
+        return view('pages.aluno.conteudos', $data);
+    }
+
+    // public function mostrarConteudos()
+    // {
+    //     // Busca todos os conteúdos ativos, ordenados pelos mais recentes
+    //     $conteudos = Conteudo::with('autor', 'tags') // Carrega relacionamentos para a view
+    //         ->where('active_content', true)
+    //         ->orderBy('dt_created', 'desc') // Ordena pelos mais novos
+    //         ->get();
             
-        // Define um título para a página
-        $titulo = "Todos os Conteúdos"; 
+    //     // Define um título para a página
+    //     $titulo = "Todos os Conteúdos"; 
 
-        // Retorna a view 'pages.aluno.conteudos' (plural) 
-        // passando a lista de conteúdos e o título
-        return view('pages.aluno.conteudos', [
-            'conteudos' => $conteudos,
-            'titulo' => $titulo,
-            'origem' => 'todos',
-        ]);
-    }
+    //     // Retorna a view 'pages.aluno.conteudos' (plural) 
+    //     // passando a lista de conteúdos e o título
+    //     return view('pages.aluno.conteudos', [
+    //         'conteudos' => $conteudos,
+    //         'titulo' => $titulo,
+    //         'origem' => 'todos',
+    //     ]);
+    // }
     
     public function mostrarDetalheConteudo($id)
     {

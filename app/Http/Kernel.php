@@ -3,6 +3,7 @@
 namespace App\Http;
 
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
+use Illuminate\Support\Facades\Schedule;
 
 class Kernel extends HttpKernel
 {
@@ -62,4 +63,10 @@ class Kernel extends HttpKernel
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'check.type' => \App\Http\Middleware\CheckUserType::class,
     ];
+
+    protected function schedule(Schedule $schedule)
+    {
+
+        $schedule->command('app:fetch-rss-feeds')->everyThreeHours(); // A cada 3 horas
+    }
 }

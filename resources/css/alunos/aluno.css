@@ -10,7 +10,7 @@
 }
 
 :root {
-    /* Light theme colors */
+    /* Cores: Modo Claro */
     --color-text-primary: #1F2936;
     --color-text-placeholder: #798EAE;
     --color-bg-primary: #f9fafb;
@@ -20,10 +20,14 @@
     --color-hover-primary: #A6121F;
     --color-hover-secondary: #e2e2fb;
     --color-shadow: rgba(0, 0, 0, 0.05);
+    --color-highlight: #A6121F;
+    --color-aviso-bg: rgba(166, 18, 31, 0.05); /* Fundo do card de aviso (vermelho 5%) */
+    --color-aviso-border: #A6121F;       /* Borda do aviso (vermelho escuro) */
+    --color-aviso-icon: #A6121F;
 }
 
 body.dark-theme {
-    /* Dark theme colors */
+    /* Cores: Modo escuro */
     --color-text-primary: #F1F5F9;
     --color-text-placeholder: #A6B7D2;
     --color-bg-primary: #111827;
@@ -32,6 +36,10 @@ body.dark-theme {
     --color-border-hr: #3B475C;
     --color-hover-secondary: #48566a;
     --color-shadow: rgba(0, 0, 0, 0.3);
+    --color-highlight: #F1F5F9;
+    --color-aviso-bg: rgba(239, 68, 68, 0.1);  /* Fundo do aviso (vermelho claro 10%) */
+    --color-aviso-border: rgba(239, 68, 68, 0.4); /* Borda do aviso (vermelho claro 40%) */
+    --color-aviso-icon: #ef4444;
 }
 
 body {

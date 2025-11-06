@@ -357,9 +357,9 @@ section.login .login-form-btn {
 
 
 
-@media (max-width: 992px) {
+@media (max-width: 1383px) {
   .login-box {
-    padding: 177px 90px 33px 85px;
+    padding: 50px 90px 33px 85px;
   }
 
   .image-tilt {

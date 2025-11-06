@@ -83,6 +83,17 @@
       0 => 'Filament\\Widgets\\WidgetsServiceProvider',
     ),
   ),
+  'hosseinhezami/laravel-gemini' => 
+  array (
+    'aliases' => 
+    array (
+      'Gemini' => 'HosseinHezami\\LaravelGemini\\Facades\\Gemini',
+    ),
+    'providers' => 
+    array (
+      0 => 'HosseinHezami\\LaravelGemini\\GeminiServiceProvider',
+    ),
+  ),
   'kirschbaum-development/eloquent-power-joins' => 
   array (
     'providers' => 

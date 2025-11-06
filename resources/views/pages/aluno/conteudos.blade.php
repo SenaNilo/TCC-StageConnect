@@ -12,7 +12,6 @@
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <!-- <link rel="stylesheet" href="{{ asset('css/main.css') }}"> -->
     <link rel="icon" type="image/png" href="{{ asset('images/LogoSFundo.png') }}" />
-    {{-- Adicione a diretiva Vite --}}
     @vite(['resources/css/alunos/aluno.css', 'resources/css/alunos/conteudos.css', 'resources/js/alunos/script-aluno.js', 'resources/js/alunos/modalSair.js'])
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
@@ -215,7 +214,6 @@
                    <p class="message">Você tem certeza que deseja sair?</p>
                </div>
                <div class="actions">
-                   {{-- Garanta que estes IDs batem com o seu JS --}}
                    <button id="confirm-logout-btn" class="desactivate" type="button">Confirmar</button>
                    <button id="cancel-logout-btn" class="cancel" type="button">Cancelar</button>
                </div>

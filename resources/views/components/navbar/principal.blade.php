@@ -11,15 +11,15 @@
     <nav class="nav-desktop">
         <ul class="menu-header">
             <li class="lista-header"><a href="{{ url('/') }}"> Home </a></li>
-            <li class="lista-header">Objetivo</li>
-            <li class="lista-header">Informações</li>
+            <li class="lista-header"><a href="{{ url('/#objetivos') }}"> Objetivos </li>
+            <li class="lista-header"><a href="{{ url('/#proposta') }}"> Guia </a></li>
             <li class="lista-header"><a href="{{ url('/sobre-nos') }}">Sobre nós</a></li>
         </ul>
         <div class="dropdown">
             <button class="botao-nav">Comece já</button>
             <div class="dropdown-content">
                 <a href="{{ route('login') }}">Login</a>
-                <a href="#">Cadastro</a>
+                <a href="{{ route('cadastro') }}">Cadastro</a>
             </div>
         </div>
     </nav>
@@ -31,12 +31,12 @@
         </div>
         <nav>
             <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Objetivo</a></li>
-                <li><a href="#">Informações</a></li>
+                <li><a href="{{ url('/') }}">Home</a></li>
+                <li><a href="{{ url('/#objetivos') }}">Objetivo</a></li>
+                <li><a href="{{ url('/#proposta') }}">Nossa proposta</a></li>
                 <li><a href="{{ url('/sobre-nos') }}">Sobre nós</a></li>
                 <li><a href="{{ route('login') }}">Login</a></li>
-                <li><a href="#">Cadastro</a></li>
+                <li><a href="{{ route('cadastro') }}">Cadastro</a></li>
             </ul>
         </nav>
     </div>

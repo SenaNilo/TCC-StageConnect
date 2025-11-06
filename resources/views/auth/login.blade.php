@@ -82,7 +82,7 @@
 						<span class="txt1">
 							Esqueci minha
 						</span>
-						<a class="txt2" href="#">
+						<a class="txt2" href="{{ route('password.request') }}">
 							Senha
 						</a>
 					</div>

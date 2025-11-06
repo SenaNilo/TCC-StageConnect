@@ -5,11 +5,12 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Usuario;
-use App\Models\Conteudo; 
+use App\Models\Conteudo;
 use App\Models\Categoria;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Password;
 
 class PagesController extends Controller
 {
@@ -17,15 +18,18 @@ class PagesController extends Controller
     //     return view('index');
     // }
 
-    public function login(){
+    public function login()
+    {
         return view('auth.login');
     }
 
-    public function cadastro(){
+    public function cadastro()
+    {
         return view('auth.cadastro');
     }
 
-    public function stageconnect(){
+    public function stageconnect()
+    {
         $categoriaOrientacao = Categoria::where('name_category', 'Orientação Profissional/Material de Apoio')->first();
         $categoriaRequisitos = Categoria::where('name_category', 'Áreas de Atuação e Requisitos Técnicos')->first();
         $categoriaTecnico = Categoria::where('name_category', 'Conteúdo Técnico Específico')->first();
@@ -45,20 +49,19 @@ class PagesController extends Controller
 
         // Se o tipo de usuário não for nem ADM nem ALU, redireciona
         return redirect()->route('login')->with('error', 'Você não tem permissão para acessar esta página.');
-
     }
 
     // Orientação Profissional/Material de Apoio
     public function orientacaoProfissional()
     {
         $categoria = Categoria::where('name_category', 'Orientação Profissional/Material de Apoio')->firstOrFail();
-        
+
         $conteudos = Conteudo::whereHas('categorias', function ($query) use ($categoria) {
             $query->where('id_categoria', $categoria->id);
         })
-        ->where('active_content', true) // Filtra apenas conteúdos ativos
-        ->orderBy('dt_created', 'desc') // Ordena por mais recente
-        ->get();
+            ->where('active_content', true) // Filtra apenas conteúdos ativos
+            ->orderBy('dt_created', 'desc') // Ordena por mais recente
+            ->get();
 
         return view('pages.aluno.conteudos', [
             'conteudos' => $conteudos,
@@ -71,13 +74,13 @@ class PagesController extends Controller
     public function requisitosTecnicos()
     {
         $categoria = Categoria::where('name_category', 'Áreas de Atuação e Requisitos Técnicos')->firstOrFail();
-        
+
         $conteudos = Conteudo::whereHas('categorias', function ($query) use ($categoria) {
             $query->where('id_categoria', $categoria->id);
         })
-        ->where('active_content', true)
-        ->orderBy('dt_created', 'desc')
-        ->get();
+            ->where('active_content', true)
+            ->orderBy('dt_created', 'desc')
+            ->get();
 
         return view('pages.aluno.conteudos', [
             'conteudos' => $conteudos,
@@ -90,13 +93,13 @@ class PagesController extends Controller
     public function conteudoTecnico()
     {
         $categoria = Categoria::where('name_category', 'Conteúdo Técnico Específico')->firstOrFail();
-        
+
         $conteudos = Conteudo::whereHas('categorias', function ($query) use ($categoria) {
             $query->where('id_categoria', $categoria->id);
         })
-        ->where('active_content', true)
-        ->orderBy('dt_created', 'desc')
-        ->get();
+            ->where('active_content', true)
+            ->orderBy('dt_created', 'desc')
+            ->get();
 
         return view('pages.aluno.conteudos', [
             'conteudos' => $conteudos,
@@ -112,9 +115,9 @@ class PagesController extends Controller
             ->where('active_content', true)
             ->orderBy('dt_created', 'desc') // Ordena pelos mais novos
             ->get();
-            
+
         // Define um título para a página
-        $titulo = "Todos os Conteúdos"; 
+        $titulo = "Todos os Conteúdos";
 
         // Retorna a view 'pages.aluno.conteudos' (plural) 
         // passando a lista de conteúdos e o título
@@ -124,7 +127,7 @@ class PagesController extends Controller
             'origem' => 'todos',
         ]);
     }
-    
+
     public function mostrarDetalheConteudo($id)
     {
         // Busca o conteúdo pelo ID, garantindo que esteja ativo e carregando os relacionamentos
@@ -135,7 +138,8 @@ class PagesController extends Controller
         return view('pages.aluno.conteudo-detalhe', compact('conteudo'));
     }
 
-    public function adminIndex(){
+    public function adminIndex()
+    {
         // rota -> return view('pages.admin.index');
 
         // 1. Verifica se o usuário está logado
@@ -153,7 +157,6 @@ class PagesController extends Controller
 
         // Se o tipo de usuário não for ADM, redireciona
         return redirect()->route('stageconnect')->with('error', 'Você não tem permissão para acessar esta página.');
-
     }
 
     /**
@@ -164,7 +167,7 @@ class PagesController extends Controller
         // Validação dos dados
         $validator = Validator::make($request->all(), [
             'name_user' => ['required', 'string', 'max:25'],
-            'email' => ['required', 'string', 'email', 'max:20', 'unique:usuarios,email'], // 'unique:tabela,coluna'
+            'email' => ['required', 'string', 'email', 'max:200', 'unique:usuarios,email'], // 'unique:tabela,coluna'
             'password' => ['required', 'string', 'min:6', 'confirmed'], // 'confirmed' exige um campo 'password_confirmation'
         ], [
             // Mensagens de erro para ir para formualrio
@@ -172,7 +175,7 @@ class PagesController extends Controller
             'name_user.max' => 'O Nome não pode ter mais de 25 caracteres.',
             'email.required' => 'O campo Email é obrigatório.',
             'email.email' => 'Por favor, insira um email válido.',
-            'email.max' => 'O Email não pode ter mais de 20 caracteres.',
+            'email.max' => 'O Email não pode ter mais de 200 caracteres.',
             'email.unique' => 'Este email já está cadastrado.',
             'password.required' => 'O campo Senha é obrigatório.',
             'password.min' => 'A senha deve ter pelo menos 6 caracteres.',
@@ -182,8 +185,8 @@ class PagesController extends Controller
         // Se a validação falhar, redireciona de volta com os erros e os dados antigos
         if ($validator->fails()) {
             return redirect()->back()
-                        ->withErrors($validator)
-                        ->withInput();
+                ->withErrors($validator)
+                ->withInput();
         }
 
         // Usa o modelo Usuario para criar um novo registro na tabela 'usuarios'
@@ -197,7 +200,7 @@ class PagesController extends Controller
 
         // login apos o cadastro
         Auth::login($usuario);
-        
+
         // Redireciona para a rota 'stageconnect' (nome da rota em web.php)
         return redirect()->route('login')->with('success', 'Usuário cadastrado com sucesso!');
     }
@@ -250,4 +253,67 @@ class PagesController extends Controller
         return redirect()->route('login')->with('success', 'Você foi desconectado.'); // Redireciona para a página inicial
     }
 
+    public function mostrarFormEsqueciSenha()
+    {
+        return view('auth.esqueci-senha');
+    }
+
+    public function enviarLinkReset(Request $request)
+    {
+        // Validação do email
+        $request->validate([
+            'email' => 'required|email|exists:usuarios,email',
+        ], [
+            'email.required' => 'O campo Email é obrigatório.',
+            'email.email' => 'Por favor, insira um email válido.',
+            'email.exists' => 'Não encontramos um usuário com esse email.',
+        ]);
+
+        // Aqui você implementaria a lógica para enviar o email de reset de senha.
+        // Por enquanto, vamos apenas redirecionar de volta com uma mensagem de sucesso.
+
+        $status = Password::sendResetLink($request->only('email'));
+
+        if ($status == Password::RESET_LINK_SENT) {
+            return back()->with('status', 'Link de redefinição enviado para seu e-mail!');
+        } else {
+            // Se falhou (ex: e-mail não existe), volta com erro
+            return back()->withErrors(['email' => 'Não encontramos um usuário com este e-mail.']);
+        }
+    }
+
+    public function mostrarFormRedefinir(Request $request, $token = null)
+    {
+        // Nós vamos criar esta view no próximo passo
+        // O $token vem da URL (ex: /redefinir-senha/token12345)
+        return view('auth.redefinir-senha')->with(
+            ['token' => $token, 'email' => $request->email]
+        );
+    }
+
+    public function redefinirSenha(Request $request)
+    {
+        $request->validate([
+            'token' => 'required',
+            'email' => 'required|email',
+            'password' => 'required|confirmed|min:8', // 'confirmed' = checa se 'password' e 'password_confirmation' são iguais
+        ]);
+
+        // A "mágica" do Laravel para redefinir a senha
+        $status = Password::reset($request->only(
+            'email', 'password', 'password_confirmation', 'token'
+        ), function ($user, $password) {
+            $user->forceFill([
+                'password_user' => Hash::make($password)
+            ])->save();
+        });
+
+        if ($status == Password::PASSWORD_RESET) {
+            // Se funcionou, manda o usuário para o Login com uma mensagem de sucesso
+            return redirect()->route('login')->with('status', 'Sua senha foi redefinida com sucesso!');
+        } else {
+            // Se o token for inválido ou expirado
+            return back()->withErrors(['email' => 'Este link de redefinição é inválido ou expirou.']);
+        }
+    }
 }

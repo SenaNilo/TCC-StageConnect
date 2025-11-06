@@ -18,7 +18,7 @@
 <body>
 
     <header class="finisher-header" style="position: relative;">
-        @include('components.navbar.navbarPrincipal')
+         <x-navbar.principal />
     </header>
 
     <section class="us-principal">
@@ -33,8 +33,8 @@
                 <div class="card__title">Larissa Fernanda</div>
                 <div class="card__subtitle">Desenvolvedora FullStack</div>
                 <div class="card__wrapper">
-                    <button class="card__btn">LinkedIn</button>
-                    <button class="card__btn card__btn-solid"> Ver mais</button>
+                    <button class="card__btn"> <a href="https://www.linkedin.com/in/larissafsantos685/" target="_blank"> LinkedIn </a></button>
+                    <button class="card__btn card__btn-solid"><a href="https://larifsantos685.github.io/larissafportfolio/"> Ver mais </a></button>
                 </div>
             </div>
 
@@ -47,8 +47,8 @@
                 <div class="card__title">Danilo Sena</div>
                 <div class="card__subtitle">Desenvolvedor FullStack</div>
                 <div class="card__wrapper">
-                    <button class="card__btn">LinkedIn</button>
-                    <button class="card__btn card__btn-solid">Ver mais</button>
+                    <button class="card__btn"> <a href="https://www.linkedin.com/in/danilo-s-s/" target="_blank"> LinkedIn </a></button>
+                    <button class="card__btn card__btn-solid"> <a href="https://senanilo.github.io/MeuPortfolio/"> Ver mais </a></button>
                 </div>
             </div>
 
@@ -61,39 +61,15 @@
                 <div class="card__title">Cristhofer Chow </div>
                 <div class="card__subtitle">Infraestrutura </div>
                 <div class="card__wrapper">
-                    <button class="card__btn">LinkedIn</button>
-                    <button class="card__btn card__btn-solid">Ver mais</button>
+                    <button class="card__btn"><a href="https://www.linkedin.com/in/cristhoferchow/"> LinkedIn </a></button>
+                    <button class="card__btn card__btn-solid"> <a href="https://www.linkedin.com/in/cristhoferchow/"> Ver mais </a></button>
                 </div>
             </div>
 
         </div>
     </section>
     
-    <footer class="footer footer-container">
-        <div class="footer-logo">
-            <img src="{{ asset('images/LogoSFundo.png') }}" alt="Logo StageConnect">
-            <p>StageConnect</p>
-        </div>
-        <div class="footer-informacoes">
-            <h3>Informações</h3>
-            <ul>
-                <li><a href="#">Objetivos</a></li>
-                <li><a href="#">Sobre nós</a></li>
-            </ul>
-        </div>
-        <div class="footer-informacoes">
-            <h3>Informações</h3>
-            <ul>
-                <li><a href="#">Funcionamento</a></li>
-            </ul>
-        </div>
-        <div class="footer-contatos">
-            <h3>Contatos</h3>
-            <p><i class="bi bi-telephone-fill"></i> 13 98890-2910</p>
-            <p><i class="bi bi-envelope-fill"></i> email@gmail.com</p>
-        </div>
-    </footer>
-
+  <x-footer />
    <script>
         const btnAbrir = document.getElementById("btn-abrir-menu");
         const btnFechar = document.getElementById("btn-fechar-menu");

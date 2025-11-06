@@ -14,6 +14,10 @@ use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Table;
+use Illuminate\Support\Facades\Auth;
+use UnitEnum;
+
+
 //use Illuminate\Support\Facades\Auth;
 
 class ConteudoResource extends Resource
@@ -22,7 +26,13 @@ class ConteudoResource extends Resource
 
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
 
+    protected static string | UnitEnum | null $navigationGroup = 'Gerenciamento de Conteúdo';
+
     protected static ?string $recordTitleAttribute = 'Conteudo';
+
+    protected static ?string $navigationLabel = 'Conteúdos';
+
+    
 
     public static function form(Schema $schema): Schema
     {
@@ -56,9 +66,9 @@ class ConteudoResource extends Resource
         ];
     }
 
-    protected static function mutateFormDataBeforeCreate(array $data): array 
+    protected static function mutateFormDataBeforeCreate(array $data): array
     {
-        $data['autor_id'] = auth()->id();
+        $data['autor_id'] = Auth::id();
         $data['active_content'] = true;
 
         return $data;

@@ -16,13 +16,17 @@ class UsuarioInfolist
                 ImageEntry::make('foto_perfil')
                     ->label('Foto de Perfil')
                     ->disk('public'),
-                TextEntry::make('name_user'),
+                TextEntry::make('name_user')
+                    ->label('Nome'),
                 TextEntry::make('email')
-                    ->label('Email address'),
-                TextEntry::make('type_user'),
+                    ->label('Email'),
+                TextEntry::make('type_user')
+                    ->label('Tipo de Usuário'),
                 TextEntry::make('dt_created')
+                    ->label('Data de Criação')
                     ->dateTime(),
                 IconEntry::make('active_user')
+                    ->label('Ativo')
                     ->boolean(),
             ]);
     }

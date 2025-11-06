@@ -18,20 +18,25 @@ class UsuariosTable
         return $table
             ->columns([
                 ImageColumn::make('foto_perfil')
-                    ->label('Foto')
+                    ->label('Foto de perfil')
                     ->circular()
                     ->disk('public')
-                    ->url(fn ($record) => asset('storage/' . $record->foto_perfil)), // Corrigido,
+                    ->url(fn($record) => asset('storage/' . $record->foto_perfil)), // Corrigido,
                 TextColumn::make('name_user')
+                    ->label('Nome')
                     ->searchable(),
                 TextColumn::make('email')
-                    ->label('Email address')
+                    ->label('Email')
                     ->searchable(),
-                TextColumn::make('type_user'),
+                TextColumn::make('type_user')
+                    ->label('Tipo de usuário')
+                    ->searchable(),
                 TextColumn::make('dt_created')
+                    ->label('Data de criação')
                     ->dateTime()
                     ->sortable(),
                 IconColumn::make('active_user')
+                    ->label('Ativo')
                     ->boolean(),
             ])
             ->filters([

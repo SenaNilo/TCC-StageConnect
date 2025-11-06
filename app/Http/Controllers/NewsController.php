@@ -14,6 +14,6 @@ class NewsController extends Controller
             ->latest('published_at') // Ordena pelos mais novos
             ->paginate(10); // Mostra 10 por página
 
-        return view('pages.aluno.entrevistas', ['posts' => $posts]);
+        return view('pages.aluno.noticias-tech', ['posts' => $posts]);
     }
 }

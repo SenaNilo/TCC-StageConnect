@@ -18,40 +18,40 @@
                   </a>
               </li>
               <li class="menu-item">
-                  <a href="{{ route('aluno.orientacao') }}" class="menu-link {{ request()->routeIs('aluno.entrevistas') ? 'active' : '' }}">
+                  <a href="{{ route('aluno.orientacao') }}" class="menu-link {{ request()->routeIs('aluno.orientacao') ? 'active' : '' }}">
                       <span class="material-symbols-rounded">article_person</span>
                       <span class="menu-label">Perfil Profissional</span>
                   </a>
               </li>
               <li class="menu-item">
-                  <a href="{{ route('aluno.requisitos' )}}" class="menu-link">
+                  <a href="{{ route('aluno.requisitos' )}}" class="menu-link {{ request()->routeIs('aluno.requisitos') ? 'active' : '' }}">
                       <span class="material-symbols-rounded">Folder_Code</span>
                       <span class="menu-label">Áreas Atuação</span>
                   </a>
               </li>
 
               <li class="menu-item">
-                  <a href="{{ route('aluno.tecnico') }}" class="menu-link">
+                  <a href="{{ route('aluno.tecnico') }}" class="menu-link {{ request()->routeIs('aluno.tecnico') ? 'active' : '' }}">
                       <span class="material-symbols-rounded">Code</span>
                       <span class="menu-label">Codificação</span>
                   </a>
               </li>
               <li class="menu-item">
-                  <a href="{{ route('aluno.entrevistas') }}" class="menu-link {{ request()->routeIs('aluno.entrevistas') ? 'active' : '' }}">
+                  <a href="{{ route('aluno.noticias-tech') }}" class="menu-link {{ request()->routeIs('aluno.noticias-tech') ? 'active' : '' }}">
                       <span class="material-symbols-rounded">news</span>
                       <span class="menu-label">Noticias Tech</span>
                   </a>
               </li>
 
               <li class="menu-item">
-                  <a href="{{ route('aluno.curriculo.form') }}" class="menu-link">
+                  <a href="{{ route('aluno.curriculo.form') }}" class="menu-link {{ request()->routeIs('aluno.curriculo.form') ? 'active' : '' }}">
                       <span class="material-symbols-rounded">article_person</span>
                       <span class="menu-label">Currículo com IA</span>
                   </a>
               </li>
 
               <li class="menu-item">
-                  <a href="{{ route('aluno.userSettings') }}" class="menu-link  {{ request()->routeIs('aluno.userSettings') ? 'active' : '' }}">
+                  <a href="{{ route('aluno.configuracoes-aluno') }}" class="menu-link  {{ request()->routeIs('aluno.configuracoes-aluno') ? 'active' : '' }}">
                       <span class="material-symbols-rounded">Settings</span>
                       <span class="menu-label"> Configurações </span>
                   </a>

@@ -31,13 +31,6 @@ Route::post('/cadastro', [PagesController::class, 'storeCadastro'])->name('store
 Route::post('/logout', [PagesController::class, 'logout'])->name('logout');
 
 
-// Middleware para barrar usuarios nao autenticados
-// Route::get('/stage-connect', [PagesController::class, 'stageconnect'])->name('stageconnect');
-//     Route::get('/stage-connect/orientacao', [PagesController::class, 'orientacaoProfissional'])->name('aluno.orientacao');
-//     Route::get('/stage-connect/requisitos', [PagesController::class, 'requisitosTecnicos'])->name('aluno.requisitos');
-//     Route::get('/stage-connect/tecnico', [PagesController::class, 'conteudoTecnico'])->name('aluno.tecnico');
-//     Route::get('/stage-connect/conteudo/{id}', [PagesController::class, 'mostrarDetalheConteudo'])->name('aluno.conteudo.detalhe');
-
 // Pagina inicial do admin
 Route::redirect('/admin', '/filament'); // Esta é a rota que criamos antes para o redirecionamento
 
@@ -55,17 +48,14 @@ Route::middleware(['auth'])->prefix('aluno')->name('aluno.')->group(function () 
     Route::post('/curriculo/analisar', [CurriculoController::class, 'analisar'])->name('curriculo.analisar');
 
     Route::get('/', [AlunoController::class, 'showIndex'])->name('index');
-    // Route::get('/entrevistas', [AlunoController::class, 'showEntrevistas'])->name('entrevistas');
-    Route::get('/entrevistas', [NewsController::class, 'index'])->name('entrevistas');
+    Route::get('/noticias-tech', [NewsController::class, 'index'])->name('noticias-tech');
     // Rotas para a seção de conteúdos
     Route::get('/conteudos', [PagesController::class, 'mostrarConteudos'])->name('conteudos');
     Route::get('/conteudo/{id}', [PagesController::class, 'mostrarDetalheConteudo'])->name('conteudo.detalhe');
 
-    // Rota para a página de 'Áreas técnicas'
-    Route::get('/areas-tecnicas', [AlunoController::class, 'showAreasTecnicas'])->name('areastecnicas');
 
     //Rotas de edição de configuração
-    Route::get('/configuracoes', [ConfiguracoesController::class, 'edit'])->name('userSettings');
+    Route::get('/configuracoes', [ConfiguracoesController::class, 'edit'])->name('configuracoes-aluno');
     Route::put('/configuracoes/updated', [ConfiguracoesController::class, 'updatedProfile'])->name('config.updatedProfile');
     Route::delete('/configuracoes/deactivate', [ConfiguracoesController::class, 'deactivateAccount'])->name('config.deactivate');
 });

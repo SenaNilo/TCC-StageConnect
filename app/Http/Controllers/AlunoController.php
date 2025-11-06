@@ -14,32 +14,15 @@ class AlunoController extends Controller
         return view('pages.aluno.index');
     }
 
-     /**
-     * Mostra a página de entrevistas.
-     */
-    public function showEntrevistas(): View
-    {
-        // Aqui você pode buscar dados do banco de dados se precisar
-        // Por enquanto, vamos apenas retornar a view.
-
-        // O Laravel vai procurar por 'resources/views/aluno/entrevistas.blade.php'
-        return view('pages.aluno.entrevistas'); 
-    }
-
-    /**
-     * Mostra a página de áreas técnicas.
-     */
-    public function showAreasTecnicas(): View
-    {
-        // Crie um arquivo em 'resources/views/aluno/areas_tecnicas.blade.php'
-        // para esta página.
-        return view('pages.aluno.areastecnicas');
+    public function showNoticiasTech(): View
+    {      
+        return view('pages.aluno.noticias-tech'); 
     }
 
        public function showConfiguracoes(): View
     {
         // Crie um arquivo em 'resources/views/aluno/areas_tecnicas.blade.php'
         // para esta página.
-        return view('pages.aluno.userSettings');
+        return view('pages.aluno.configuracoes-aluno');
     }
 }

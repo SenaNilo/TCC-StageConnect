@@ -22,7 +22,7 @@ class ConfiguracoesController extends Controller
         $user = Auth::user();
 
 
-        return view('pages.aluno.userSettings', compact('user'));
+        return view('pages.aluno.configuracoes-aluno', compact('user'));
     }
     public function updatedProfile(Request $request)
     {
@@ -69,14 +69,13 @@ class ConfiguracoesController extends Controller
 
             $path = $request->file('profilePicture')->store('fotos_perfil', 'public');
             $user->foto_perfil = $path;
-           
         }
 
 
         $user->save();
 
 
-        return redirect()->route('aluno.userSettings')->with('success', 'Perfil atualizado com sucesso!');
+        return redirect()->route('aluno.configuracoes-aluno')->with('success', 'Perfil atualizado com sucesso!');
     }
 
 

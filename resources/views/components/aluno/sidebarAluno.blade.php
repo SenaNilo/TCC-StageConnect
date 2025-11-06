@@ -45,7 +45,7 @@
 
               <li class="menu-item">
                   <a href="{{ route('aluno.curriculo.form') }}" class="menu-link {{ request()->routeIs('aluno.curriculo.form') ? 'active' : '' }}">
-                      <span class="material-symbols-rounded">article_person</span>
+                      <span class="material-symbols-rounded">wand_stars</span>
                       <span class="menu-label">Currículo com IA</span>
                   </a>
               </li>

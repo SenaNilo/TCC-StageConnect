@@ -632,3 +632,123 @@ form>.row:last-of-type {
   stroke-dasharray: 70.5096664428711 9999999;
   stroke-dashoffset: -262.2723388671875;
 }
+
+.pagination-links {
+    padding: 20px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+/* 1. CORREÇÃO DO ALINHAMENTO DO TEXTO */
+    display: flex;
+    flex-direction: column; /* Empilha o texto e os botões */
+    align-items: center;    /* Centraliza tudo */
+    gap: 0.75rem; /* 12px de espaço entre o texto e os botões */
+}
+
+/* Remove os estilos padrão do <nav> do Laravel */
+.pagination-links nav {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem; /* Espaço entre "Anterior/Próximo" e os números */
+}
+
+/* Esconde o container padrão dos números */
+.pagination-links nav > div:first-child {
+    display: none; /* Esconde o "Showing X to Y..." padrão */
+}
+.pagination-links .page-link[rel="prev"]::before,
+.pagination-links .page-link[rel="next"]::after {
+    content: ''; /* Remove o conteúdo padrão (setas) */
+}
+
+/* A lista <ul> que segura os links */
+.pagination-links .pagination {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 5px; /* Espaço entre cada caixa de número */
+}
+
+.pagination-links .page-item {
+    /* (Não precisa de estilo, como conversamos) */
+}
+
+/* Estilo dos links (os <a> e <span> dentro dos <li>) */
+.pagination-links .page-link,
+.pagination-links .page-item.disabled .page-link,
+.pagination-links .page-item.active .page-link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 40px; /* Largura mínima */
+    height: 40px;    /* Altura fixa */
+    padding: 8px 12px;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 8px; /* Seu padrão de borda */
+    font-size: 0.875rem;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    border: 1px solid var(--color-border-hr);
+    background-color: var(--color-bg-sidebar); /* Fundo do card */
+    color: var(--color-text-placeholder);
+}
+
+/* Link: Hover (passar o mouse) */
+.pagination-links .page-item:not(.active) .page-link:hover {
+    background-color: var(--color-hover-secondary);
+    color: var(--color-text-primary);
+    border-color: var(--color-hover-secondary);
+}
+
+/* Link: Ativo (página atual) */
+.pagination-links .page-item.active .page-link {
+    background-color: var(--color-hover-primary); /* Seu vermelho */
+    border-color: var(--color-hover-primary);
+    color: #ffffff;
+    font-weight: 700;
+    z-index: 2;
+}
+
+/* Link: Desabilitado (setas "anterior" e "próximo" no limite) */
+.pagination-links .page-item.disabled .page-link {
+    color: var(--color-border-hr);
+    background-color: var(--color-bg-primary);
+    pointer-events: none; /* Desativa o clique */
+}
+
+/* Esconde os números (1, 2, 3...) - Opcional */
+/* Descomente as 3 linhas abaixo se você quiser SÓ "Anterior" e "Próximo" */
+/* .pagination-links .page-item:not(:first-child):not(:last-child) {
+    display: none; 
+} */
+
+/* Esconde os labels de "Previous" e "Next" (deixa só as setas) */
+.pagination-links .page-link .sr-only {
+    display: none;
+}
+
+/* Estiliza as "Setas" (Anterior/Próximo) */
+.pagination-links .page-item:first-child .page-link,
+.pagination-links .page-item:last-child .page-link {
+    padding: 8px; /* Menos padding lateral para as setas */
+    font-weight: 600;
+    color: var(--color-text-primary);
+}
+
+/* Remove os ícones feios (as setas < >) */
+.pagination-links .page-item:first-child .page-link svg,
+.pagination-links .page-item:last-child .page-link svg {
+    display: none; 
+}
+
+/* Adiciona o texto (se você APAGOU o SVG do blade) */
+.pagination-links .page-item:first-child .page-link::before {
+    content: 'Anterior';
+}
+.pagination-links .page-item:last-child .page-link::after {
+    content: 'Próximo';
+}

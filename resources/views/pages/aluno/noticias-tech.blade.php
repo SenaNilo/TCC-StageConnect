@@ -36,9 +36,14 @@ use Illuminate\Support\Str;
         <div class="main-content">
             <div class="main-inicial">
 
-                {{-- Título da Página (como no seu menu) --}}
-                <h1 class="page-title">Notícias Tech</h1>
-
+                <div class="page-header">
+                    {{-- Título da Página (como no seu menu) --}}
+                    <h1 class="page-title">Notícias e Artigos Tech</h1>
+                    <p> Fique por dentro das principais notícias e tendências da tecnologia, além de artigos que ampliam seu conhecimento.
+                        <br>
+                        <em>(Créditos das publicações pertencem aos seus respectivos autores.)</em>
+                    </p>
+                </div>
                 {{-- LÓGICA DA FOTO DE PERFIL (Mantida) --}}
                 @if (Auth::user()->foto_perfil)
                 <img src="{{ asset('storage/' . Auth::user()->foto_perfil) }}"
@@ -152,7 +157,7 @@ use Illuminate\Support\Str;
             </div> {{-- Fim do content-grid --}}
 
             {{-- =========== LINKS DE PAGINAÇÃO =========== --}}
-            <div class="pagination-links" style="padding: 20px 0; display: flex; justify-content: center;">
+            <div class="pagination-links">
                 {{ $posts->links() }}
             </div>
 

@@ -98,7 +98,10 @@
                     <span class="jornada-etapa"></span>
                     <h2>Por onde começar</h2>
                     <p>
-                        O mundo da tecnologia é gigante e a área tem crescido. "ADS, SI ou CD?", "Front ou Back?", "O que faz um DevOps?", "O que se faz na área de dados?", "Que experiência/projetos posso ter fazer para melhorar meu prossionalismo". Se você não tem quem indique ou quem aconselhe, você começa a faculdade sem saber para onde ir, ou as vezes nem começa, e também não sabe como avaçar pra ser um profissional de ti  econseguir talvez sua primeira vaga. <span class="negrito-texto"> O StageConnect nasceu para ser o seu guia. </span>
+                        O mundo da tecnologia é vasto e está em constante crescimento. “ADS, SI ou CD?”, “Front ou Back?”, “O que faz um DevOps?”, “Como funciona a área de dados?”, “Que experiências e projetos posso desenvolver para evoluir profissionalmente?” — são dúvidas comuns para quem está começando.
+                        <br><br>
+                        Se você não tem alguém para orientar ou aconselhar, pode acabar iniciando a faculdade sem direção — ou até desistindo antes de começar — sem saber como avançar na carreira ou conquistar sua primeira vaga na área.
+                        <span class="negrito-texto">O StageConnect nasceu para ser o seu guia.</span>
                     </p>
                 </div>
             </div>
@@ -111,7 +114,8 @@
                     <span class="jornada-etapa"></span>
                     <h2>Encontre a sua direção</h2>
                     <p>
-                       Como estudantes de TI, nós sentimos essa mesma confusão. Por isso criamos o StageConnect: um espaço que traz as informações que você procura sobre a área de tecnologia. Aqui você encontra guias claros sobre o que cada área faz, dicas sobre entrevistas técnicas, portfólios, e muito mais para te em toda sua jornada.
+                        Como estudantes de TI, nós também já sentimos essa incerteza. Por isso criamos o StageConnect — um espaço feito para reunir as informações que você procura sobre o universo da tecnologia.
+                        Aqui você encontra guias claros sobre cada área, dicas sobre entrevistas técnicas, portfólios e muito mais para acompanhar você em toda a sua jornada.
                     </p>
                 </div>
             </div>
@@ -124,7 +128,8 @@
                     <span class="jornada-etapa"></span>
                     <h2>Prepare-se com ferramentas reais</h2>
                     <p>
-                        Não é só teoria. Use nosso <span class="negrito-texto"> Analisador de Currículo com IA </span> para otimizar seu currículo. Ele lê seu PDF, identifica pontos fortes, sugere melhorias e (na versão completa) até compara seu perfil com a descrição de uma vaga real!
+                        Não é só teoria. Utilize o <span class="negrito-texto">Analisador de Currículo com IA</span> para otimizar o seu currículo.
+                        Ele lê seu PDF, identifica pontos fortes, sugere melhorias e, na versão completa, compara seu perfil com a descrição de uma vaga real!
                     </p>
                 </div>
             </div>
@@ -233,7 +238,6 @@
             origin: 'left', // O passo reverso vem da esquerda
             distance: '50px'
         });
-
     </script>
 </body>
 

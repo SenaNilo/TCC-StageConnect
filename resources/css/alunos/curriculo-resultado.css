@@ -1,0 +1,232 @@
+/* --- Cabeçalho --- */
+.main-header {
+    font-size: 1.875rem;
+    font-weight: 700;
+    color: var(--color-text-primary);
+    /* <- Sua variável */
+    margin-bottom: 0.5rem;
+}
+
+.main-subheader {
+    margin-bottom: 2rem;
+    color: var(--color-text-placeholder);
+    /* <- Sua variável */
+}
+
+.btn-voltar {
+    display: inline-block;
+    background-color: var(--color-hover-primary);
+    /* <- Sua variável */
+    color: #ffffff;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    font-weight: 500;
+    font-size: 0.875rem;
+    transition: background-color 0.2s;
+}
+
+.negrito {
+    font-weight: 700;
+}
+
+.btn-voltar:hover {
+    background-color: #870917;
+    /* Seu .btn-card:hover */
+}
+
+/* --- Layout do Dashboard --- */
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+}
+
+.left-column,
+.right-column {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+/* --- Cards --- */
+/* ATENÇÃO: Renomeei para '.ia-card' para evitar conflito
+   com a altura fixa do '.card' do seu aluno.css 
+*/
+.ia-card {
+    background-color: var(--color-bg-sidebar);
+    /* <- Sua variável */
+    border: 1px solid var(--color-border-hr);
+    /* <- Sua variável */
+    border-radius: 8px;
+    /* <- Seu padrão */
+    box-shadow: 0 3px 9px var(--color-shadow);
+    /* <- Sua variável */
+    padding: 1.5rem;
+    height: auto;
+    /* IMPORTANTE: Garante que a altura é automática */
+}
+
+.ia-card .card-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--color-text-primary);
+    /* <- Sua variável */
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+}
+
+.ia-card .card-title svg {
+    width: 1.5rem;
+    height: 1.5rem;
+    margin-right: 0.5rem;
+}
+
+.icon-green {
+    color: #22c55e;
+}
+
+/* Verde */
+.icon-orange {
+    color: #f97316;
+}
+
+/* Laranja */
+
+.icon-arrow-green {
+    color: #22c55e;
+    margin-right: 0.5rem;
+    flex-shrink: 0;
+    margin-top: 5px;
+    width: 1rem;
+    height: 1rem;
+}
+
+.icon-arrow-orange {
+    color: #f97316;
+    margin-right: 0.5rem;
+    flex-shrink: 0;
+    margin-top: 5px;
+    width: 1rem;
+    height: 1rem;
+}
+
+/* --- Listas de pontos --- */
+.ia-card ul {
+    list-style: none;
+}
+
+.ia-card ul li {
+    display: flex;
+    align-items: flex-start;
+    line-height: 1.6;
+    color: var(--color-text-primary);
+    /* <- Sua variável */
+}
+
+.ia-card ul li:not(:last-child) {
+    margin-bottom: 0.75rem;
+}
+
+/* --- Coluna da Direita --- */
+.ia-card .card-subheader {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--color-text-primary);
+    /* <- Sua variável */
+    margin-bottom: 0.5rem;
+}
+
+.ia-card .area-text {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--color-highlight);
+    /* <- Sua variável (vermelho) */
+}
+
+/* --- Tags de Habilidade --- */
+.tags-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.tag {
+    background-color: var(--color-bg-secondary);
+    /* <- Sua variável */
+    color: var(--color-text-primary);
+    /* <- Sua variável */
+    border-radius: 9999px;
+    padding: 0.25rem 0.75rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+}
+
+/* --- Layout Responsivo --- */
+@media (min-width: 1024px) {
+    .dashboard-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .grid-col-span-2 {
+        grid-column: span 2 / span 2;
+    }
+}
+
+/* --- NOVO Container do Cabeçalho --- */
+.page-header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 2rem;
+    /* Espaço entre o título e o aviso */
+    margin-bottom: 2rem;
+    /* O espaço que o btn-voltar tinha */
+}
+
+.page-header-left {
+    flex: 1;
+    /* Faz o título ocupar o espaço disponível */
+}
+
+/* --- NOVO Card de "Mini Aviso" --- */
+.mini-aviso {
+    flex-shrink: 0;
+    /* Impede que o aviso encolha */
+    width: 100%;
+    max-width: 320px;
+    background-color: var(--color-bg-sidebar);
+    border: 1px solid #f97316;
+    border-radius: 8px;
+    /* <- Seu padrão */
+    box-shadow: 0 3px 9px var(--color-shadow);
+    border-radius: 8px;
+    /* Seu padrão */
+    padding: 1rem;
+    /* Padding menor */
+}
+
+.mini-aviso-title {
+    display: flex;
+    align-items: center;
+    font-weight: 600;
+    font-size: 1rem;
+    /* Título menor */
+    color: var(--cor-aviso-icon);
+    /* Cor do ícone (vermelho/laranja) */
+    margin-bottom: 0.5rem;
+}
+
+.mini-aviso-title svg {
+    width: 1.25rem;
+    height: 1.25rem;
+    margin-right: 0.5rem;
+}
+
+.mini-aviso-text {
+    font-size: 0.875rem;
+    /* Texto menor */
+    color: var(--color-text-primary);
+    line-height: 1.5;
+}

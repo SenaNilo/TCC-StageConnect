@@ -159,7 +159,6 @@
                    <p class="message">Você tem certeza que deseja sair?</p>
                </div>
                <div class="actions">
-                   {{-- Garanta que estes IDs batem com o seu JS --}}
                    <button id="confirm-logout-btn" class="desactivate" type="button">Confirmar</button>
                    <button id="cancel-logout-btn" class="cancel" type="button">Cancelar</button>
                </div>

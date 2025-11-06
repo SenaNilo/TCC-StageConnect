@@ -1,5 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap');
 
+
+html {
+    scroll-behavior: smooth;
+}
+
 * {
     font-family: 'Poppins', sans-serif;
     margin: 0;
@@ -59,6 +64,7 @@ ul {
     width: 65px;
     transition: transform 0.3s ease;
 }
+
 .logo-header:hover {
     transform: scale(1.1);
 }
@@ -96,7 +102,7 @@ ul {
 .dropdown {
     position: relative;
     display: inline-block;
-    z-index: 100; 
+    z-index: 100;
 }
 
 .dropdown-content {
@@ -158,6 +164,7 @@ ul {
     /* margin-right: 10%; */
     /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
 }
+
 .logo-principal:hover {
     transform: scale(1.03);
 }
@@ -167,7 +174,7 @@ ul {
     color: #000;
 }
 
-.finisher-header.index{
+.finisher-header.index {
     height: 80vh;
 }
 
@@ -177,10 +184,12 @@ ul {
     nav {
         display: block;
     }
+
     .header {
         flex-direction: row-reverse !important;
     }
-    .headernav-container{
+
+    .headernav-container {
         padding: 25px;
     }
 
@@ -340,7 +349,7 @@ ul {
             margin-right: 20px; */
 }
 
-.card:hover{
+.card:hover {
     transform: scale(1.05);
 }
 
@@ -359,6 +368,14 @@ ul {
     font-size: 36px;
     color: #000;
     font-weight: 500;
+}
+
+.titulo-jornada {
+    text-align: center;
+    margin-bottom: 50px;
+    font-size: 30px;
+    color: #000;
+    font-weight: 600;
 }
 
 /* Estilos do card original */
@@ -518,7 +535,7 @@ a {
 
 .footer-contatos p {
     margin-bottom: 10px;
-}
+}l
 
 .footer-contatos i {
     margin-right: 5px;
@@ -567,9 +584,11 @@ a {
     margin-left: 5px;
     animation: blink 0.8s infinite;
 }
+
 .cursor.typing {
     animation: none;
 }
+
 /* --- Animação de piscar --- */
 @keyframes blink {
     0% {
@@ -582,5 +601,116 @@ a {
 
     100% {
         opacity: 1;
+    }
+}
+
+.section-jornada {
+    background-color: var(--color-bg-sidebar);
+    border-top: 1px solid var(--color-border-hr);
+}
+
+.jornada-container {
+    max-width: 1000px;
+    /* Um pouco mais estreito para leitura */
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.jornada-passo {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    margin-bottom: 70px;
+    /* Mais espaço entre os passos */
+}
+
+/* Inverte a ordem para a linha 2 */
+.jornada-passo.reverse {
+    flex-direction: row-reverse;
+}
+
+.jornada-imagem {
+    flex: 1;
+    /* Ocupa metade do espaço */
+    min-width: 0;
+    border-radius: 10px;
+    filter: drop-shadow(0 10px 15px rgba(0, 0, 0, 0.2));
+}
+
+.jornada-imagem img {
+    width: 100%;
+    border-radius: 8px;
+    /* Seu padrão de borda */
+    box-shadow: 0 5px 20px var(--color-shadow);
+    /* Sua sombra */
+}
+
+.jornada-texto {
+    flex: 1;
+    /* Ocupa a outra metade */
+}
+
+.jornada-etapa {
+    display: inline-block;
+    padding: 4px 12px;
+    background-color: var(--color-bg-secondary);
+    color: var(--color-hover-primary);
+    /* Seu vermelho */
+    border-radius: 999px;
+    /* "Pílula" */
+    font-size: 0.875rem;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+.jornada-texto h2 {
+    font-size: 2rem;
+    /* 32px */
+    font-weight: 600;
+    color: var(--color-text-primary);
+    margin-bottom: 15px;
+}
+
+.jornada-texto p {
+    font-size: 1rem;
+    color: var(--color-text-placeholder);
+    /* Placeholder para mais contraste */
+    line-height: 1.7;
+    margin-bottom: 25px;
+}
+
+.negrito-texto {
+    font-weight: 700;
+}
+
+.jornada-button {
+    display: inline-block;
+    background-color: var(--color-hover-primary);
+    /* Seu vermelho */
+    color: #ffffff;
+    text-decoration: none;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-weight: 500;
+    transition: background-color 0.3s ease;
+}
+
+.jornada-button:hover {
+    background-color: #870917;
+    /* Seu .btn-card:hover */
+}
+
+/* --- Responsividade para a nova seção --- */
+@media (max-width: 768px) {
+
+    .jornada-passo,
+    .jornada-passo.reverse {
+        flex-direction: column;
+        /* Empilha no celular */
+        text-align: center;
+    }
+
+    .jornada-texto h2 {
+        font-size: 1.5rem;
     }
 }

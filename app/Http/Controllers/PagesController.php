@@ -52,7 +52,7 @@ class PagesController extends Controller
     // Cria um método privado para a lógica de filtro principal, para não repetir código
     private function getFilteredContent(Request $request, string $categoryName = null)
     {
-        // 1. INICIA O QUERY BUILDER
+        
         $query = Conteudo::query()
             ->where('active_content', true)
             ->with('autor', 'tags');
@@ -65,8 +65,20 @@ class PagesController extends Controller
             });
         }
 
-        // --- 2. LÓGICA DE FILTRO POR TAGS ---
-        $allTags = Tag::orderBy('name_tag')->get();
+        $allTagsQuery = Tag::orderBy('name_tag');
+    
+        if ($categoryName) {
+            // Se a página for específica (Orientação, Requisitos, Técnico),
+            // filtra as tags que têm conteúdos nessa categoria.
+            $allTagsQuery->whereHas('conteudos', function ($q) use ($categoria) {
+                $q->whereHas('categorias', function ($qCat) use ($categoria) {
+                    $qCat->where('id_categoria', $categoria->id);
+                });
+            });
+        }
+
+        $allTags = $allTagsQuery->get();
+        
         $selectedTags = $request->input('tag', []);
         
         if (!empty($selectedTags)) {

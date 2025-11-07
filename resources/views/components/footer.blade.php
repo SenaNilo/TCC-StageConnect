@@ -19,7 +19,7 @@
       <div class="footer-contatos">
           <h3>Contatos</h3>
           <ul>
-              <li> Email </li>
+              <li> Contatos </li>
 
           </ul>
 

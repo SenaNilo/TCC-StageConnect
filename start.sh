@@ -3,18 +3,26 @@
 # === Inicialização do Banco de Dados e Aplicação ===
 # Esta função usa 'nc' (netcat, instalado na imagem alpine) para checar a porta.
 wait_for_db() {
-  echo "Aguardando o serviço MySQL..."
-  # O host é o endereço interno do Railway (mysql.railway.internal)
+  echo "Aguardando o serviço MySQL (mysql.railway.internal)..."
   HOST="mysql.railway.internal"
   PORT="3306"
+  MAX_ATTEMPTS=20 # 20 tentativas * 5 segundos = 100 segundos de espera total
   
-  # Loop que tenta a conexão 10 vezes com um pequeno intervalo
-  for i in $(seq 1 10); do
-    nc -z $HOST $PORT && echo "MySQL pronto!" && return
-    echo "Tentativa $i: MySQL ainda indisponível. Aguardando 3 segundos..."
-    sleep 3
+  for i in $(seq 1 $MAX_ATTEMPTS); do
+    # Tenta conectar na porta. O nc retorna 0 se a conexão for bem-sucedida.
+    nc -z $HOST $PORT 
+    EXIT_CODE=$?
+    
+    if [ $EXIT_CODE -eq 0 ]; then
+        echo "MySQL pronto na tentativa $i!"
+        return 0
+    fi
+    
+    echo "Tentativa $i/$MAX_ATTEMPTS: Conexão recusada. Aguardando 5 segundos..."
+    sleep 5
   done
-  echo "ERRO: O serviço MySQL não respondeu após várias tentativas."
+  
+  echo "ERRO CRÍTICO: O serviço MySQL não respondeu após $MAX_ATTEMPTS tentativas."
   exit 1
 }
 

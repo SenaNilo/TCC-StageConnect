@@ -1,5 +1,25 @@
-# Usa uma imagem PHP base que o Laravel e Railway suportam (ex: 8.3-fpm-alpine)
-FROM php:8.3-fpm-alpine 
+# ===============================================
+# STAGE 1: COMPILAÇÃO DOS ASSETS FRONTEND (Vite/Node.js) - DEVE VIR PRIMEIRO
+# ===============================================
+FROM node:20-alpine AS frontend_builder
+
+WORKDIR /app
+
+# 1. Copia arquivos de configuração do Node
+COPY package*.json ./
+# 2. Instala as dependências Node (Vite, etc.)
+RUN npm install
+# 3. Copia o restante dos arquivos (incluindo /resources)
+COPY . .
+
+# 4. **Comando de Build:** (Se este passo falhar, a Etapa 2 falha)
+RUN npm run build
+
+
+# ===============================================
+# STAGE 2: AMBIENTE DE EXECUÇÃO PHP (LARAVEL) - REFERENCIA O STAGE 1
+# ===============================================
+FROM php:8.3-fpm-alpine AS laravel_runtime
 
 # Instala dependências do sistema e as extensões PHP necessárias
 RUN apk update && apk add --no-cache \
@@ -37,10 +57,9 @@ RUN chown -R www-data:www-data /app/storage /app/bootstrap/cache \
 RUN cp .env.example .env
 
 # CORREÇÃO CRÍTICA DO CACHE QUEBRADO:
-# Remove o arquivo de cache de serviços/provedores manualmente antes de rodar o app.
 RUN rm -f bootstrap/cache/*.php
 
-# COPIA OS ASSETS COMPILADOS DA ETAPA 1
+# >>> CORREÇÃO ESTRUTURAL AQUI: A CÓPIA AGORA OCORRE APÓS A DEFINIÇÃO DO STAGE 1
 COPY --from=frontend_builder /app/public/build/ /app/public/build/
 
 # Adiciona o script de inicialização e o torna executável

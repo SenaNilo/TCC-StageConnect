@@ -36,24 +36,25 @@ RUN chown -R www-data:www-data /app/storage /app/bootstrap/cache \
 # Cria o .env de produção (irá puxar as variáveis do Railway)
 RUN cp .env.example .env
 
-# =================================================================
-# CORREÇÃO DEFINITIVA DO ERRO 'Class Not Found'
-# Remove o arquivo de cache de serviços/provedores manualmente antes de qualquer comando Artisan.
-# O wildcard (*) garante que todos os arquivos de cache sejam removidos.
+# Limpa o cache para corrigir a referência quebrada de Service Provider
 RUN rm -f bootstrap/cache/*.php
-# =================================================================
 
-# 1. Gera a APP_KEY (necessário para a segurança e sessions)
-RUN php artisan key:generate
+# ----------------------------------------------------------------------
+# NOVIDADE: Adiciona o script de inicialização e o torna executável
+# ----------------------------------------------------------------------
 
-# 2. Roda as Migrações (Cria as tabelas)
-RUN php artisan migrate --force
+# Copia o script para um local executável
+COPY start.sh /usr/local/bin/start.sh
+# Define permissão de execução
+RUN chmod +x /usr/local/bin/start.sh
 
-# 3. Roda os Seeders (Popula os conteúdos, Tags e Admin)
-RUN php artisan db:seed --force
+# REMOVE: Os comandos de banco de dados e key:generate são movidos para o start.sh
+# REMOVE: RUN php artisan key:generate
+# REMOVE: RUN php artisan migrate --force
+# REMOVE: RUN php artisan db:seed --force
 
 # Expõe a porta que o servidor Artisan vai usar
 EXPOSE 8080
 
-# Comando para iniciar o servidor web (servidor Artisan do Laravel)
-CMD ["php", "artisan", "serve", "--host", "0.0.0.0", "--port", "8080"]
+# Comando para iniciar o servidor web (Executa o script de inicialização)
+CMD ["/usr/local/bin/start.sh"]

@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Password;
+use Illuminate\Support\Facades\DB;
 
 class PagesController extends Controller
 {
@@ -258,6 +259,7 @@ class PagesController extends Controller
      */
     public function authenticate(Request $request)
     {
+        DB::reconnect(); // Tenta reconectar ao banco de dados
         // validação dos dados de entrada
         $credentials = $request->validate([
             'email' => ['required', 'email'],

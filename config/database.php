@@ -60,9 +60,13 @@ return [
             'options' => extension_loaded('pdo_mysql') ? array_filter([
                 PDO::ATTR_TIMEOUT => 5, 
         
-                // Comando SQL que é executado após a conexão para manter ela viva (opcional)
-                PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8mb4',
+                // 2. Garante que o Laravel tente sempre uma nova conexão quando a antiga cair
+                // Essa é a solução mais eficaz para 'Connection refused' em runtime
+                PDO::ATTR_PERSISTENT => true, 
                 
+                // 3. Comando SQL que é executado após a conexão (garante o charset)
+                PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8mb4',
+
                 PDO::MYSQL_ATTR_SSL_CA => env('MYSQL_ATTR_SSL_CA'),
             ]) : [],
         ],

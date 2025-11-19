@@ -6,11 +6,9 @@ export default defineConfig({
     plugins: [
         laravel({
             input: [// Arquivos CSS principais que o Vite deve processar
-                'resources/css/app.css',
-                'resources/css/aluno.css',          
+                'resources/css/app.css', // O arquivo limpo (apenas CDNs + Tailwind)
                 
-                // Se você tiver um CSS para conteúdos, inclua também
-                
+                // Use o caminho mais específico para cada arquivo, assumindo que eles estão em 'alunos/'
                 'resources/css/alunos/aluno.css', 
                 'resources/css/alunos/configuracoes.css', 
                 'resources/css/alunos/conteudo-detalhe.css', 
@@ -18,8 +16,8 @@ export default defineConfig({
                 'resources/css/alunos/curriculo-resultado.css', 
                 'resources/css/alunos/curriculo.css', 
                 'resources/css/alunos/entrevistas.css', 
-
-                // Scripts JS principais
+                
+                // Mantenha os scripts
                 'resources/js/app.js',
                 'resources/js/bootstrap.js',
                 'resources/js/alunos/script-aluno.js',

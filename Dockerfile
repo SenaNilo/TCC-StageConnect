@@ -28,7 +28,7 @@ RUN apk update && apk add --no-cache \
     libzip-dev \
     icu-dev \
     curl \
-    netcat-openbsd \
+    netcat \
     # Instala as extensões PHP
     && docker-php-ext-install \
         pdo_mysql \

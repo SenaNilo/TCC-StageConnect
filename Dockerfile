@@ -37,6 +37,14 @@ RUN chown -R www-data:www-data /app/storage /app/bootstrap/cache \
 # Cria o .env de produção (irá puxar as variáveis de ambiente do Railway)
 RUN cp .env.example .env
 
+# =================================================================
+# CORREÇÃO CRÍTICA DO ERRO 'Class Not Found'
+# 1. Limpa o cache de configuração que contém a referência quebrada
+RUN php artisan config:clear
+# 2. Reconstroi o manifesto de pacotes, ignorando o cache antigo.
+RUN php artisan package:discover --ansi
+# =================================================================
+
 # 1. Gera a APP_KEY (necessário para a segurança e sessions)
 RUN php artisan key:generate
 

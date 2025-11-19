@@ -3,7 +3,7 @@
 # === Função para esperar o banco de dados (Mais Robusta) ===
 wait_for_db() {
   echo "Aguardando o serviço MySQL (mysql.railway.internal)..."
-  HOST="mysql.railway.internal"
+  HOST="mysql-ll4r.railway.internal"
   PORT="3306"
   MAX_ATTEMPTS=20 # 20 tentativas * 3 segundos = 60 segundos de espera total
   

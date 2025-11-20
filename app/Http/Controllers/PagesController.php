@@ -182,10 +182,11 @@ class PagesController extends Controller
      */
     public function storeCadastro(Request $request)
     {
-        // 1. Validação dos dados (REMOVIDA A REGRA 'unique:usuarios,email' para evitar o erro de conexão)
+        // 1. Validação dos dados (SEM a regra 'unique' para evitar o erro de conexão)
         $validator = Validator::make($request->all(), [
             'name_user' => ['required', 'string', 'max:25'],
-            'email' => ['required', 'string', 'email', 'max:20'], 
+            // REGRA 'UNIQUE' REMOVIDA DAQUI:
+            'email' => ['required', 'string', 'email', 'max:200'], 
             'password' => ['required', 'string', 'min:6', 'confirmed'], 
         ], [
             // Mensagens de erro
@@ -193,7 +194,7 @@ class PagesController extends Controller
             'name_user.max' => 'O Nome não pode ter mais de 25 caracteres.',
             'email.required' => 'O campo Email é obrigatório.',
             'email.email' => 'Por favor, insira um email válido.',
-            'email.max' => 'O Email não pode ter mais de 20 caracteres.',
+            'email.max' => 'O Email não pode ter mais de 200 caracteres.',
             'password.required' => 'O campo Senha é obrigatório.',
             'password.min' => 'A senha deve ter pelo menos 6 caracteres.',
             'password.confirmed' => 'A confirmação da senha não corresponde.',
@@ -207,8 +208,9 @@ class PagesController extends Controller
         }
         
         // ----------------------------------------------------
-        // 2. CHECAGEM MANUAL DE UNICIDADE (CORREÇÃO DO ERRO DE CONEXÃO)
+        // 2. CHECAGEM MANUAL DE UNICIDADE (RESOLVE O ERRO DE CONEXÃO AGORA)
         // ----------------------------------------------------
+        // A checagem Eloquent é feita após o Middleware de reconexão já ter atuado
         $emailExists = Usuario::where('email', $request->email)->exists();
         
         if ($emailExists) {
@@ -232,7 +234,8 @@ class PagesController extends Controller
         // 4. Login após o cadastro e redirecionamento
         Auth::login($usuario);
 
-        return redirect()->route('stageconnect')->with('success', 'Usuário cadastrado com sucesso!');
+        return redirect()->route('login')->with('success', 'Usuário cadastrado com sucesso!');
+    }
     }
 
     /**

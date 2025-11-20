@@ -58,16 +58,20 @@ return [
             'strict' => true,
             'engine' => null,
             'options' => extension_loaded('pdo_mysql') ? array_filter([
-                PDO::ATTR_TIMEOUT => 5, 
-        
-                // 2. Garante que o Laravel tente sempre uma nova conexão quando a antiga cair
-                // Essa é a solução mais eficaz para 'Connection refused' em runtime
-                // PDO::ATTR_PERSISTENT => true, 
+                // 1. FORÇA PERSISTÊNCIA: Permite que o PHP tente reusar (e reestabelecer) conexões.
+                PDO::ATTR_PERSISTENT => true, 
                 
-                // 3. Comando SQL que é executado após a conexão (garante o charset)
+                // 2. TIMEOUT: Evita que o script trave para sempre se a rede cair.
+                PDO::ATTR_TIMEOUT => 5, 
+                
+                // 3. ESTABILIDADE PDO: Essencial para estabilidade em ambientes de contêiner.
+                PDO::ATTR_EMULATE_PREPARES => true, 
+                
+                // 4. SSL/CA: (Se for necessário para a segurança do host)
+                PDO::MYSQL_ATTR_SSL_CA => env('MYSQL_ATTR_SSL_CA'), 
+                
+                // 5. Comando de inicialização
                 PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8mb4',
-
-                PDO::MYSQL_ATTR_SSL_CA => env('MYSQL_ATTR_SSL_CA'),
             ]) : [],
         ],
 

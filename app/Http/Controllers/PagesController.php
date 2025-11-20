@@ -235,7 +235,7 @@ class PagesController extends Controller
         Auth::login($usuario);
 
         return redirect()->route('login')->with('success', 'Usuário cadastrado com sucesso!');
-    }
+    
     }
 
     /**

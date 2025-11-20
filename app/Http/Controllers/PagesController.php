@@ -134,7 +134,7 @@ class PagesController extends Controller
     }
 
     // 2. Áreas de Atuação e Requisitos Técnicos
-    public function requisitosTecnicos(Request $request) // [ADICIONADO Request]
+    public function requisitosTecnicos(Request $request) 
     {
         $data = $this->getFilteredContent($request, 'Áreas de Atuação e Requisitos Técnicos');
         $data['origem'] = 'requisitos';
@@ -142,7 +142,7 @@ class PagesController extends Controller
     }
 
     // 3. Conteúdo Técnico Específico
-    public function conteudoTecnico(Request $request) // [ADICIONADO Request]
+    public function conteudoTecnico(Request $request) 
     {
         $data = $this->getFilteredContent($request, 'Conteúdo Técnico Específico');
         $data['origem'] = 'tecnico';
@@ -156,26 +156,6 @@ class PagesController extends Controller
         $data['origem'] = 'todos';
         return view('pages.aluno.conteudos', $data);
     }
-
-    // public function mostrarConteudos()
-    // {
-    //     // Busca todos os conteúdos ativos, ordenados pelos mais recentes
-    //     $conteudos = Conteudo::with('autor', 'tags') // Carrega relacionamentos para a view
-    //         ->where('active_content', true)
-    //         ->orderBy('dt_created', 'desc') // Ordena pelos mais novos
-    //         ->get();
-            
-    //     // Define um título para a página
-    //     $titulo = "Todos os Conteúdos"; 
-
-    //     // Retorna a view 'pages.aluno.conteudos' (plural) 
-    //     // passando a lista de conteúdos e o título
-    //     return view('pages.aluno.conteudos', [
-    //         'conteudos' => $conteudos,
-    //         'titulo' => $titulo,
-    //         'origem' => 'todos',
-    //     ]);
-    // }
     
     public function mostrarDetalheConteudo($id)
     {
@@ -213,11 +193,11 @@ class PagesController extends Controller
      */
     public function storeCadastro(Request $request)
     {
-        // Validação dos dados
+        // 1. Validação dos dados (SEM a regra 'unique' para evitar o erro de conexão)
         $validator = Validator::make($request->all(), [
             'name_user' => ['required', 'string', 'max:25'],
-            'email' => ['required', 'string', 'email', 'max:200', 'unique:usuarios,email'], // 'unique:tabela,coluna'
-            'password' => ['required', 'string', 'min:6', 'confirmed'], // 'confirmed' exige um campo 'password_confirmation'
+            'email' => ['required', 'string', 'email', 'max:200'], // REMOVIDA: 'unique:usuarios,email'
+            'password' => ['required', 'string', 'min:6', 'confirmed'], 
         ], [
             // Mensagens de erro para ir para formualrio
             'name_user.required' => 'O campo Nome é obrigatório.',
@@ -225,7 +205,6 @@ class PagesController extends Controller
             'email.required' => 'O campo Email é obrigatório.',
             'email.email' => 'Por favor, insira um email válido.',
             'email.max' => 'O Email não pode ter mais de 200 caracteres.',
-            'email.unique' => 'Este email já está cadastrado.',
             'password.required' => 'O campo Senha é obrigatório.',
             'password.min' => 'A senha deve ter pelo menos 6 caracteres.',
             'password.confirmed' => 'A confirmação da senha não corresponde.',
@@ -234,9 +213,23 @@ class PagesController extends Controller
         // Se a validação falhar, redireciona de volta com os erros e os dados antigos
         if ($validator->fails()) {
             return redirect()->back()
-                ->withErrors($validator)
+                        ->withErrors($validator)
+                        ->withInput();
+        }
+        
+        // ----------------------------------------------------
+        // 2. CHECAGEM MANUAL DE UNICIDADE (RESOLVE O ERRO DE CONEXÃO)
+        // ----------------------------------------------------
+        $emailExists = Usuario::where('email', $request->email)->exists();
+        
+        if ($emailExists) {
+            // Se o email já existe, retorna o erro personalizado
+            return redirect()->back()
+                ->withErrors(['email' => 'Este email já está cadastrado.'])
                 ->withInput();
         }
+        // ----------------------------------------------------
+
 
         // Usa o modelo Usuario para criar um novo registro na tabela 'usuarios'
         $usuario = Usuario::create([
@@ -259,7 +252,8 @@ class PagesController extends Controller
      */
     public function authenticate(Request $request)
     {
-        DB::reconnect(); // Tenta reconectar ao banco de dados
+        // Não precisamos do DB::reconnect() aqui, o Middleware garante isso.
+        
         // validação dos dados de entrada
         $credentials = $request->validate([
             'email' => ['required', 'email'],
@@ -280,7 +274,7 @@ class PagesController extends Controller
             if ($user->type_user === 'ADM') {
                 return redirect('/filament')->with('success', 'Bem-vindo, Administrador!');
             } else if ($user->type_user === 'ALU') {
-                return redirect()->route('aluno.index')->with('success', 'Bem-vindo, Aluno!');
+                return redirect()->route('stageconnect')->with('success', 'Bem-vindo, Aluno!');
             }
         }
 
@@ -310,14 +304,25 @@ class PagesController extends Controller
 
     public function enviarLinkReset(Request $request)
     {
-        // Validação do email
+        // Validação do email (REMOVIDO: 'exists:usuarios,email')
         $request->validate([
-            'email' => 'required|email|exists:usuarios,email',
+            'email' => 'required|email',
         ], [
             'email.required' => 'O campo Email é obrigatório.',
             'email.email' => 'Por favor, insira um email válido.',
-            'email.exists' => 'Não encontramos um usuário com esse email.',
         ]);
+        
+        // ----------------------------------------------------
+        // CHECAGEM MANUAL DE EXISTÊNCIA (RESOLVE O ERRO DE CONEXÃO)
+        // ----------------------------------------------------
+        $userExists = Usuario::where('email', $request->email)->exists();
+        
+        if (!$userExists) {
+            // Se o email não existe, retorna o erro personalizado
+             return back()->withErrors(['email' => 'Não encontramos um usuário com esse email.']);
+        }
+        // ----------------------------------------------------
+
 
         // Aqui você implementaria a lógica para enviar o email de reset de senha.
         // Por enquanto, vamos apenas redirecionar de volta com uma mensagem de sucesso.
@@ -327,8 +332,8 @@ class PagesController extends Controller
         if ($status == Password::RESET_LINK_SENT) {
             return back()->with('status', 'Link de redefinição enviado para seu e-mail!');
         } else {
-            // Se falhou (ex: e-mail não existe), volta com erro
-            return back()->withErrors(['email' => 'Não encontramos um usuário com este e-mail.']);
+            // Se falhou (ex: erro no servidor de e-mail), volta com erro
+            return back()->withErrors(['email' => 'Não foi possível enviar o link de redefinição.']);
         }
     }
 

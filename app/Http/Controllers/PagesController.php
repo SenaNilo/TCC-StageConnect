@@ -32,25 +32,8 @@ class PagesController extends Controller
 
     public function stageconnect()
     {
-        $categoriaOrientacao = Categoria::where('name_category', 'Orientação Profissional/Material de Apoio')->first();
-        $categoriaRequisitos = Categoria::where('name_category', 'Áreas de Atuação e Requisitos Técnicos')->first();
-        $categoriaTecnico = Categoria::where('name_category', 'Conteúdo Técnico Específico')->first();
-
-        // 1. Verifica se o usuário está logado
-        if (!Auth::check()) {
-            return redirect()->route('login')->with('error', 'Você precisa estar logado para acessar esta página.');
-        }
-
-        // 2. Obtém o usuário logado
-        $user = Auth::user();
-
-        // 3. Verifica se o tipo de usuário é ADM ou ALU
-        if ($user->type_user === 'ADM' || $user->type_user === 'ALU') {
-            return view('pages.aluno.index', compact('categoriaOrientacao', 'categoriaRequisitos', 'categoriaTecnico'));
-        }
-
-        // Se o tipo de usuário não for nem ADM nem ALU, redireciona
-        return redirect()->route('login')->with('error', 'Você não tem permissão para acessar esta página.');
+        // Rota principal do aluno agora usa a lógica de filtros
+        return $this->mostrarConteudos(request());
     }
 
     // Cria um método privado para a lógica de filtro principal, para não repetir código
@@ -69,11 +52,10 @@ class PagesController extends Controller
             });
         }
 
+        // 1. Lógica de busca de Tags (Apenas tags relevantes à categoria)
         $allTagsQuery = Tag::orderBy('name_tag');
     
         if ($categoryName) {
-            // Se a página for específica (Orientação, Requisitos, Técnico),
-            // filtra as tags que têm conteúdos nessa categoria.
             $allTagsQuery->whereHas('conteudos', function ($q) use ($categoria) {
                 $q->whereHas('categorias', function ($qCat) use ($categoria) {
                     $qCat->where('id_categoria', $categoria->id);
@@ -83,15 +65,14 @@ class PagesController extends Controller
 
         $allTags = $allTagsQuery->get();
         
+        // 2. Lógica de filtro por Tags (aplicada ao conteúdo)
         $selectedTags = $request->input('tag', []);
         
         if (!empty($selectedTags)) {
-            // Filtra o conteúdo que possui PELO MENOS uma das tags selecionadas
             $query->whereHas('tags', function ($q) use ($selectedTags) {
                 $q->whereIn('tags.id', $selectedTags);
             });
         }
-        // ------------------------------------
 
         // 3. LÓGICA DE BUSCA POR TEXTO (Filtro 'search')
         if ($request->filled('search')) {
@@ -152,6 +133,16 @@ class PagesController extends Controller
     // 4. Todos os Conteúdos (Se você tiver uma rota que lista tudo)
     public function mostrarConteudos(Request $request)
     {
+        // Se a rota for stageconnect/aluno/index, mostra a área inicial
+        if (request()->routeIs('aluno.index')) {
+            $categoriaOrientacao = Categoria::where('name_category', 'Orientação Profissional/Material de Apoio')->first();
+            $categoriaRequisitos = Categoria::where('name_category', 'Áreas de Atuação e Requisitos Técnicos')->first();
+            $categoriaTecnico = Categoria::where('name_category', 'Conteúdo Técnico Específico')->first();
+
+            return view('pages.aluno.index', compact('categoriaOrientacao', 'categoriaRequisitos', 'categoriaTecnico'));
+        }
+
+        // Caso contrário, mostra a listagem de todos os conteúdos
         $data = $this->getFilteredContent($request, null);
         $data['origem'] = 'todos';
         return view('pages.aluno.conteudos', $data);
@@ -169,8 +160,6 @@ class PagesController extends Controller
 
     public function adminIndex()
     {
-        // rota -> return view('pages.admin.index');
-
         // 1. Verifica se o usuário está logado
         if (!Auth::check()) {
             return redirect()->route('login')->with('error', 'Você precisa estar logado para acessar esta página.');
@@ -181,7 +170,7 @@ class PagesController extends Controller
 
         // 3. Verifica se o tipo de usuário é ADM
         if ($user->type_user === 'ADM') {
-            return view('pages.admin.index');
+            return redirect('/filament');
         }
 
         // Se o tipo de usuário não for ADM, redireciona
@@ -193,18 +182,18 @@ class PagesController extends Controller
      */
     public function storeCadastro(Request $request)
     {
-        // 1. Validação dos dados (SEM a regra 'unique' para evitar o erro de conexão)
+        // 1. Validação dos dados (REMOVIDA A REGRA 'unique:usuarios,email' para evitar o erro de conexão)
         $validator = Validator::make($request->all(), [
             'name_user' => ['required', 'string', 'max:25'],
-            'email' => ['required', 'string', 'email', 'max:200'], // REMOVIDA: 'unique:usuarios,email'
+            'email' => ['required', 'string', 'email', 'max:20'], 
             'password' => ['required', 'string', 'min:6', 'confirmed'], 
         ], [
-            // Mensagens de erro para ir para formualrio
+            // Mensagens de erro
             'name_user.required' => 'O campo Nome é obrigatório.',
             'name_user.max' => 'O Nome não pode ter mais de 25 caracteres.',
             'email.required' => 'O campo Email é obrigatório.',
             'email.email' => 'Por favor, insira um email válido.',
-            'email.max' => 'O Email não pode ter mais de 200 caracteres.',
+            'email.max' => 'O Email não pode ter mais de 20 caracteres.',
             'password.required' => 'O campo Senha é obrigatório.',
             'password.min' => 'A senha deve ter pelo menos 6 caracteres.',
             'password.confirmed' => 'A confirmação da senha não corresponde.',
@@ -218,7 +207,7 @@ class PagesController extends Controller
         }
         
         // ----------------------------------------------------
-        // 2. CHECAGEM MANUAL DE UNICIDADE (RESOLVE O ERRO DE CONEXÃO)
+        // 2. CHECAGEM MANUAL DE UNICIDADE (CORREÇÃO DO ERRO DE CONEXÃO)
         // ----------------------------------------------------
         $emailExists = Usuario::where('email', $request->email)->exists();
         
@@ -231,20 +220,19 @@ class PagesController extends Controller
         // ----------------------------------------------------
 
 
-        // Usa o modelo Usuario para criar um novo registro na tabela 'usuarios'
+        // 3. Criação do Usuário
         $usuario = Usuario::create([
             'name_user' => $request->name_user,
             'email' => $request->email,
-            'password_user' => Hash::make($request->password), // Hash da senha antes de salvar no banco
-            'type_user' => 'ALU', // Define o tipo de usuário como 'ALU' automaticamente
-            'active_user' => TRUE, // Define o usuário como ativo por padrão
+            'password_user' => Hash::make($request->password), 
+            'type_user' => 'ALU', 
+            'active_user' => TRUE, 
         ]);
 
-        // login apos o cadastro
+        // 4. Login após o cadastro e redirecionamento
         Auth::login($usuario);
 
-        // Redireciona para a rota 'stageconnect' (nome da rota em web.php)
-        return redirect()->route('login')->with('success', 'Usuário cadastrado com sucesso!');
+        return redirect()->route('stageconnect')->with('success', 'Usuário cadastrado com sucesso!');
     }
 
     /**
@@ -252,7 +240,7 @@ class PagesController extends Controller
      */
     public function authenticate(Request $request)
     {
-        // Não precisamos do DB::reconnect() aqui, o Middleware garante isso.
+        // A CONEXÃO É FORÇADA PELO MIDDLEWARE AGORA
         
         // validação dos dados de entrada
         $credentials = $request->validate([
@@ -281,7 +269,7 @@ class PagesController extends Controller
         // caso der erro
         return back()->withErrors([
             'email' => 'As credenciais fornecidas não correspondem aos nossos registros.',
-        ])->onlyInput('email'); // Mantém o email preenchido no formulário
+        ])->onlyInput('email'); 
     }
 
     /**
@@ -304,7 +292,7 @@ class PagesController extends Controller
 
     public function enviarLinkReset(Request $request)
     {
-        // Validação do email (REMOVIDO: 'exists:usuarios,email')
+        // Validação do email (REMOVIDA A REGRA 'exists:usuarios,email')
         $request->validate([
             'email' => 'required|email',
         ], [
@@ -313,7 +301,7 @@ class PagesController extends Controller
         ]);
         
         // ----------------------------------------------------
-        // CHECAGEM MANUAL DE EXISTÊNCIA (RESOLVE O ERRO DE CONEXÃO)
+        // CHECAGEM MANUAL DE EXISTÊNCIA (CORREÇÃO DO ERRO DE CONEXÃO)
         // ----------------------------------------------------
         $userExists = Usuario::where('email', $request->email)->exists();
         

@@ -47,6 +47,11 @@ php artisan config:cache
 php artisan route:cache
 php artisan view:cache
 
+echo "Criando link do Storage..."
+# Remove qualquer link velho/quebrado e cria um novo
+rm -rf public/storage
+php artisan storage:link
+
 # 5. Inicia o Servidor
 # O Railway define a variável $PORT automaticamente. 
 # Se ela não existir, usamos 8080 como fallback, MAS NÃO 3306.

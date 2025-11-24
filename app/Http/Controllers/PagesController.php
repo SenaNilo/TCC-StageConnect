@@ -174,7 +174,7 @@ class PagesController extends Controller
         }
 
         // Se o tipo de usuário não for ADM, redireciona
-        return redirect()->route('stageconnect')->with('error', 'Você não tem permissão para acessar esta página.');
+        return redirect('/aluno')->with('error', 'Você não tem permissão para acessar esta página.');
     }
 
     /**
@@ -276,7 +276,7 @@ class PagesController extends Controller
             if ($user->type_user === 'ADM') {
                 return redirect('/filament')->with('success', 'Bem-vindo, Administrador!');
             } else if ($user->type_user === 'ALU') {
-                return redirect()->route('stageconnect')->with('success', 'Bem-vindo, Aluno!');
+                return redirect('/aluno')->with('success', 'Bem-vindo, Aluno!');
             }
         }
 

@@ -564,7 +564,9 @@ a {
 	width: 12px;
 	background-color: transparent;
 }
-
+.texto-descricao {
+    font-weight: 500;
+}
 .contents::-webkit-scrollbar-thumb
 {
 	border-radius: 10px;

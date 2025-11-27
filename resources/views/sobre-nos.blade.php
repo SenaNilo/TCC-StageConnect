@@ -7,7 +7,7 @@
     <title>Sobre nós - StageConnect</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <link rel="stylesheet" href="{{ asset('css/main.css') }}">
-      <link rel="icon" type="image/png" href="{{ asset('images/LogoSFundo.png') }}"/>
+    <link rel="icon" type="image/png" href="{{ asset('images/LogoSFundo.png') }}" />
     <link rel="stylesheet" href="{{ asset('css/sobre-nos.css') }}">
     <link rel="stylesheet" href="{{ asset('css/swiper-bundle.min.css') }}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
@@ -18,7 +18,7 @@
 <body>
 
     <header class="finisher-header" style="position: relative;">
-         <x-navbar.principal />
+        <x-navbar.principal />
     </header>
 
     <section class="us-principal">
@@ -68,9 +68,9 @@
 
         </div>
     </section>
-    
-  <x-footer />
-   <script>
+
+    <x-footer />
+    <script>
         const btnAbrir = document.getElementById("btn-abrir-menu");
         const btnFechar = document.getElementById("btn-fechar-menu");
         const menuMobile = document.getElementById("menu-mobile");
@@ -94,40 +94,40 @@
     <script src="{{ asset('js/finisher-header.es5.min.js') }}" type="text/javascript"></script>
     <script type="text/javascript">
         new FinisherHeader({
-        "count": 150,
-        "size": {
-            "min": 2,
-            "max": 6,
-            "pulse": 0.1
-        },
-        "speed": {
-            "x": {
-            "min": 0,
-            "max": 0.5
+            "count": 150,
+            "size": {
+                "min": 2,
+                "max": 6,
+                "pulse": 0.1
             },
-            "y": {
-            "min": 0,
-            "max": 0.6
-            }
-        },
-        "colors": {
-            "background": "#000000",
-            "particles": [
-            "#c30a19",
-            "#224e59",
-            "#00ca4e"
+            "speed": {
+                "x": {
+                    "min": 0,
+                    "max": 0.5
+                },
+                "y": {
+                    "min": 0,
+                    "max": 0.6
+                }
+            },
+            "colors": {
+                "background": "#000000",
+                "particles": [
+                    "#c30a19",
+                    "#224e59",
+                    "#00ca4e"
+                ]
+            },
+            "blending": "overlay",
+            "opacity": {
+                "center": 1,
+                "edge": 0.35
+            },
+            "skew": 0,
+            "shapes": [
+                "s",
+                "t"
             ]
-        },
-        "blending": "overlay",
-        "opacity": {
-            "center": 1,
-            "edge": 0.35
-        },
-        "skew": 0,
-        "shapes": [
-            "s",
-            "t"
-        ]
         });
     </script>
 </body>

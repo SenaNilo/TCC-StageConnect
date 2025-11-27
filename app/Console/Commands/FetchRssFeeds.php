@@ -32,7 +32,6 @@ class FetchRssFeeds extends Command
             ['name' => 'Canaltech - Carreira', 'url' => 'https://canaltech.com.br/rss/carreira/', 'category' => 'Artigos', 'limit' => 15, 'ignore_age' => false],
             ['name' => 'Blog da Alura', 'url' => 'https://www.alura.com.br/artigos/rss', 'category' => 'Artigos', 'limit' => 50, 'ignore_age' => true],
             ['name' => 'G1 - Tecnologia', 'url' => 'https://g1.globo.com/tecnologia/rss.xml', 'category' => 'Artigos', 'limit' => 15, 'ignore_age' => false],
-            ['name' => 'RemotaJob (Vagas)', 'url' => 'https://remotajob.com/rss', 'category' => 'Vagas', 'limit' => 25, 'ignore_age' => false],
         ];
 
         foreach ($feeds as $feedConfig) {
@@ -82,7 +81,7 @@ class FetchRssFeeds extends Command
                     $imageUrl = null;
                     $enclosure = $item->get_enclosure(0);
 
-                    if ($enclosure && str_starts_with($enclosure->get_type(), 'image/')) {
+                    if ($enclosure && str_starts_with($enclosure->get_type(), 'storage/')) {
                         $imageUrl = $enclosure->get_link();
                     }
 

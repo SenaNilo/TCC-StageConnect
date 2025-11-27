@@ -16,10 +16,10 @@
               <li><a href="{{ url('/#proposta') }}">Guia</a></li>
           </ul>
       </div>
-      <div class="footer-contatos">
+      <div class="footer-informacoes">
           <h3>Contatos</h3>
           <ul>
-              <li> Contatos </li>
+              <li> <a href="{{ url('/sobre-nos/#contato') }}"> Contatos </a> </li>
 
           </ul>
 

@@ -2,36 +2,47 @@
 
 /* Card Principal Branco */
 .content-listing-card {
-    width: 90%; /* Ocupa mais espaço */
-    max-width: 1200px; /* Limite máximo */
-    background-color: var(--color-bg-sidebar, #fff); /* Usa variável ou branco */
-    color: var(--color-text-primary, #333); /* Usa variável ou cor escura */
+    width: 90%;
+    /* Ocupa mais espaço */
+    max-width: 1200px;
+    /* Limite máximo */
+    background-color: var(--color-bg-sidebar, #fff);
+    /* Usa variável ou branco */
+    color: var(--color-text-primary, #333);
+    /* Usa variável ou cor escura */
     border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
-    padding: 25px 30px; /* Mais padding interno */
-    margin: 20px auto; /* Centraliza e adiciona espaço vertical */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    /* Sombra suave */
+    padding: 25px 30px;
+    /* Mais padding interno */
+    margin: 20px auto;
+    /* Centraliza e adiciona espaço vertical */
 }
 
 /* Cabeçalho */
 .content-header {
     display: flex;
-    flex-wrap: wrap; /* Permite quebrar linha em telas pequenas */
+    flex-wrap: wrap;
+    /* Permite quebrar linha em telas pequenas */
     justify-content: space-between;
     align-items: center;
-    gap: 15px; /* Espaço entre título e busca/filtros */
+    gap: 15px;
+    /* Espaço entre título e busca/filtros */
     margin-bottom: 20px;
 }
 
 .content-title {
     font-size: 24px;
     font-weight: 600;
-    margin: 0; /* Remove margem padrão do h1 */
+    margin: 0;
+    /* Remove margem padrão do h1 */
 }
 
 .search-and-filters {
     display: flex;
     flex-wrap: wrap;
-    gap: 15px; /* Espaço entre busca e filtros */
+    gap: 15px;
+    /* Espaço entre busca e filtros */
     align-items: center;
 }
 
@@ -39,11 +50,13 @@
 .search-bar {
     display: flex;
     align-items: center;
-    background-color: transparent; /* Fundo da busca */
+    background-color: transparent;
+    /* Fundo da busca */
     border: 1px solid #ccc;
-    border-radius: 20px; /* Cantos arredondados */
+    border-radius: 20px;
+    /* Cantos arredondados */
     padding: 5px 12px;
-    flex-grow: 1; 
+    flex-grow: 1;
     width: 600px;
     transition: border-color 0.3s ease, background-color 0.3s ease;
 }
@@ -61,9 +74,12 @@
     background: transparent;
     color: var(--color-text-primary, #333);
     font-size: 14px;
-    padding: 5px 0; /* Ajuste vertical */
-    width: 100%; /* Largura inicial */
+    padding: 5px 0;
+    /* Ajuste vertical */
+    width: 100%;
+    /* Largura inicial */
 }
+
 .search-bar input[type="search"]::placeholder {
     color: var(--color-text-placeholder, #999);
 }
@@ -76,9 +92,11 @@
 }
 
 .filter-btn {
-    display: inline-flex; /* Para alinhar ícone e texto */
+    display: inline-flex;
+    /* Para alinhar ícone e texto */
     align-items: center;
-    gap: 5px; /* Espaço entre ícone e texto */
+    gap: 5px;
+    /* Espaço entre ícone e texto */
     background-color: transparent;
     border: 1px solid #bbb;
     color: var(--color-text-secondary, #555);
@@ -87,17 +105,18 @@
     font-size: 13px;
     font-weight: 500;
     cursor: pointer;
-    white-space: nowrap; /* Impede quebra de linha */
+    white-space: nowrap;
+    /* Impede quebra de linha */
     transition: background-color 0.2s, color 0.2s, border-color 0.2s;
 }
 
 .filter-btn:hover {
     /* CORRIGIDO: Usa a cor primária vermelha */
-    background-color: var(--color-primary-red, #A6121F); 
+    background-color: var(--color-primary-red, #A6121F);
     /* CORRIGIDO: Usa a cor primária vermelha */
-    border-color: var(--color-primary-red, #A6121F);     
+    border-color: var(--color-primary-red, #A6121F);
     /* Texto branco (já estava certo) */
-    color: white; 
+    color: white;
 }
 
 .filter-btn .material-symbols-rounded {
@@ -106,66 +125,81 @@
 
 body.dark-theme .filter-btn {
     /* Borda Branca */
-    border-color: #fff; 
+    border-color: #fff;
     /* Texto Branco */
-    color: #fff; 
+    color: #fff;
 }
 
 /* Hover - Modo Escuro */
 body.dark-theme .filter-btn:hover {
     /* Fundo Branco */
-    background-color: #fff; 
+    background-color: #fff;
     border-color: #fff;
     /* Texto Vermelho (ou cor escura do tema) */
-    color: var(--color-primary-red, #A6121F); 
+    color: var(--color-primary-red, #A6121F);
 }
+
 /* Linha Divisória */
 .content-divider {
     border: none;
     border-top: 1px solid var(--color-border-hr, #eee);
-    margin: 25px 0; /* Espaçamento da linha */
+    margin: 25px 0;
+    /* Espaçamento da linha */
 }
 
 /* Grid de Conteúdo */
 .content-grid {
     display: grid;
     /* Define 4 colunas em telas grandes, 3, 2, 1 em menores */
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
-    gap: 25px; /* Espaço entre os cards */
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 25px;
+    /* Espaço entre os cards */
 }
 
 /* Card Individual de Conteúdo */
 .content-item-card {
-    background-color: var(--color-bg-primary, #f9f9f9); /* Fundo um pouco diferente */
+    background-color: var(--color-bg-primary, #f9f9f9);
+    /* Fundo um pouco diferente */
     border-radius: 8px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
-    overflow: hidden; /* Garante que a imagem não vaze */
+    overflow: hidden;
+    /* Garante que a imagem não vaze */
     display: flex;
-    flex-direction: column; /* Organiza imagem, corpo */
+    flex-direction: column;
+    /* Organiza imagem, corpo */
     transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
 }
 
 .content-item-card:hover {
-    transform: translateY(-5px); /* Efeito de levantar */
+    transform: translateY(-5px);
+    /* Efeito de levantar */
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.12);
 }
 
 /* Thumbnail (Imagem ou Ícone) */
 .card-thumbnail {
-    background-color: var(--color-bg-secondary, #e0e0e0); /* Cor de fundo para o ícone */
+    background-color: var(--color-bg-secondary, #e0e0e0);
+    /* Cor de fundo para o ícone */
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 200px; /* Altura fixa para a área da imagem/ícone */
+    height: 200px;
+    /* Altura fixa para a área da imagem/ícone */
     color: var(--color-text-secondary, #888);
 }
-.card-thumbnail img { /* Se usar imagem */
+
+.card-thumbnail img {
+    /* Se usar imagem */
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Cobre a área sem distorcer */
+    object-fit: cover;
+    /* Cobre a área sem distorcer */
 }
-.card-thumbnail .material-symbols-rounded { /* Se usar ícone */
-    font-size: 60px; /* Tamanho grande para o ícone */
+
+.card-thumbnail .material-symbols-rounded {
+    /* Se usar ícone */
+    font-size: 60px;
+    /* Tamanho grande para o ícone */
 }
 
 
@@ -174,13 +208,15 @@ body.dark-theme .filter-btn:hover {
     padding: 15px;
     display: flex;
     flex-direction: column;
-    flex-grow: 1; /* Faz o corpo ocupar o espaço restante */
+    flex-grow: 1;
+    /* Faz o corpo ocupar o espaço restante */
 }
 
 .card-title {
     font-size: 16px;
     font-weight: 600;
-    margin: 0 0 8px 0; /* Tira margem de cima, adiciona embaixo */
+    margin: 0 0 8px 0;
+    /* Tira margem de cima, adiciona embaixo */
     color: var(--color-text-primary, #333);
 }
 
@@ -192,17 +228,21 @@ body.dark-theme .filter-btn:hover {
     /* Limita a 2 linhas (opcional) */
     display: -webkit-box;
     -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;  
+    -webkit-box-orient: vertical;
     overflow: hidden;
     text-overflow: ellipsis;
-    flex-grow: 1; /* Ocupa espaço antes do botão */
+    flex-grow: 1;
+    /* Ocupa espaço antes do botão */
 }
 
 /* Botão "Ver mais" */
 .card-button {
-    display: inline-block; /* Comportamento de link/botão */
-    background-color: transparent; /* Fundo transparente */
-    color: var(--color-primary-red, #A6121F); /* Cor do link */
+    display: inline-block;
+    /* Comportamento de link/botão */
+    background-color: transparent;
+    /* Fundo transparente */
+    color: var(--color-primary-red, #A6121F);
+    /* Cor do link */
     border: 1px solid var(--color-primary-red, #A6121F);
     padding: 8px 15px;
     border-radius: 5px;
@@ -211,8 +251,10 @@ body.dark-theme .filter-btn:hover {
     font-size: 14px;
     font-weight: 500;
     transition: background-color 0.2s, color 0.2s;
-    margin-top: auto; /* Empurra o botão para o final do card */
-    align-self: flex-start; /* Alinha à esquerda */
+    margin-top: auto;
+    /* Empurra o botão para o final do card */
+    align-self: flex-start;
+    /* Alinha à esquerda */
 }
 
 .card-button:hover {
@@ -223,26 +265,26 @@ body.dark-theme .filter-btn:hover {
 /* Estilo Hover (Modo Claro) */
 .card-button:hover {
     /* Fundo: Vermelho */
-    background-color: var(--color-primary-red, #A6121F); 
+    background-color: var(--color-primary-red, #A6121F);
     /* Texto: Branco */
-    color: #fff; 
+    color: #fff;
 }
 
 /* === Sobrescrita para Modo Escuro === */
 body.dark-theme .card-button {
     /* Cor do texto: Branco */
-    color: #fff; 
+    color: #fff;
     /* Borda: Branca */
-    border-color: #fff; 
+    border-color: #fff;
     /* Background continua transparente */
 }
 
 /* Estilo Hover (Modo Escuro) */
 body.dark-theme .card-button:hover {
     /* Fundo: Branco */
-    background-color: #fff; 
+    background-color: #fff;
     /* Texto: Vermelho (para contraste) ou Preto/Cor escura do tema */
-    color: #000; 
+    color: #000;
     /* Ou, se preferir texto escuro do tema no hover: */
     /* color: var(--color-bg-primary, #111827); */
 }
@@ -253,23 +295,35 @@ body.dark-theme .card-button:hover {
         width: 95%;
         padding: 20px;
     }
+
     .content-header {
-        flex-direction: column; /* Título acima da busca/filtros */
-        align-items: stretch; /* Ocupa largura total */
+        flex-direction: column;
+        align-items: stretch;
     }
+
     .search-and-filters {
         flex-direction: column;
-        align-items: stretch; /* Ocupa largura total */
+        align-items: stretch;
+        width: 100%;
     }
+
+    .search-bar {
+        width: 100%;
+        margin-right: 0;
+        box-sizing: border-box;
+    }
+
     .search-bar input[type="search"] {
-        width: 100%; /* Busca ocupa largura total */
-        box-sizing: border-box; /* Garante padding correto */
+        width: 100%;
+        box-sizing: border-box;
     }
+
     .filter-buttons {
-        justify-content: center; /* Centraliza botões */
+        justify-content: center;
     }
+
     .content-grid {
-        gap: 15px; /* Menos espaço entre cards */
+        gap: 15px;
     }
 }
 
@@ -278,48 +332,66 @@ body.dark-theme .card-button:hover {
 /* Container dos Metadados (Autor e Data) */
 .card-meta {
     display: flex;
-    flex-wrap: wrap; /* Permite quebrar linha se não couber */
-    gap: 15px; /* Espaço entre Autor e Data */
+    flex-wrap: wrap;
+    /* Permite quebrar linha se não couber */
+    gap: 15px;
+    /* Espaço entre Autor e Data */
     color: var(--color-text-secondary, #777);
-    font-size: 13px; /* Tamanho menor */
-    margin-bottom: 10px; /* Espaço abaixo dos metadados */
-    align-items: center; /* Alinha ícones e texto verticalmente */
+    font-size: 13px;
+    /* Tamanho menor */
+    margin-bottom: 10px;
+    /* Espaço abaixo dos metadados */
+    align-items: center;
+    /* Alinha ícones e texto verticalmente */
 }
 
 .meta-item {
-    display: inline-flex; /* Alinha ícone e texto na mesma linha */
+    display: inline-flex;
+    /* Alinha ícone e texto na mesma linha */
     align-items: center;
-    gap: 4px; /* Espaço pequeno entre ícone e texto */
+    gap: 4px;
+    /* Espaço pequeno entre ícone e texto */
 }
 
 /* Ícones dentro dos metadados e tags */
 .card-meta .icon,
 .card-tags .icon {
-    font-size: 16px; /* Tamanho dos ícones pequenos */
+    font-size: 16px;
+    /* Tamanho dos ícones pequenos */
     /* position: relative; top: 2px; Descomente se precisar ajustar o alinhamento vertical */
 }
 
 /* Container das Tags */
 .card-tags {
     display: flex;
-    flex-wrap: wrap; /* Permite que as tags quebrem linha */
-    gap: 6px; /* Espaço entre as tags e entre o ícone e a primeira tag */
-    margin-bottom: 12px; /* Espaço abaixo das tags */
+    flex-wrap: wrap;
+    /* Permite que as tags quebrem linha */
+    gap: 6px;
+    /* Espaço entre as tags e entre o ícone e a primeira tag */
+    margin-bottom: 12px;
+    /* Espaço abaixo das tags */
     align-items: center;
 }
 
 .card-tags .icon {
-    color: var(--color-text-secondary, #777); /* Cor do ícone de tag */
+    color: var(--color-text-secondary, #777);
+    /* Cor do ícone de tag */
 }
 
 /* Estilo individual de cada Tag */
 .tag-item {
-    background-color: var(--color-bg-secondary, #e0e0e0); /* Fundo da tag */
-    color: #ffffff; /* Cor do texto da tag */
-    padding: 3px 8px; /* Padding interno */
-    border-radius: 12px; /* Cantos arredondados */
-    font-size: 12px; /* Tamanho bem pequeno */
-    white-space: nowrap; /* Impede que o texto da tag quebre linha */
+    background-color: var(--color-bg-secondary, #e0e0e0);
+    /* Fundo da tag */
+    color: #ffffff;
+    /* Cor do texto da tag */
+    padding: 3px 8px;
+    /* Padding interno */
+    border-radius: 12px;
+    /* Cantos arredondados */
+    font-size: 12px;
+    /* Tamanho bem pequeno */
+    white-space: nowrap;
+    /* Impede que o texto da tag quebre linha */
 }
 
 /* Ajuste na descrição para vir depois dos metadados */
@@ -327,14 +399,14 @@ body.dark-theme .card-button:hover {
     /* margin-bottom: 15px; (Já definido antes) */
     /* flex-grow: 1; (Já definido antes) */
     /* Ajuste o limite de linhas se necessário (já está com 2) */
-    -webkit-line-clamp: 2; 
+    -webkit-line-clamp: 2;
 }
 
 /* Garante que o corpo do card use todo o espaço vertical */
 .card-body {
     display: flex;
     flex-direction: column;
-    flex-grow: 1; 
+    flex-grow: 1;
     /* padding: 15px; (Já definido antes) */
 }
 
@@ -346,10 +418,11 @@ body.dark-theme .card-button:hover {
     border-color: var(--color-primary-red, #A6121F);
     color: white;
 }
+
 body.dark-theme .filter-btn.active {
-     background-color: #fff;
-     border-color: #fff;
-     color: var(--color-primary-red, #A6121F);
+    background-color: #fff;
+    border-color: #fff;
+    color: var(--color-primary-red, #A6121F);
 }
 
 /* Card do Modal de Filtro */
@@ -359,17 +432,20 @@ body.dark-theme .filter-btn.active {
     color: var(--color-text-primary, #333);
     border-radius: 8px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-    max-width: 400px; /* Largura do modal */
+    max-width: 400px;
+    /* Largura do modal */
     width: 90%;
     display: flex;
     flex-direction: column;
-    max-height: 80vh; /* Limita altura máxima para caber na tela */
+    max-height: 80vh;
+    /* Limita altura máxima para caber na tela */
 
     /* Animação de fade/scale (opcional, igual ao modal de sucesso) */
     opacity: 1;
     transform: scale(1);
     transition: opacity 0.3s ease, transform 0.3s ease;
 }
+
 /* Esconder o card quando o overlay estiver escondido */
 .modal-overlay.modal-hidden .card-filter {
     opacity: 0;
@@ -384,7 +460,8 @@ body.dark-theme .filter-btn.active {
     align-items: center;
     padding: 15px 20px;
     border-bottom: 1px solid var(--color-border-hr, #eee);
-    flex-shrink: 0; /* Impede que o header encolha */
+    flex-shrink: 0;
+    /* Impede que o header encolha */
 }
 
 .filter-title {
@@ -399,29 +476,36 @@ body.dark-theme .filter-btn.active {
     color: var(--color-text-secondary, #777);
     cursor: pointer;
     padding: 5px;
-    display: flex; /* Para alinhar o ícone */
+    display: flex;
+    /* Para alinhar o ícone */
     align-items: center;
     justify-content: center;
     border-radius: 50%;
     transition: background-color 0.2s, color 0.2s;
 }
+
 .filter-close-btn:hover {
     background-color: var(--color-bg-secondary, #eee);
     color: var(--color-text-primary, #333);
 }
+
 body.dark-theme .filter-close-btn {
-     color: var(--color-text-placeholder, #A6B7D2); /* Ajuste cor no dark mode */
+    color: var(--color-text-placeholder, #A6B7D2);
+    /* Ajuste cor no dark mode */
 }
+
 body.dark-theme .filter-close-btn:hover {
-     background-color: var(--color-bg-secondary, #3D4859);
-     color: var(--color-text-primary, #F1F5F9);
+    background-color: var(--color-bg-secondary, #3D4859);
+    color: var(--color-text-primary, #F1F5F9);
 }
 
 /* Corpo do Modal (com scroll) */
 .filter-body {
     padding: 20px;
-    overflow-y: auto; /* Adiciona scroll se a lista de tags for longa */
-    flex-grow: 1; /* Ocupa o espaço vertical disponível */
+    overflow-y: auto;
+    /* Adiciona scroll se a lista de tags for longa */
+    flex-grow: 1;
+    /* Ocupa o espaço vertical disponível */
 }
 
 .filter-instructions {
@@ -429,6 +513,7 @@ body.dark-theme .filter-close-btn:hover {
     color: var(--color-text-secondary, #666);
     margin-bottom: 15px;
 }
+
 body.dark-theme .filter-instructions {
     color: var(--color-text-placeholder, #A6B7D2);
 }
@@ -437,7 +522,8 @@ body.dark-theme .filter-instructions {
 .tag-selection-list {
     display: flex;
     flex-direction: column;
-    gap: 12px; /* Espaço vertical entre as tags */
+    gap: 12px;
+    /* Espaço vertical entre as tags */
 }
 
 .tag-checkbox-label {
@@ -445,18 +531,22 @@ body.dark-theme .filter-instructions {
     align-items: center;
     cursor: pointer;
     font-size: 14px;
-    color: var(--color-text-primary, #333); /* Cor do texto da tag */
+    color: var(--color-text-primary, #333);
+    /* Cor do texto da tag */
 }
+
 body.dark-theme .tag-checkbox-label {
     color: var(--color-text-primary, #F1F5F9);
 }
 
 .tag-checkbox-label input[type="checkbox"] {
-    margin-right: 10px; /* Espaço entre checkbox e texto */
+    margin-right: 10px;
+    /* Espaço entre checkbox e texto */
     cursor: pointer;
     /* Estilização que usa a cor primária vermelha */
     accent-color: var(--color-primary-red, #A6121F);
-    width: 16px; /* Tamanho do checkbox */
+    width: 16px;
+    /* Tamanho do checkbox */
     height: 16px;
 }
 
@@ -467,17 +557,22 @@ body.dark-theme .tag-checkbox-label {
 /* Rodapé do Modal */
 .filter-footer {
     display: flex;
-    justify-content: space-between; /* Botões nas extremidades */
+    justify-content: space-between;
+    /* Botões nas extremidades */
     padding: 15px 20px;
     border-top: 1px solid var(--color-border-hr, #eee);
-    background-color: var(--color-bg-primary, #f9fafb); /* Fundo sutil */
-    border-bottom-left-radius: 8px; /* Arredonda cantos inferiores */
+    background-color: var(--color-bg-primary, #f9fafb);
+    /* Fundo sutil */
+    border-bottom-left-radius: 8px;
+    /* Arredonda cantos inferiores */
     border-bottom-right-radius: 8px;
-    flex-shrink: 0; /* Impede que o footer encolha */
+    flex-shrink: 0;
+    /* Impede que o footer encolha */
 }
+
 body.dark-theme .filter-footer {
-     background-color: var(--color-bg-secondary, #3D4859);
-     border-top-color: var(--color-border-hr, #3B475C);
+    background-color: var(--color-bg-secondary, #3D4859);
+    border-top-color: var(--color-border-hr, #3B475C);
 }
 
 .filter-action-btn {
@@ -496,19 +591,24 @@ body.dark-theme .filter-footer {
     color: var(--color-text-secondary, #666);
     border: 1px solid var(--color-border-hr, #ccc);
 }
+
 .clear-btn:hover {
     background-color: var(--color-bg-secondary, #eee);
-    border-color: #bbb; /* Borda mais escura no hover */
+    border-color: #bbb;
+    /* Borda mais escura no hover */
     color: var(--color-text-primary, #333);
 }
+
 body.dark-theme .clear-btn {
-     color: var(--color-text-placeholder, #A6B7D2);
-     border-color: var(--color-border-hr, #3B475C);
+    color: var(--color-text-placeholder, #A6B7D2);
+    border-color: var(--color-border-hr, #3B475C);
 }
+
 body.dark-theme .clear-btn:hover {
-     background-color: var(--color-bg-secondary, #3D4859);
-     border-color: #5a6a85; /* Borda mais clara no hover */
-     color: var(--color-text-primary, #F1F5F9);
+    background-color: var(--color-bg-secondary, #3D4859);
+    border-color: #5a6a85;
+    /* Borda mais clara no hover */
+    color: var(--color-text-primary, #F1F5F9);
 }
 
 /* Botão Aplicar Filtros */
@@ -517,16 +617,19 @@ body.dark-theme .clear-btn:hover {
     color: white;
     border: 1px solid var(--color-primary-red, #A6121F);
 }
+
 .apply-btn:hover {
-    opacity: 0.85; /* Leve transparência no hover */
+    opacity: 0.85;
+    /* Leve transparência no hover */
 }
 
-a { 
-    text-decoration: none;;
+a {
+    text-decoration: none;
+    ;
 }
 
 .menu {
-  border-radius: 8px;
+    border-radius: 8px;
     height: auto;
     /* margin-top: 0px; */
     position: absolute;
@@ -537,13 +640,13 @@ a {
     top: 130%;
     background: rgb(17 24 39 / 95%);
     pointer-events: none;
-  opacity: 0;
-  
+    opacity: 0;
+
     padding: 10px 0 15px;
 }
 
 .contents {
-  left: 20px;
+    left: 20px;
     position: relative;
     /* top: 48px; */
     transition: opacity 400ms cubic-bezier(0.4, 0.0, 0.2, 1);
@@ -552,87 +655,95 @@ a {
     max-height: 450px;
     overflow-y: scroll;
 }
-.contents::-webkit-scrollbar-track
-{
-	/* -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); */
-	border-radius: 10px;
-	background-color: #8a8a8a;
+
+.contents::-webkit-scrollbar-track {
+    /* -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); */
+    border-radius: 10px;
+    background-color: #8a8a8a;
 }
 
-.contents::-webkit-scrollbar
-{
-	width: 12px;
-	background-color: transparent;
+.contents::-webkit-scrollbar {
+    width: 12px;
+    background-color: transparent;
 }
+
 .texto-descricao {
     font-weight: 500;
 }
-.contents::-webkit-scrollbar-thumb
-{
-	border-radius: 10px;
-	/* -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3); */
-	background-color: rgb(29, 41, 66);
-}
-.row {
-  align-items: center;
-  border-bottom: 1px solid #cdd0de;
-  justify-content: space-between;
-  margin-top: 5px;
-  /* cursor: pointer; */
-  display: flex;
-  height: 46px;
 
-  padding: 0 5px;
-  user-select: none;
-  -moz-user-select: none;
+.contents::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    /* -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3); */
+    background-color: rgb(29, 41, 66);
 }
-.row:hover, .row:active{
-  background: rgb(17 24 39 / 95%);
-  color: #accaff;
+
+.row {
+    align-items: center;
+    border-bottom: 1px solid #cdd0de;
+    justify-content: space-between;
+    margin-top: 5px;
+    /* cursor: pointer; */
+    display: flex;
+    height: 46px;
+
+    padding: 0 5px;
+    user-select: none;
+    -moz-user-select: none;
+}
+
+.row:hover,
+.row:active {
+    background: rgb(17 24 39 / 95%);
+    color: #accaff;
 }
 
 form>.row:last-of-type {
-  border-bottom: none;
-  padding: 0 15px;
+    border-bottom: none;
+    padding: 0 15px;
 }
-.row:last-of-type button.card-button{
-    width: 100% ;
+
+.row:last-of-type button.card-button {
+    width: 100%;
 }
-.row:last-of-type:hover, .row:last-of-type:active{
+
+.row:last-of-type:hover,
+.row:last-of-type:active {
     background-color: transparent;
     color: inherit;
 }
+
 .expanded.menu {
-  opacity: 1;
-    pointer-events: all; 
-  transition: opacity 400ms 100ms cubic-bezier(0.4, 0.0, 0.2, 1);
+    opacity: 1;
+    pointer-events: all;
+    transition: opacity 400ms 100ms cubic-bezier(0.4, 0.0, 0.2, 1);
 }
 
 .row input {
-  display: none;
+    display: none;
 }
+
 .row label {
-  cursor: pointer;
+    cursor: pointer;
 }
 
 .row svg {
-  overflow: visible;
+    overflow: visible;
 }
 
 .path {
-  fill: none;
-  stroke: white;
-  stroke-width: 6;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  transition: stroke-dasharray 0.5s ease, stroke-dashoffset 0.5s ease;
-  stroke-dasharray: 241 9999999;
-  stroke-dashoffset: 0;
+    fill: none;
+    stroke: white;
+    stroke-width: 6;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    transition: stroke-dasharray 0.5s ease, stroke-dashoffset 0.5s ease;
+    stroke-dasharray: 241 9999999;
+    stroke-dashoffset: 0;
 }
 
-.row input:checked ~ label svg .path {
-  stroke-dasharray: 70.5096664428711 9999999;
-  stroke-dashoffset: -262.2723388671875;
+.row input:checked~label svg .path {
+    stroke-dasharray: 70.5096664428711 9999999;
+    stroke-dashoffset: -262.2723388671875;
 }
 
 .pagination-links {
@@ -641,27 +752,34 @@ form>.row:last-of-type {
     justify-content: center;
     align-items: center;
     width: 100%;
-/* 1. CORREÇÃO DO ALINHAMENTO DO TEXTO */
+    /* 1. CORREÇÃO DO ALINHAMENTO DO TEXTO */
     display: flex;
-    flex-direction: column; /* Empilha o texto e os botões */
-    align-items: center;    /* Centraliza tudo */
-    gap: 0.75rem; /* 12px de espaço entre o texto e os botões */
+    flex-direction: column;
+    /* Empilha o texto e os botões */
+    align-items: center;
+    /* Centraliza tudo */
+    gap: 0.75rem;
+    /* 12px de espaço entre o texto e os botões */
 }
 
 /* Remove os estilos padrão do <nav> do Laravel */
 .pagination-links nav {
     display: flex;
     align-items: center;
-    gap: 1.5rem; /* Espaço entre "Anterior/Próximo" e os números */
+    gap: 1.5rem;
+    /* Espaço entre "Anterior/Próximo" e os números */
 }
 
 /* Esconde o container padrão dos números */
-.pagination-links nav > div:first-child {
-    display: none; /* Esconde o "Showing X to Y..." padrão */
+.pagination-links nav>div:first-child {
+    display: none;
+    /* Esconde o "Showing X to Y..." padrão */
 }
+
 .pagination-links .page-link[rel="prev"]::before,
 .pagination-links .page-link[rel="next"]::after {
-    content: ''; /* Remove o conteúdo padrão (setas) */
+    content: '';
+    /* Remove o conteúdo padrão (setas) */
 }
 
 /* A lista <ul> que segura os links */
@@ -671,7 +789,8 @@ form>.row:last-of-type {
     margin: 0;
     display: flex;
     align-items: center;
-    gap: 5px; /* Espaço entre cada caixa de número */
+    gap: 5px;
+    /* Espaço entre cada caixa de número */
 }
 
 .pagination-links .page-item {
@@ -685,17 +804,21 @@ form>.row:last-of-type {
     display: flex;
     justify-content: center;
     align-items: center;
-    min-width: 40px; /* Largura mínima */
-    height: 40px;    /* Altura fixa */
+    min-width: 40px;
+    /* Largura mínima */
+    height: 40px;
+    /* Altura fixa */
     padding: 8px 12px;
     text-align: center;
     text-decoration: none;
-    border-radius: 8px; /* Seu padrão de borda */
+    border-radius: 8px;
+    /* Seu padrão de borda */
     font-size: 0.875rem;
     font-weight: 500;
     transition: all 0.2s ease;
     border: 1px solid var(--color-border-hr);
-    background-color: var(--color-bg-sidebar); /* Fundo do card */
+    background-color: var(--color-bg-sidebar);
+    /* Fundo do card */
     color: var(--color-text-placeholder);
 }
 
@@ -708,7 +831,8 @@ form>.row:last-of-type {
 
 /* Link: Ativo (página atual) */
 .pagination-links .page-item.active .page-link {
-    background-color: var(--color-hover-primary); /* Seu vermelho */
+    background-color: var(--color-hover-primary);
+    /* Seu vermelho */
     border-color: var(--color-hover-primary);
     color: #ffffff;
     font-weight: 700;
@@ -719,7 +843,8 @@ form>.row:last-of-type {
 .pagination-links .page-item.disabled .page-link {
     color: var(--color-border-hr);
     background-color: var(--color-bg-primary);
-    pointer-events: none; /* Desativa o clique */
+    pointer-events: none;
+    /* Desativa o clique */
 }
 
 /* Esconde os números (1, 2, 3...) - Opcional */
@@ -736,7 +861,8 @@ form>.row:last-of-type {
 /* Estiliza as "Setas" (Anterior/Próximo) */
 .pagination-links .page-item:first-child .page-link,
 .pagination-links .page-item:last-child .page-link {
-    padding: 8px; /* Menos padding lateral para as setas */
+    padding: 8px;
+    /* Menos padding lateral para as setas */
     font-weight: 600;
     color: var(--color-text-primary);
 }
@@ -744,13 +870,14 @@ form>.row:last-of-type {
 /* Remove os ícones feios (as setas < >) */
 .pagination-links .page-item:first-child .page-link svg,
 .pagination-links .page-item:last-child .page-link svg {
-    display: none; 
+    display: none;
 }
 
 /* Adiciona o texto (se você APAGOU o SVG do blade) */
 .pagination-links .page-item:first-child .page-link::before {
     content: 'Anterior';
 }
+
 .pagination-links .page-item:last-child .page-link::after {
     content: 'Próximo';
 }

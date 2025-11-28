@@ -66,6 +66,28 @@
                 </div>
             </div>
 
+
+        </div>
+    </section>
+    <section class="formulario" id="contato">
+        <div class="interface">
+            <h2 class="titulo">Ficou com alguma <span>dúvida?</span></h2>
+
+            <p class="subtitulo">Preencha o formulário e envie para entrar em contato conosco.</p>
+
+            <form method="POST" action="https://formsubmit.co/stageconnect8@gmail.com">
+                <input type="hidden" name="_next" value="{{ url('/obrigado') }}">
+                <input type="hidden" name="_captcha" value="false">
+
+                <input type="text" name="nome" id="nome" placeholder="Seu nome completo *" required>
+                <input type="email" name="email" id="email" placeholder="Seu e-mail *" required>
+                <input type="tel" name="telefone" id="telefone" placeholder="Seu telefone (opcional)">
+                <textarea name="mensagem" id="mensagem" placeholder="Escreva sua mensagem aqui..." required></textarea>
+
+                <div class="btn-enviar">
+                    <input type="submit" value="ENVIAR MENSAGEM">
+                </div>
+            </form>
         </div>
     </section>
 

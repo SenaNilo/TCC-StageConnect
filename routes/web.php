@@ -77,3 +77,5 @@ Route::get('/redefinir-senha/{token}', [PagesController::class, 'mostrarFormRede
 Route::post('/redefinir-senha', [PagesController::class, 'redefinirSenha'])
     ->middleware('guest')
     ->name('password.update');
+
+Route::view('/obrigado', 'obrigado')->name('obrigado');

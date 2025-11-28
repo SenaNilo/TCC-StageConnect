@@ -118,3 +118,100 @@
         padding: 10px;
     }
 }
+
+section.formulario {
+    padding: 80px 4%; /* Espaçamento interno */
+    background-color: #f9f9f9; /* Uma cor de fundo leve para separar do resto */
+}
+
+/* Centraliza o conteúdo na tela */
+.interface {
+    max-width: 1280px;
+    margin: 0 auto;
+}
+
+.formulario .titulo {
+    font-size: 38px;
+    text-align: center;
+    margin-bottom: 15px;
+    font-family: 'Poppins', sans-serif; /* Mantendo sua fonte */
+}
+
+.formulario .titulo span {
+    color: rgb(var(--secondary-red)); /* Usando suas variáveis de cor */
+}
+
+/* Organização do Form */
+form {
+    max-width: 600px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Espaço entre os inputs */
+}
+
+/* Estilo dos Inputs e Textarea */
+form input[type="text"],
+form input[type="email"],
+form input[type="tel"],
+form textarea {
+    width: 100%;
+    background-color: #e6e6e6; /* Cinza clarinho igual seu login */
+    border: none;
+    outline: none;
+    padding: 15px 20px;
+    border-radius: 25px; /* Bordas redondas combinam com seu estilo */
+    font-family: 'Poppins', sans-serif;
+    font-size: 15px;
+    color: var(--gray);
+}
+
+form textarea {
+    height: 150px;
+    resize: none; /* Impede o usuário de esticar a caixa e quebrar o layout */
+    border-radius: 15px; /* Radius um pouco menor no quadrado */
+}
+
+/* Estilo do Botão Enviar */
+.btn-enviar input[type="submit"] {
+    width: 100%;
+    padding: 15px 0;
+    background-color: #c30a19; /* Sua cor de destaque */
+    color: #fff;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    border-radius: 25px;
+    transition: .3s;
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+    text-transform: uppercase;
+}
+
+.btn-enviar input[type="submit"]:hover {
+    background-color: #000; 
+    transform: translateY(-3px); 
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+}
+.formulario .subtitulo {
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+    color: #000;
+    margin-bottom: 35px;
+    display: block;
+    width: 100%;
+}
+
+/* Responsividade */
+@media (max-width: 576px) {
+    .formulario .titulo {
+        font-size: 28px;
+        justify-content: center;
+        align-items: center;
+    }
+    .formulario .subtitulo {
+        font-size: 14px;
+        padding: 0 10px;
+    }
+}

@@ -38,10 +38,10 @@ use Illuminate\Support\Str;
 
                 <div class="page-header">
                     {{-- Título da Página (como no seu menu) --}}
-                    <h1 class="page-title">Notícias e Artigos Tech</h1>
+                    <h1 class="page-title">Agregador de notícias e Artigos Tech</h1>
                     <p> Fique por dentro das principais notícias e tendências da tecnologia, além de artigos que ampliam seu conhecimento.
                         <br>
-                        <em>(Créditos das publicações pertencem aos seus respectivos autores.)</em>
+                        <p class="texto-descricao">(Este conteúdo não é de autoria do StageConnect. Os créditos pertencem aos autores originais e, ao clicar, você será redirecionado para a publicação oficial.)</p>
                     </p>
                 </div>
                 {{-- LÓGICA DA FOTO DE PERFIL (Mantida) --}}

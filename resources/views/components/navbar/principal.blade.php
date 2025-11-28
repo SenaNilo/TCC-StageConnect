@@ -33,7 +33,7 @@
             <ul>
                 <li><a href="{{ url('/') }}">Home</a></li>
                 <li><a href="{{ url('/#objetivos') }}">Objetivo</a></li>
-                <li><a href="{{ url('/#proposta') }}">Nossa proposta</a></li>
+                <li><a href="{{ url('/#proposta') }}">Guia</a></li>
                 <li><a href="{{ url('/sobre-nos') }}">Sobre nós</a></li>
                 <li><a href="{{ route('login') }}">Login</a></li>
                 <li><a href="{{ route('cadastro') }}">Cadastro</a></li>

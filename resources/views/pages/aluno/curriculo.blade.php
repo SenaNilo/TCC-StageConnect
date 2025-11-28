@@ -29,12 +29,12 @@
             <div class="main-inicial">
                 <div class="upload-card">
                     <div class="card-content">
-                        <h1 class="card-title">Turbine seu Currículo com IA</h1>
+                        <h1 class="card-title">Analise seu Currículo com IA</h1>
                         <p class="card-description">
                             Esta ferramenta usa Inteligência Artificial para fazer uma pré-análise do seu currículo em PDF. Ela foi treinada para identificar pontos fortes, sugerir melhorias e extrair as principais habilidades (soft skills e hard skills) do seu documento.
                         </p>
                         <p class="card-description">
-                            Adicionamos também a opção de você colar a descrição da vaga desejada, o que vai adicionar feedbacks personalizados para aquela oportunidade específica.
+                            Adicionamos também a opção de você colar a descrição da vaga desejada, o que vai adicionar sugestões personalizadas para aquela oportunidade específica.
                         </p>
 
                         <!-- O AVISO IMPORTANTE -->
@@ -45,8 +45,10 @@
                             <div class="aviso-content">
                                 <h4>Aviso Importante (Leia antes de enviar)</h4>
                                 <ul>
-                                    <li>Esta é uma análise <strong>automática</strong> e serve apenas como <strong>sugestão</strong>.</li>
+                                    <li>Esta é uma análise <strong>automática</strong>, é gerada por IA e pode ter imprecisões.</li>
+                                    <li> Ela serve apenas como <strong>sugestão</strong>.</li>
                                     <li>Ela <strong>não substitui</strong> a análise de um recrutador humano.</li>
+                                
                                 </ul>
                             </div>
                         </div>

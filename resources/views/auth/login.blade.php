@@ -73,7 +73,7 @@
 
 					<div class="login-form-btn">
 						<button class="form-btn">
-							Login
+							Entrar
 						</button>
 					</div>
 

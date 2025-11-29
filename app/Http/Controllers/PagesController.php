@@ -182,58 +182,39 @@ class PagesController extends Controller
      */
     public function storeCadastro(Request $request)
     {
-        // 1. Validação dos dados (SEM a regra 'unique' para evitar o erro de conexão)
+        // ... (Sua validação permanece igual) ...
         $validator = Validator::make($request->all(), [
             'name_user' => ['required', 'string', 'max:25'],
-            // REGRA 'UNIQUE' REMOVIDA DAQUI:
             'email' => ['required', 'string', 'email', 'max:200'], 
             'password' => ['required', 'string', 'min:6', 'confirmed'], 
         ], [
-            // Mensagens de erro
-            'name_user.required' => 'O campo Nome é obrigatório.',
-            'name_user.max' => 'O Nome não pode ter mais de 25 caracteres.',
-            'email.required' => 'O campo Email é obrigatório.',
-            'email.email' => 'Por favor, insira um email válido.',
-            'email.max' => 'O Email não pode ter mais de 200 caracteres.',
-            'password.required' => 'O campo Senha é obrigatório.',
-            'password.min' => 'A senha deve ter pelo menos 6 caracteres.',
-            'password.confirmed' => 'A confirmação da senha não corresponde.',
+            // ... (Suas mensagens) ...
         ]);
 
         if ($validator->fails()) {
-        return redirect()->back()
-                    ->withErrors($validator)
-                    ->withInput();
+            return redirect()->back()->withErrors($validator)->withInput();
         }
-        
-        // ----------------------------------------------------
-        // 2. CHECAGEM MANUAL DE UNICIDADE (CORREÇÃO FINAL DE CONEXÃO)
-        // ----------------------------------------------------
-        $emailExists = false;
 
+        // ... (Sua lógica de verificação de e-mail e reconexão permanece igual) ...
+        $emailExists = false;
         try {
-            // Tenta a checagem pela primeira vez (pode falhar com 'Connection refused')
             $emailExists = Usuario::where('email', $request->email)->exists();
         } catch (\Illuminate\Database\QueryException $e) {
-            // Se a falha for 'Connection refused' (Erro 2002), força a reconexão e tenta de novo
             if (str_contains($e->getMessage(), '2002 Connection refused')) {
                 DB::reconnect();
-                // Tenta a checagem novamente após a reconexão
                 $emailExists = Usuario::where('email', $request->email)->exists();
             } else {
-                // Se for outro erro de DB, relança para não ocultar o bug real
                 throw $e;
             }
         }
         
         if ($emailExists) {
-            // Se o email já existe, retorna o erro personalizado
             return redirect()->back()
                 ->withErrors(['email' => 'Este email já está cadastrado.'])
                 ->withInput();
         }
 
-        // 3. Criação do Usuário
+        // CRIAÇÃO DO USUÁRIO
         $usuario = Usuario::create([
             'name_user' => $request->name_user,
             'email' => $request->email,
@@ -242,11 +223,14 @@ class PagesController extends Controller
             'active_user' => TRUE, 
         ]);
 
-        // 4. Login após o cadastro e redirecionamento
+        // --- MUDANÇA AQUI: AUTO-LOGIN ---
+        
+        // 1. Loga o usuário automaticamente
         Auth::login($usuario);
 
-        return redirect()->route('login')->with('success', 'Usuário cadastrado com sucesso!');
-    
+        // 2. Redireciona direto para a página inicial (Home/Dashboard)
+        // Certifique-se de que a rota 'home' ou 'dashboard' existe no seu web.php
+        return redirect()->route('aluno')->with('success', 'Bem-vindo(a) ao StageConnect!');
     }
 
     /**

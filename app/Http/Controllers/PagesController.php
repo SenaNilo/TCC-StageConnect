@@ -230,9 +230,8 @@ class PagesController extends Controller
 
         // 2. Redireciona direto para a página inicial (Home/Dashboard)
         // Certifique-se de que a rota 'home' ou 'dashboard' existe no seu web.php
-        return redirect()->route('login')->with('success', 'Bem-vindo(a) ao StageConnect!');
+        return redirect()->route('aluno.index')->with('success', 'Cadastro realizado! Bem-vindo(a) ao StageConnect!');    
     }
-
     /**
      * Login e start da sessao
      */

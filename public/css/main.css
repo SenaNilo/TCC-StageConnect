@@ -182,83 +182,6 @@ ul {
     height: 80vh;
 }
 
-/* Responsividade da primeira parte */
-
-@media (max-width: 768px) {
-    nav {
-        display: block;
-    }
-
-    .header {
-        flex-direction: row-reverse !important;
-    }
-
-    .headernav-container {
-        padding: 25px;
-    }
-
-    .principal-container {
-        margin-top: 15px;
-        flex-direction: column;
-        text-align: center;
-        height: auto;
-        align-items: center;
-        justify-content: center;
-    }
-
-    .parte-direita-principal {
-        max-width: 100%;
-        text-align: center;
-        margin: 0 20px;
-    }
-
-    .logo-principal {
-        max-width: 300px;
-        /* encolhe a logo */
-        width: 100%;
-        height: auto;
-        justify-content: center;
-        align-items: center;
-    }
-
-    .nav-desktop {
-        display: none;
-        /* esconde o menu desktop */
-    }
-
-    .btn-abrir-menu {
-        display: block !important;
-        z-index: 100;
-        position: relative;
-        padding: 8px;
-        /* mostra o hamburger */
-    }
-
-    .container-objetivos {
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-    }
-}
-
-@media (max-width: 380px) {
-    .principal-container {
-        padding: 0 15px;
-    }
-
-    .principal-container .titulo-principal {
-        font-size: 1.4rem;
-    }
-
-    .principal-container .descricao-principal {
-        font-size: 1.2rem;
-    }
-
-    .jornada-container{
-        max-width: 95vw;
-    }
-
-}
 
 /* Botão abrir menu (hamburger) */
 .btn-abrir-menu {
@@ -739,4 +662,83 @@ a {
     .jornada-texto h2 {
         font-size: 1.5rem;
     }
+}
+
+
+/* Responsividade da primeira parte */
+
+@media (max-width: 768px) {
+    nav {
+        display: block;
+    }
+
+    .header {
+        flex-direction: row-reverse !important;
+    }
+
+    .headernav-container {
+        padding: 25px;
+    }
+
+    .principal-container {
+        margin-top: 15px;
+        flex-direction: column;
+        text-align: center;
+        height: auto;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .parte-direita-principal {
+        max-width: 100%;
+        text-align: center;
+        margin: 0 20px;
+    }
+
+    .logo-principal {
+        max-width: 300px;
+        /* encolhe a logo */
+        width: 100%;
+        height: auto;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .nav-desktop {
+        display: none;
+        /* esconde o menu desktop */
+    }
+
+    .btn-abrir-menu {
+        display: block !important;
+        z-index: 100;
+        position: relative;
+        padding: 8px;
+        /* mostra o hamburger */
+    }
+
+    .container-objetivos {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+@media (max-width: 380px) {
+    .principal-container {
+        padding: 0 15px;
+    }
+
+    .principal-container .titulo-principal {
+        font-size: 1.4rem;
+    }
+
+    .principal-container .descricao-principal {
+        font-size: 1.2rem;
+    }
+
+    .jornada-container{
+        max-width: 95vw;
+    }
+
 }

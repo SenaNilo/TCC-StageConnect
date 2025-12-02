@@ -1,8 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap');
 
-/* ==================================== */
-/* Estilos Base/Globais        */
-/* ==================================== */
 
 html {
     scroll-behavior: smooth;
@@ -20,46 +17,33 @@ body {
     background-color: #FEFBFB;
 }
 
-a {
-    text-decoration: none;
-    color: inherit;
-}
-
-ul {
-    display: flex;
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    align-items: center;
-}
-
-/* Variáveis de cores (adicionadas para a seção Jornada) */
-:root {
-    --color-bg-sidebar: #FEFBFB; /* Cor de fundo da seção */
-    --color-border-hr: #e5e7eb; /* Cor da linha de divisão */
-    --color-hover-primary: #A6121F; /* Seu vermelho, usado no hover do menu mobile e botões da jornada */
-    --color-bg-secondary: #fcebeb; /* Fundo secundário claro para a pílula */
-    --color-text-primary: #000;
-    --color-text-placeholder: #374151; /* Cor para texto de parágrafo */
-    --color-shadow: rgba(0, 0, 0, 0.2);
-}
-
-/* ==================================== */
-/* Header e Nav            */
-/* ==================================== */
-
 .headernav-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 25px 70px;
     position: relative;
+    /* background-color: #000; */
 }
 
+/* .typed-text {
+    font-family: 'Arvo', sans-serif; 
+} */
+
 nav {
+    /* border: 1px solid red;  */
     display: flex;
     align-items: center;
     margin-right: 20px;
+}
+
+ul {
+    display: flex;
+    list-style: none;
+    padding: 0px;
+    margin: 0;
+    /* background-color: pink; */
+    align-items: center;
 }
 
 .titulo-header {
@@ -70,12 +54,14 @@ nav {
 }
 
 .menu-header {
+    /* padding: 0px 10px 20px 20px; */
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
 .logo-header {
+    /* margin-left: 20px; */
     width: 65px;
     transition: transform 0.3s ease;
 }
@@ -86,6 +72,7 @@ nav {
 
 .lista-header {
     margin-right: 30px;
+    /* color: #fff; */
     font-size: 18px;
     color: #fff;
     cursor: pointer;
@@ -122,14 +109,15 @@ nav {
 .dropdown-content {
     position: absolute;
     top: 100%;
+    /* left: 50; */
     background: white;
     min-width: 140px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     opacity: 0;
     transform: translateY(-10px);
     transition: all 0.3s;
+    /* pointer-events: none;  */
     border-radius: 3px;
-    pointer-events: none; /* Garante que só fique interativo ao aparecer */
 }
 
 .dropdown:hover .dropdown-content {
@@ -150,7 +138,52 @@ nav {
     background: #f3f4f6;
 }
 
-/* Menu Mobile (Hamburger) */
+.principal-container {
+    position: relative;
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    /* height: 70vh; */
+    margin-bottom: 8rem;
+    padding: 0 70px;
+    /* border: 1px solid red; */
+}
+
+.parte-direita-principal {
+    /* border: 1px solid blue; */
+    color: white;
+    /* margin-left: 50px; */
+    font-size: 22px;
+    max-width: 600px;
+}
+.parte-direita-principal .titulo-principal {
+    font-size: 2rem;
+}
+
+.logo-principal {
+    width: 400px;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.15));
+    transition: transform 0.7s ease;
+    /* margin-right: 10%; */
+    /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
+}
+
+.logo-principal:hover {
+    transform: scale(1.03);
+}
+
+.titulo-princcipal .descricao-principal {
+    font-size: 50px;
+    color: #000;
+}
+
+.finisher-header.index {
+    height: 80vh;
+}
+
+
+/* Botão abrir menu (hamburger) */
 .btn-abrir-menu {
     display: none;
 }
@@ -160,6 +193,7 @@ nav {
     font-size: 30px;
 }
 
+/* Menu mobile */
 .menu-mobile {
     background-color: #000;
     height: 100vh;
@@ -178,7 +212,7 @@ nav {
 
 .menu-mobile nav ul {
     text-align: left;
-    align-items: flex-start; /* Ajustado para alinhamento vertical */
+    align-items: left;
     padding-top: 50px;
     display: block;
 }
@@ -199,7 +233,6 @@ nav {
 .menu-mobile .btn-fechar {
     padding: 20px 5%;
     cursor: pointer;
-    text-align: right; /* Alinha o botão de fechar à direita */
 }
 
 .menu-mobile .btn-fechar i {
@@ -219,94 +252,14 @@ nav {
     display: none;
 }
 
-/* ==================================== */
-/* Seção Principal          */
-/* ==================================== */
-
-.principal-container {
-    position: relative;
-    align-items: center;
-    display: flex;
-    justify-content: space-between;
-    gap: 20px;
-    margin-bottom: 8rem;
-    padding: 0 70px;
-}
-
-.parte-direita-principal {
-    color: white;
-    font-size: 22px;
-    max-width: 600px;
-}
-
-.parte-direita-principal .titulo-principal {
-    font-size: 2rem;
-}
-
-.logo-principal {
-    width: 400px;
-    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.15));
-    transition: transform 0.7s ease;
-}
-
-.logo-principal:hover {
-    transform: scale(1.03);
-}
-
-.titulo-princcipal .descricao-principal { /* Atenção: a classe '.titulo-princcipal' parece incorreta (com 'cc') */
-    font-size: 50px;
-    color: #000;
-}
-
-.finisher-header.index {
-    height: 80vh;
-}
-
-/* Efeito de escrita */
-.cursor {
-    display: inline-block;
-    width: 3px;
-    height: 1.2em;
-    background-color: black;
-    margin-left: 5px;
-    animation: blink 0.8s infinite;
-}
-
-.cursor.typing {
-    animation: none;
-}
-
-/* --- Animação de piscar --- */
-@keyframes blink {
-    0% {
-        opacity: 1;
-    }
-
-    50% {
-        opacity: 0;
-    }
-
-    100% {
-        opacity: 1;
-    }
-}
-
-/* ==================================== */
-/* Seção Objetivos          */
-/* ==================================== */
-
-.titulo-objetivos {
-    text-align: center;
-    margin: 50px 0;
-    font-size: 36px;
-    color: #000;
-    font-weight: 500;
-}
-
+/* Blocos da segunda seção */
 .container-objetivos {
     display: flex;
+    /* justify-content: space-around;
+    gap: 50px; */
     justify-content: center;
     gap: 50px;
+    /* align-items: flex-start; */
     margin: 50px auto 8rem;
     text-align: center;
 }
@@ -319,22 +272,71 @@ nav {
     color: #000;
     padding: 0;
     transition: transform 0.3s ease;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Aplicado ao .card para evitar repetição */
+}
+
+.bloco-orientar {
+    /* width: 30%; */
+    background-color: #FDFDFD;
+    color: #000;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+
+    /* padding: 20px;
+            border-radius: 10px;
+            margin-right: 20px; */
+}
+
+.bloco-conectar {
+    /* width: 30%; */
+    background-color: #FDFDFD;
+    color: #000;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    /* padding: 20px;
+            border-radius: 10px;
+            margin-right: 20px; */
 }
 
 .card:hover {
     transform: scale(1.05);
 }
 
-/* Removido .bloco-orientar, .bloco-conectar, .bloco-impulsionar (Estilos duplicados) */
+.bloco-impulsionar {
+    /* width: 30%; */
+    background-color: #FDFDFD;
+    color: #000;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    /* padding: 20px;
+            border-radius: 10px; */
+}
 
-/* Estilos do cabeçalho do card (janela) */
+.titulo-objetivos {
+    text-align: center;
+    margin: 50px 0;
+    font-size: 36px;
+    color: #000;
+    font-weight: 500;
+}
+
+.titulo-jornada {
+    text-align: center;
+    margin-bottom: 50px;
+    font-size: 30px;
+    color: #000;
+    font-weight: 600;
+}
+
+/* Estilos do card original */
 .tools {
     display: flex;
     align-items: center;
     padding: 9px;
     background-color: #F8FBFE;
     border-radius: 8px 8px 0 0;
+    /* Borda arredondada só no topo */
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
 }
 
 .circle {
@@ -367,8 +369,11 @@ nav {
     padding: 25px;
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: left;
     justify-content: flex-start;
+    /* height: 55vh; */
+    /* align-items: center; */
+    /* Adiciona o padding que estava nos blocos antigos */
 }
 
 .icone-bloco {
@@ -379,11 +384,13 @@ nav {
     align-self: flex-start;
 }
 
+/* Estilos de texto */
 .titulo-blocos {
     font-size: 24px;
     margin-bottom: 10px;
     color: inherit;
     text-align: left;
+    ;
 }
 
 .descricao-blocos {
@@ -393,120 +400,24 @@ nav {
     text-align: left;
 }
 
-/* ==================================== */
-/* Seção Jornada            */
-/* ==================================== */
-
-.titulo-jornada {
-    text-align: center;
-    margin-bottom: 50px;
-    font-size: 30px;
-    color: #000;
-    font-weight: 600;
-}
-
-.section-jornada {
-    background-color: var(--color-bg-sidebar);
-    border-top: 1px solid var(--color-border-hr);
-}
-
-.jornada-container {
-    max-width: 70vw;
-    overflow-x: hidden;
-    margin: 0 auto;
-    padding: 0 20px;
-}
-
-.jornada-passo {
-    display: flex;
-    align-items: center;
-    gap: 40px;
-    margin-bottom: 70px;
-}
-
-/* Inverte a ordem para a linha 2 */
-.jornada-passo.reverse {
-    flex-direction: row-reverse;
-}
-
-.jornada-imagem {
-    flex: 1;
-    min-width: 0;
-    border-radius: 10px;
-    filter: drop-shadow(0 10px 15px rgba(0, 0, 0, 0.2));
-}
-
-.jornada-imagem img {
-    width: 100%;
-    border-radius: 8px;
-    box-shadow: 0 5px 20px var(--color-shadow);
-}
-
-.jornada-texto {
-    flex: 1;
-}
-
-.jornada-etapa {
-    display: inline-block;
-    padding: 4px 12px;
-    background-color: var(--color-bg-secondary);
-    color: var(--color-hover-primary);
-    border-radius: 999px;
-    font-size: 0.875rem;
-    font-weight: 600;
-    margin-bottom: 15px;
-}
-
-.jornada-texto h2 {
-    font-size: 2rem;
-    font-weight: 600;
-    color: var(--color-text-primary);
-    margin-bottom: 15px;
-}
-
-.jornada-texto p {
-    font-size: 1rem;
-    color: var(--color-text-placeholder);
-    line-height: 1.7;
-    margin-bottom: 25px;
-}
-
-.negrito-texto {
-    font-weight: 700;
-}
-
-.jornada-button {
-    display: inline-block;
-    background-color: var(--color-hover-primary);
-    color: #ffffff;
-    text-decoration: none;
-    padding: 12px 24px;
-    border-radius: 8px;
-    font-weight: 500;
-    transition: background-color 0.3s ease;
-}
-
-.jornada-button:hover {
-    background-color: #870917;
-}
-
-
-/* ==================================== */
-/* Footer                */
-/* ==================================== */
-
 .footer {
     background-color: #000;
     color: #fff;
     padding: 40px 20px;
+    /* Adiciona um pouco de padding geral */
 }
 
 .footer-container {
     display: flex;
     justify-content: space-around;
+    /* Espaça as colunas igualmente */
     width: 100%;
+    /* max-width: 1200px; */
+    /* Limita a largura do container para telas grandes */
     margin: 0 auto;
+    /* Centraliza o container */
     flex-wrap: wrap;
+    /* Permite que as colunas quebrem para a próxima linha em telas menores */
 }
 
 .footer-logo {
@@ -521,12 +432,12 @@ nav {
 
 .footer-logo p {
     display: inline;
+    /* Para ficar na mesma linha da logo */
     font-size: 1.5em;
     font-weight: bold;
 }
 
-.footer-informacoes,
-.footer-contatos {
+.footer-informacoes {
     text-align: left;
 }
 
@@ -558,6 +469,10 @@ nav {
     border-bottom: solid 2px #fff;
 }
 
+.footer-contatos {
+    text-align: left;
+}
+
 .footer-contatos h3 {
     border-bottom: 1px solid #fff;
     padding-bottom: 5px;
@@ -566,95 +481,14 @@ nav {
 
 .footer-contatos p {
     margin-bottom: 10px;
-}
+}l
 
 .footer-contatos i {
     margin-right: 5px;
 }
 
-/* ==================================== */
-/* Media Queries (Desktop)     */
-/* ==================================== */
-
-/* Removida uma query duplicada de 768px */
-
-
-/* ==================================== */
-/* Media Queries (Tablet)      */
-/* ==================================== */
-
+/* Responsividade para telas menores */
 @media (max-width: 768px) {
-    /* Header e Navegação */
-    nav {
-        display: block;
-    }
-
-    .header {
-        flex-direction: row-reverse !important;
-    }
-
-    .headernav-container {
-        padding: 25px;
-    }
-
-    .nav-desktop {
-        display: none;
-    }
-
-    .btn-abrir-menu {
-        display: block !important;
-        z-index: 100;
-        position: relative;
-        padding: 8px;
-    }
-
-    /* Seção Principal */
-    .principal-container {
-        margin-top: 15px;
-        flex-direction: column;
-        text-align: center;
-        height: auto;
-        align-items: center;
-        justify-content: center;
-        padding: 0 20px; /* Ajuste o padding para não ficar colado */
-    }
-
-    .parte-direita-principal {
-        max-width: 100%;
-        text-align: center;
-        margin: 0 20px;
-    }
-
-    .logo-principal {
-        max-width: 300px;
-        width: 100%;
-        height: auto;
-    }
-
-    /* Seção Objetivos */
-    .container-objetivos {
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        gap: 30px; /* Reduz um pouco o espaçamento */
-    }
-    
-    .card {
-        max-width: 90%; /* Ocupa mais espaço no tablet/mobile */
-    }
-    
-    /* Seção Jornada */
-    .jornada-passo,
-    .jornada-passo.reverse {
-        flex-direction: column;
-        text-align: center;
-    }
-
-    .jornada-texto h2 {
-        font-size: 1.5rem;
-    }
-    
-    /* Footer */
     .footer-container {
         justify-content: space-around;
         text-align: center;
@@ -674,23 +508,219 @@ nav {
 
     .footer-logo {
         width: 100%;
-        order: -1; /* Move a logo para o topo */
+        /* A logo ocupa a largura total */
     }
 }
-
-
-/* ==================================== */
-/* Media Queries (Mobile)      */
-/* ==================================== */
 
 @media (max-width: 480px) {
     .jornada-container{
         max-width: 85vw;
     }
-    
     .footer-informacoes,
     .footer-contatos {
         width: 100%;
+        /* Ocupam a largura total */
+    }
+}
+
+/* Efeito de escrita */
+.cursor {
+    display: inline-block;
+    width: 3px;
+    height: 1.2em;
+    background-color: black;
+    margin-left: 5px;
+    animation: blink 0.8s infinite;
+}
+
+.cursor.typing {
+    animation: none;
+}
+
+/* --- Animação de piscar --- */
+@keyframes blink {
+    0% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+.section-jornada {
+    background-color: var(--color-bg-sidebar);
+    border-top: 1px solid var(--color-border-hr);
+}
+
+.jornada-container {
+    max-width: 70vw;
+    overflow-x: hidden;
+    /* Um pouco mais estreito para leitura */
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.jornada-passo {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    margin-bottom: 70px;
+    /* Mais espaço entre os passos */
+}
+
+/* Inverte a ordem para a linha 2 */
+.jornada-passo.reverse {
+    flex-direction: row-reverse;
+}
+
+.jornada-imagem {
+    flex: 1;
+    /* Ocupa metade do espaço */
+    min-width: 0;
+    border-radius: 10px;
+    filter: drop-shadow(0 10px 15px rgba(0, 0, 0, 0.2));
+}
+
+.jornada-imagem img {
+    width: 100%;
+    border-radius: 8px;
+    /* Seu padrão de borda */
+    box-shadow: 0 5px 20px var(--color-shadow);
+    /* Sua sombra */
+}
+
+.jornada-texto {
+    flex: 1;
+    /* Ocupa a outra metade */
+}
+
+.jornada-etapa {
+    display: inline-block;
+    padding: 4px 12px;
+    background-color: var(--color-bg-secondary);
+    color: var(--color-hover-primary);
+    /* Seu vermelho */
+    border-radius: 999px;
+    /* "Pílula" */
+    font-size: 0.875rem;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+.jornada-texto h2 {
+    font-size: 2rem;
+    /* 32px */
+    font-weight: 600;
+    color: var(--color-text-primary);
+    margin-bottom: 15px;
+}
+
+.jornada-texto p {
+    font-size: 1rem;
+    color: var(--color-text-placeholder);
+    /* Placeholder para mais contraste */
+    line-height: 1.7;
+    margin-bottom: 25px;
+}
+
+.negrito-texto {
+    font-weight: 700;
+}
+
+.jornada-button {
+    display: inline-block;
+    background-color: var(--color-hover-primary);
+    /* Seu vermelho */
+    color: #ffffff;
+    text-decoration: none;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-weight: 500;
+    transition: background-color 0.3s ease;
+}
+
+.jornada-button:hover {
+    background-color: #870917;
+    /* Seu .btn-card:hover */
+}
+
+/* --- Responsividade para a nova seção --- */
+@media (max-width: 768px) {
+
+    .jornada-passo,
+    .jornada-passo.reverse {
+        flex-direction: column;
+        /* Empilha no celular */
+        text-align: center;
+    }
+
+    .jornada-texto h2 {
+        font-size: 1.5rem;
+    }
+}
+
+
+/* Responsividade da primeira parte */
+
+@media (max-width: 768px) {
+    nav {
+        display: block;
+    }
+
+    .header {
+        flex-direction: row-reverse !important;
+    }
+
+    .headernav-container {
+        padding: 25px;
+    }
+
+    .principal-container {
+        margin-top: 15px;
+        flex-direction: column;
+        text-align: center;
+        height: auto;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .parte-direita-principal {
+        max-width: 100%;
+        text-align: center;
+        margin: 0 20px;
+    }
+
+    .logo-principal {
+        max-width: 300px;
+        /* encolhe a logo */
+        width: 100%;
+        height: auto;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .nav-desktop {
+        display: none;
+        /* esconde o menu desktop */
+    }
+
+    .btn-abrir-menu {
+        display: block !important;
+        z-index: 100;
+        position: relative;
+        padding: 8px;
+        /* mostra o hamburger */
+    }
+
+    .container-objetivos {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
     }
 }
 
@@ -710,4 +740,5 @@ nav {
     .jornada-container{
         max-width: 95vw;
     }
+
 }

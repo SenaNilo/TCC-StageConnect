@@ -198,7 +198,12 @@
                 "t"
             ]
         });
+
+        const canva = document.querySelector('canvas#finisher-canvas');
+        canva.width = window.innerWidth;
     </script>
+
+
 
     <script src="https://unpkg.com/scrollreveal"></script>
 

@@ -182,7 +182,6 @@ ul {
     height: 80vh;
 }
 
-
 /* Botão abrir menu (hamburger) */
 .btn-abrir-menu {
     display: none;
@@ -487,42 +486,6 @@ a {
     margin-right: 5px;
 }
 
-/* Responsividade para telas menores */
-@media (max-width: 768px) {
-    .footer-container {
-        justify-content: space-around;
-        text-align: center;
-    }
-
-    .footer-logo,
-    .footer-informacoes,
-    .footer-contatos {
-        width: 45%;
-        margin-bottom: 20px;
-        text-align: center;
-    }
-
-    .footer-informacoes ul {
-        text-align: center;
-    }
-
-    .footer-logo {
-        width: 100%;
-        /* A logo ocupa a largura total */
-    }
-}
-
-@media (max-width: 480px) {
-    .jornada-container{
-        max-width: 85vw;
-    }
-    .footer-informacoes,
-    .footer-contatos {
-        width: 100%;
-        /* Ocupam a largura total */
-    }
-}
-
 /* Efeito de escrita */
 .cursor {
     display: inline-block;
@@ -662,12 +625,29 @@ a {
     .jornada-texto h2 {
         font-size: 1.5rem;
     }
-}
 
+    .footer-container {
+        justify-content: space-around;
+        text-align: center;
+    }
 
-/* Responsividade da primeira parte */
+    .footer-logo,
+    .footer-informacoes,
+    .footer-contatos {
+        width: 45%;
+        margin-bottom: 20px;
+        text-align: center;
+    }
 
-@media (max-width: 768px) {
+    .footer-informacoes ul {
+        text-align: center;
+    }
+
+    .footer-logo {
+        width: 100%;
+        /* A logo ocupa a largura total */
+    }
+
     nav {
         display: block;
     }
@@ -721,6 +701,17 @@ a {
         flex-direction: column;
         justify-content: center;
         align-items: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .jornada-container{
+        max-width: 85vw;
+    }
+    .footer-informacoes,
+    .footer-contatos {
+        width: 100%;
+        /* Ocupam a largura total */
     }
 }
 

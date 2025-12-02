@@ -254,6 +254,10 @@ ul {
         font-size: 1.2rem;
     }
 
+    .jornada-container{
+        max-width: 95vw;
+    }
+
 }
 
 /* Botão abrir menu (hamburger) */
@@ -586,7 +590,9 @@ a {
 }
 
 @media (max-width: 480px) {
-
+    .jornada-container{
+        max-width: 85vw;
+    }
     .footer-informacoes,
     .footer-contatos {
         width: 100%;

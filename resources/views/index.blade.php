@@ -235,13 +235,13 @@
             delay: 200, // Atraso
             interval: 100, // Um passo de cada vez
             origin: 'right', // Vem da direita
-            distance: '40px' // Um pouco mais de distância
+            distance: '50px' // Um pouco mais de distância
         });
         sr.reveal('.jornada-passo.reverse', {
             delay: 200,
             interval: 100,
             origin: 'left', // O passo reverso vem da esquerda
-            distance: '40px'
+            distance: '50px'
         });
     </script>
 </body>

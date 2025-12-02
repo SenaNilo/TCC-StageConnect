@@ -157,6 +157,9 @@ ul {
     font-size: 22px;
     max-width: 600px;
 }
+.parte-direita-principal .titulo-principal {
+    font-size: 2rem;
+}
 
 .logo-principal {
     width: 400px;
@@ -236,6 +239,21 @@ ul {
         justify-content: center;
         align-items: center;
     }
+}
+
+@media (max-width: 380px) {
+    .principal-container {
+        padding: 0 15px;
+    }
+
+    .principal-container .titulo-principal {
+        font-size: 1.4rem;
+    }
+
+    .principal-container .descricao-principal {
+        font-size: 1.2rem;
+    }
+
 }
 
 /* Botão abrir menu (hamburger) */
@@ -611,7 +629,7 @@ a {
 }
 
 .jornada-container {
-    max-width: 100vw;
+    max-width: 70vw;
     overflow-x: hidden;
     /* Um pouco mais estreito para leitura */
     margin: 0 auto;

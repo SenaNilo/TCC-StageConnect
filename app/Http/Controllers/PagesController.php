@@ -184,7 +184,7 @@ class PagesController extends Controller
     {
         // ... (Sua validação permanece igual) ...
         $validator = Validator::make($request->all(), [
-            'name_user' => ['required', 'string', 'max:25'],
+            'name_user' => ['required', 'string', 'max:65'],
             'email' => ['required', 'string', 'email', 'max:200'], 
             'password' => ['required', 'string', 'min:6', 'confirmed'], 
         ], [
@@ -204,7 +204,7 @@ class PagesController extends Controller
                 DB::reconnect();
                 $emailExists = Usuario::where('email', $request->email)->exists();
             } else {
-                throw $e;
+                throw $e; //talvez seja aqui que volte o erro 419
             }
         }
         

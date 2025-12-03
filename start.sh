@@ -39,7 +39,8 @@ wait_for_db
 
 # 3. Roda Migrações
 echo "Rodando Migrações..."
-php artisan migrate --force
+php artisan migrate #--force
+sleep 3
 php artisan app:fetch-rss-feeds
 
 # 4. Cacheia a configuração para produção

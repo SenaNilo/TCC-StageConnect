@@ -6,6 +6,7 @@ use App\Http\Controllers\PagesController;
 use App\Providers\Filament\FilamentPanelProvider;
 use App\Http\Controllers\AlunoController;
 use App\Http\Controllers\ConfiguracoesController;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\CurriculoController;
 use App\Http\Controllers\NewsController;
 
@@ -66,16 +67,17 @@ Route::get('/esqueci-senha', [PagesController::class, 'mostrarFormEsqueciSenha']
 
 Route::post('/esqueci-senha', [PagesController::class, 'enviarLinkReset'])
     ->middleware('guest')
-    ->name('password.email'); // 'password.email' é o nome padrão
+    ->name('password.email'); 
 
-// 3. Rota para MOSTRAR o formulário de "Nova Senha" (a que o usuário clica no e-mail)
 Route::get('/redefinir-senha/{token}', [PagesController::class, 'mostrarFormRedefinir'])
     ->middleware('guest')
-    ->name('password.reset'); // 'password.reset' é o nome padrão
+    ->name('password.reset');
 
-// 4. Rota para PROCESSAR o formulário e ATUALIZAR A SENHA
 Route::post('/redefinir-senha', [PagesController::class, 'redefinirSenha'])
     ->middleware('guest')
     ->name('password.update');
 
-Route::view('/obrigado', 'obrigado')->name('obrigado');
+Route::post('/contato', [ContactController::class, 'send'])->name('contato.send');
+Route::get('/obrigado', function () {
+    return view('obrigado');
+});

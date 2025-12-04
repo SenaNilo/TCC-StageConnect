@@ -1,0 +1,28 @@
+<p>O frio na barriga antes de uma entrevista técnica é normal, mas a preparação é o melhor remédio. Atualmente, a maioria das vagas de estágio e júnior exige uma etapa prática antes mesmo de você falar com o gestor.</p>
+
+<p>Geralmente, esses testes se dividem em duas categorias: <strong>Desafios de Algoritmo</strong> (para testar seu raciocínio lógico) e <strong>Desafios de Projeto</strong> (para testar se você sabe construir algo real).</p>
+
+<h2>1. Os "Dojos" de Algoritmo (Lógica Pura)</h2>
+<p>Aqui o objetivo não é fazer um site bonito, mas resolver um problema matemático ou lógico da forma mais eficiente possível.</p>
+
+<ul>
+    <li><strong>LeetCode:</strong> Considerado o "padrão ouro" internacional. Se você sonha com Big Techs (Google, Amazon, Nubank), treine aqui. O foco é pesado em estruturas de dados e otimização.</li>
+    
+    <li><strong>HackerRank:</strong> O favorito das empresas brasileiras para a primeira triagem. Muitos processos seletivos enviam um link do HackerRank com prazo de 48h. A trilha <em>"30 Days of Code"</em> é excelente para criar disciplina.</li>
+    
+    <li><strong>Codewars:</strong> Uma opção mais divertida e gamificada. Você ganha honra e sobe de faixas (Kyus) conforme resolve problemas (Katas). O grande diferencial é que, após resolver, você vê como outras pessoas resolveram o mesmo problema (ótimo para aprender truques da linguagem).</li>
+    
+    <li><strong>Beecrowd (antigo URI):</strong> Muito forte no meio acadêmico brasileiro. Se você quer afiar sua lógica matemática bruta, este é o lugar.</li>
+</ul>
+
+<h2>2. Desafios de Projeto (Mundo Real)</h2>
+<p>Algumas empresas preferem ver código de produção. Elas pedem: <em>"Crie uma tela de login que consome essa API"</em> ou <em>"Faça uma Landing Page responsiva"</em>.</p>
+
+<p>Para treinar isso, plataformas de algoritmo não ajudam tanto. A recomendação é buscar repositórios de projetos reais:</p>
+
+<ul>
+    <li><strong>Codante.io:</strong> Uma plataforma brasileira excelente que foca em "Desafios de Projeto". Diferente do LeetCode, aqui você encontra o design (Figma), as instruções e os requisitos de uma vaga real (ex: "Clone a página da Netflix"). É ideal para enriquecer seu portfólio no GitHub.</li>
+</ul>
+
+<h2>Dica de Ouro</h2>
+<p>Não tente fazer 10 exercícios em um dia e depois ficar um mês parado. A consistência vence a intensidade. Tente resolver <strong>um desafio por dia</strong> (ou 3 por semana). Em seis meses, sua lógica de programação estará em outro nível.</p>

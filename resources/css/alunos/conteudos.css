@@ -419,6 +419,23 @@ body.dark-theme .card-button:hover {
     color: white;
 }
 
+/* Remove a borda e fundo padrão do botão de lupa */
+    .btn-lupa {
+        background: transparent;
+        border: none;
+        outline: none;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0 10px; /* Espacinho lateral */
+        color: var(--color-text-secondary, #666); /* Cor do ícone */
+    }
+    
+    .btn-lupa:hover {
+        color: var(--color-primary, #000); /* Cor ao passar o mouse */
+    }
+
 body.dark-theme .filter-btn.active {
     background-color: #fff;
     border-color: #fff;

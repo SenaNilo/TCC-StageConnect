@@ -41,7 +41,7 @@ use Illuminate\Support\Str;
                     <h1 class="page-title">Agregador de notícias e Artigos Tech</h1>
                     <p> Fique por dentro das principais notícias e tendências da tecnologia, além de artigos que ampliam seu conhecimento.
                         <br>
-                        <p class="texto-descricao">(Este conteúdo não é de autoria do StageConnect. Os créditos pertencem aos autores originais e, ao clicar, você será redirecionado para a publicação oficial.)</p>
+                    <p class="texto-descricao">(Este conteúdo não é de autoria do StageConnect. Os créditos pertencem aos autores originais e, ao clicar, você será redirecionado para a publicação oficial.)</p>
                     </p>
                 </div>
                 {{-- LÓGICA DA FOTO DE PERFIL (Mantida) --}}
@@ -56,19 +56,47 @@ use Illuminate\Support\Str;
                 @endif
             </div>
 
-            {{-- Filtros e Busca (Mantido do seu layout de conteúdos) --}}
             <div class="content-header">
                 <div class="search-and-filters">
-                    <div class="search-bar">
-                        <span class="material-symbols-rounded">search</span>
-                        {{-- (Funcionalidade de busca pode ser implementada depois) --}}
-                        <input type="search" placeholder="Buscar Notícias..." name="search" id="content-search">
-                    </div>
+
+                    {{-- 1. FORMULÁRIO DE BUSCA --}}
+                    <form action="{{ route('aluno.noticias-tech') }}" method="GET" class="search-form">
+                        <div class="search-bar">
+                            {{-- Botão Lupa --}}
+                            <button type="submit" class="btn-lupa">
+                                <span class="material-symbols-rounded">search</span>
+                            </button>
+
+                            {{-- Input --}}
+                            <input
+                                type="search"
+                                placeholder="Buscar Notícias..."
+                                name="search"
+                                id="content-search"
+                                value="{{ request('search') }}"
+                                autocomplete="off">
+                        </div>
+                    </form>
+
+                    @php
+                    $currentOrder = request('order', 'desc');
+
+                    $nextOrder = $currentOrder === 'desc' ? 'asc' : 'desc';
+
+                    $linkOrdem = request()->fullUrlWithQuery(['order' => $nextOrder]);
+                    @endphp
+
                     <div class="filter-buttons">
-                        <button class="filter-btn" type="button">
+                        <a href="{{ $linkOrdem }}" class="filter-btn">
+
+
                             <span class="material-symbols-rounded">schedule</span>
+                            @if ($currentOrder === 'desc')
                             Mais Recentes
-                        </button>
+                            @else
+                            Mais Antigos
+                            @endif
+                        </a>
                     </div>
                 </div>
             </div>
@@ -77,16 +105,8 @@ use Illuminate\Support\Str;
 
             <div class="content-grid">
 
-                {{--
-                    Usamos @forelse (ao invés de @foreach)
-                    Isso nos permite mostrar uma mensagem caso a variável $posts esteja vazia.
-                --}}
                 @forelse ($posts as $post)
 
-                {{--
-                        Aqui usamos o layout do 'content-item-card' que você já tem, 
-                        mas alimentamos com os dados do $post (vindo do RSS) 
-                    --}}
                 <article class="content-item-card">
 
                     {{-- REQUISIÇÃO #5: Lógica da Thumbnail --}}
@@ -187,7 +207,6 @@ use Illuminate\Support\Str;
             </div>
         </div>
     </div>
-
 </body>
 
 </html>

@@ -19,6 +19,7 @@
         <x-navbar.principal />
 
         <section class="principal-container">
+            {{-- hehe --}}
 
             <div class="parte-direita-principal">
                 <h1 class="titulo-principal"> StageConnect: </h1>

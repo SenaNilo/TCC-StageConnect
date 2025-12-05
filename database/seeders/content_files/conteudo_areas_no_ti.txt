@@ -1,0 +1,60 @@
+<p>A TI não é feita apenas de programadores. Podemos dividir o mercado em grandes pilares para facilitar o entendimento do estudante:</p>
+
+<h2>1. Desenvolvimento de Software (Dev)</h2>
+<p>É a construção de sistemas.</p>
+<ul>
+    <li><strong>Front-end:</strong> O que o usuário vê (telas, botões).</li>
+    <li><strong>Back-end:</strong> O que acontece "por trás" (banco de dados, regras de negócio).</li>
+    <li><strong>Full Stack:</strong> Domina os dois anteriores.</li>
+    <li><strong>Mobile:</strong> Apps para celular (iOS/Android).</li>
+</ul>
+
+<h2>2. Infraestrutura e Cloud</h2>
+<p>A base que mantém tudo no ar.</p>
+<ul>
+    <li><strong>DevOps/SRE:</strong> Une o desenvolvimento com a operação, automatizando processos e cuidando da nuvem (AWS, Azure).</li>
+    <li><strong>Cibersegurança:</strong> Proteção contra hackers e vazamento de dados.</li>
+</ul>
+
+<h2>3. Dados (Data)</h2>
+<p>O novo petróleo.</p>
+<ul>
+    <li><strong>Engenharia de Dados:</strong> Prepara e organiza os dados.</li>
+    <li><strong>Ciência de Dados/IA:</strong> Analisa os dados para prever o futuro ou criar modelos inteligentes.</li>
+</ul>
+
+<h2>4. Produto e Design</h2>
+<p>A ponte entre a técnica e o usuário.</p>
+<ul>
+    <li><strong>UX/UI Design:</strong> Foca na experiência e na interface do usuário.</li>
+    <li><strong>Product Management (PM):</strong> Gerencia o "o que" e o "porquê" o time está construindo.</li>
+</ul>
+
+<h2>5. Suporte Técnico e Service Desk</h2>
+<p>A porta de entrada e a sustentação do negócio.</p>
+<ul>
+    <li><strong>Service Desk (Nível 1, 2 e 3):</strong>
+        <ul>
+            <li><em>Nível 1 (Help Desk):</em> O primeiro contato. Resolve problemas rápidos (reset de senha, instalação de office) e tria chamados mais complexos.</li>
+            <li><em>Nível 2 e 3:</em> Suporte especializado. Envolve servidores, redes complexas ou bugs específicos de software que o Nível 1 não conseguiu resolver.</li>
+        </ul>
+    </li>
+    <li><strong>Field Service:</strong> O técnico de campo. Aquele que vai fisicamente até o local resolver problemas de hardware, cabeamento ou instalação de equipamentos.</li>
+    <li><strong>Customer Support (Suporte ao Cliente em SaaS):</strong> Em empresas de software modernas, o suporte é muito valorizado. Aqui, o analista precisa entender profundamente o produto para ajudar o cliente a usar a ferramenta da melhor forma. Muitas vezes, trabalha lado a lado com os desenvolvedores para reportar bugs.</li>
+</ul>
+
+<hr>
+
+<h2>Qual área escolher?</h2>
+<p>Não existe "melhor área", existe a área que se adapta melhor ao seu perfil.</p>
+
+<ul>
+    <li>Gosta de visual e impacto imediato? <strong>Front-end.</strong></li>
+    <li>Gosta de lógica pesada e estruturação? <strong>Back-end.</strong></li>
+    <li>É organizado e gosta de processos? <strong>DevOps.</strong></li>
+    <li>Ama estatística e padrões? <strong>Dados.</strong></li>
+    <li>Gosta de entender pessoas e negócios? <strong>Produto.</strong></li>
+    <li>Prefere Hardware e resolver problemas diretos? <strong>Infraestrutura e Suporte.</strong></li>
+</ul>
+
+<p>A TI é um mapa-múndi gigantesco. O importante é escolher um continente e começar a explorar.</p>

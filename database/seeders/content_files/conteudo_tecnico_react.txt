@@ -1,0 +1,71 @@
+<p>Se você entende HTML, CSS e JavaScript, o React é o próximo passo natural. Ele é uma biblioteca focada em criar interfaces de usuário dividindo tudo em pequenas partes reutilizáveis.</p>
+
+<h2>1. A Metáfora do LEGO</h2>
+<p>Imagine que você vai construir um site. Em vez de escrever um arquivo HTML gigante com 5000 linhas, você cria "pequenos blocos".</p>
+<p>Um botão é um componente. O cabeçalho é um componente. O formulário é um componente. Depois, você junta esses blocos para formar a página.</p>
+<ul>
+    <li><strong>Vantagem:</strong> Se você precisar mudar a cor de todos os botões do site, você altera apenas o componente "Botão", e a mudança reflete em tudo.</li>
+</ul>
+
+<h2>2. Componentes Funcionais vs. Classe</h2>
+<p>No passado, usávamos "Classes" para criar componentes. Hoje, o padrão de mercado são os <strong>Componentes Funcionais</strong>.</p>
+<p>Basicamente, um componente React nada mais é do que uma <strong>Função JavaScript</strong> que retorna um pedaço de HTML (escrito em uma sintaxe chamada JSX).</p>
+
+<h2>3. Props: A Personalização (O Input)</h2>
+<p>Props (propriedades) são como os argumentos de uma função. É a maneira de passar dados de um componente "Pai" para um componente "Filho".</p>
+<p>Pense no LEGO: A peça é a mesma, mas você pode ter uma peça vermelha e uma azul. A cor é a <em>Prop</em>.</p>
+
+<pre><code>
+// O componente recebe "props"
+function Botao(props) {
+  return <button>{props.texto}</button>;
+}
+
+// Como você usa:
+<Botao texto="Enviar" />
+<Botao texto="Cancelar" />
+</code></pre>
+<p><em>Regra de ouro: Props são somente leitura. O componente filho não pode alterar suas próprias props.</em></p>
+
+<h2>4. State (useState): A Memória (O Que Muda)</h2>
+<p>E se o componente precisar mudar? Por exemplo, um contador que aumenta quando clicamos. As variáveis comuns do JS "morrem" quando a função termina. Para manter um valor vivo na tela, usamos o <strong>Estado</strong>.</p>
+<p>Usamos o Hook <code>useState</code> para isso:</p>
+
+<pre><code>
+import { useState } from 'react';
+
+function Contador() {
+  // [valorAtual, funcaoParaMudarValor]
+  const [contagem, setContagem] = useState(0);
+
+  return (
+    <button onClick={() => setContagem(contagem + 1)}>
+       Cliquei {contagem} vezes
+    </button>
+  );
+}
+</code></pre>
+<p>Toda vez que o estado muda (via <code>setContagem</code>), o React "redesenha" (re-renderiza) o componente automaticamente para mostrar o novo valor.</p>
+
+<h2>5. Hooks e Ciclo de Vida (useEffect)</h2>
+<p>Componentes têm um ciclo de vida: eles nascem (aparecem na tela), se atualizam e morrem (saem da tela).</p>
+<p>O Hook <code>useEffect</code> serve para controlar "efeitos colaterais" nesses momentos. É muito usado para fazer chamadas de API assim que o componente carrega.</p>
+
+
+
+<pre><code>
+import { useEffect } from 'react';
+
+useEffect(() => {
+  console.log("O componente acabou de nascer na tela!");
+  
+  return () => {
+    console.log("O componente vai sumir agora (limpeza).");
+  }
+}, []); // O array vazio [] significa "execute apenas uma vez"
+</code></pre>
+
+<hr>
+
+<h2>Referência de Autoridade</h2>
+<p>A documentação oficial do React (mantida pela Meta/Facebook) é amplamente elogiada por ser didática. Diferente de outras tecnologias onde a documentação é técnica demais, o site oficial do React oferece tutoriais interativos onde você pode editar o código no próprio navegador para aprender.</p>

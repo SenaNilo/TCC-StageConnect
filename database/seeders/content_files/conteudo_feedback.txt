@@ -1,0 +1,41 @@
+
+<p>Se existe um "hack" para subir de nível rápido na carreira de TI, ele não é uma nova linguagem ou framework. É a capacidade de engolir o orgulho e pedir: <em>"Como posso melhorar?"</em>.</p>
+
+<p>Para quem está começando (estagiários e júniores), o Code Review ou a avaliação de desempenho podem parecer tribunais de julgamento. Mas a verdade é uma só: <strong>Feedback é dado, não crítica.</strong></p>
+
+<h2>Por que você deve buscar feedback ativamente?</h2>
+<p>Ninguém escreve código perfeito. Ninguém nasce sabendo liderar uma reunião. Temos o que a psicologia chama de "Pontos Cegos" — erros que cometemos repetidamente sem perceber.</p>
+<p>O feedback é a ferramenta que ilumina esses pontos cegos. Um sênior pode olhar para o seu código de 100 linhas e dizer: <em>"Se você usar essa função nativa, reduz para 10 linhas"</em>. Sozinho, você levaria meses para descobrir isso. Com feedback, você aprende em 5 minutos.</p>
+
+<h2>O Erro Clássico: "O que você achou?"</h2>
+<p>O maior erro do iniciante é fazer perguntas vagas. Se você chega para o seu mentor e pergunta <em>"O que achou do meu trabalho?"</em>, provavelmente receberá uma resposta vaga como <em>"Tá legal, continue assim"</em>.</p>
+<p>Para crescer, você precisa ser cirúrgico. Você precisa guiar quem vai te avaliar.</p>
+
+<h2>Frases Prontas: Como pedir feedback do jeito certo</h2>
+<p>Aqui estão modelos que você pode copiar e adaptar para o dia a dia:</p>
+
+<ul>
+    <li><strong>Para Code Review (Foco Técnico):</strong><br>
+    <em>"Terminei a task do login. Estou um pouco inseguro sobre a forma como tratei as exceções no Controller. Você poderia dar uma olhada especificamente nisso e ver se deixei passar alguma brecha de segurança?"</em></li>
+    
+    <li><strong>Após uma Reunião (Soft Skills):</strong><br>
+    <em>"Notei que a discussão sobre o banco de dados ficou confusa. Você acha que eu consegui explicar minha ideia técnica de forma clara para o Product Owner, ou usei termos muito técnicos?"</em></li>
+    
+    <li><strong>Para Mentoria Geral (Carreira):</strong><br>
+    <em>"Quero chegar ao nível Pleno no próximo ano. Baseado no meu desempenho dos últimos meses, qual é a principal habilidade técnica (hard skill) e comportamental (soft skill) que você acha que está me faltando hoje?"</em></li>
+</ul>
+
+<h2>Lembre-se: Você não é o seu erro</h2>
+<p>Receber feedback pode "doer". Quando alguém aponta um erro, nosso cérebro reage como se fosse um ataque físico. É crucial desenvolver a maturidade de separar <strong>quem você é</strong> do <strong>trabalho que você fez</strong>.</p>
+<p>Se disserem "Esse código está confuso", entenda: "A lógica escrita aqui precisa ser refatorada", e não "Você é burro".</p>
+
+<h3>O Algoritmo de Recebimento de Feedback:</h3>
+<ol>
+    <li><strong>Escute em silêncio:</strong> Não justifique (A menos se lhe for perguntado e orientado a isso). Não precisa dizer "Ah, mas eu fiz isso porque...". Apenas escute.</li>
+    <li><strong>Anote:</strong> Isso mostra respeito e que você valoriza a opinião.</li>
+    <li><strong>Agradeça:</strong> "Obrigado por ter tirado tempo para ler meu código".</li>
+    <li><strong>Filtre e Aplique:</strong> Depois, com a cabeça fria, decida o que faz sentido e crie uma tarefa para melhorar aquilo.</li>
+</ol>
+
+<h2>Conclusão</h2>
+<p>Se puder, não espere a avaliação anual da empresa. Tente criar um ciclo curto de feedback. Quanto mais rápido você souber onde está errando, mais rápido irá corrigir e evoluir.</p>

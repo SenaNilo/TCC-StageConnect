@@ -1,0 +1,44 @@
+<p>Muitos estudantes caem na armadilha de achar que passar em uma entrevista é apenas decorar sintaxe de código ou saber responder perguntas obscuras sobre frameworks. Isso é um erro clássico.</p>
+
+<p>Para uma vaga de nível Júnior ou Estágio, a empresa já espera que você tenha lacunas técnicas. O que decide a contratação, muitas vezes, é o seu potencial de aprendizado e como você se comporta sob pressão.</p>
+
+<h2>1. Hard Skills (A Técnica): Como lidar com o "Não sei"</h2>
+<p>Nas entrevistas técnicas, o avaliador quer ver <strong>como você pensa</strong>, e não se você é uma enciclopédia ambulante.</p>
+
+<p>Se te perguntarem sobre uma tecnologia que você nunca viu, não minta. Tentar "enrolar" um sênior é a pior estratégia possível. Em vez disso, use a técnica da <strong>Associação Lógica</strong>:</p>
+
+<ul>
+    <li><strong>Seja Honesto:</strong> "Eu ainda não trabalhei profissionalmente com a tecnologia X..."</li>
+    <li><strong>Faça a Ponte:</strong> "...mas pelo que eu estudei de Y (uma tecnologia similar), imagino que ela funcione resolvendo o problema Z de tal forma."</li>
+    <li><strong>Mostre Raciocínio:</strong> "Se eu tivesse que implementar isso hoje, começaria lendo a documentação sobre a parte de [Tópico Específico] e faria um teste pequeno."</li>
+</ul>
+<p>Isso mostra que, mesmo sem saber a resposta pronta, você tem as ferramentas cognitivas para encontrá-la.</p>
+
+<h2>2. Soft Skills (O Comportamento): Um diferencial importante </h2>
+<p>Enquanto um desenvolvedor Sênior tem mais autonomia, quem está começando geralmente atua em colaboração constante. Por isso, a capacidade de comunicação e trabalho em equipe é tão valorizada.</p>
+
+<p>O que é bom trabalhar:</p>
+<ul>
+    <li><strong>Resiliência à Frustração:</strong> Programar é errar 90% do tempo. Você desiste quando o código quebra ou tenta investigar o log de erro?</li>
+    <li><strong>Teachability (Capacidade de ser ensinado):</strong> Você aceita correções no seu código (Code Review) como aprendizado ou leva para o lado pessoal?</li>
+    <li><strong>Curiosidade:</strong> Você estuda por conta própria ou espera a faculdade ensinar tudo?</li>
+</ul>
+
+<h2>3. A "Pergunta de Ouro"</h2>
+<p>A entrevista é uma via de mão dupla. No final, quando perguntarem "Você tem alguma dúvida?", <strong> Tente elaborar algo baseado na empresa/entrevista para mostrar intersse. </strong></p>
+
+<p>Faça perguntas que mostrem que você se visualiza trabalhando lá. Exemplos:</p>
+<ul>
+    <li><em>"Como é o processo de Code Review da equipe? Os seniores costumam dar feedback para os júniores?"</em> (Mostra vontade de aprender).</li>
+    <li><em>"Qual metodologia ágil vocês usam? Scrum ou Kanban?"</em> (Mostra que você entende de processos).</li>
+    <li><em>"Qual é o maior desafio técnico que o time está enfrentando hoje?"</em> (Mostra interesse genuíno pelo negócio).</li>
+</ul>
+
+<hr>
+
+<h2>O que diz o Mercado? (Autoridade)</h2>
+<p>Existe um ditado antigo em RH que continua 100% atual: <em>"Contrata-se pelas Hard Skills, demite-se pelas Soft Skills"</em>.</p>
+
+<p>Relatórios como o <strong>"Global Talent Trends" do LinkedIn</strong> apontam consistentemente que a falta de habilidades comportamentais (comunicação, trabalho em equipe, adaptabilidade) é o principal motivo de falha em novas contratações.</p>
+
+<p>Para o Júnior, a técnica se ensina em 3 meses. Mudar a personalidade de alguém leva anos. Por isso, invista em demonstrar quem você é, tanto quanto demonstra o que você sabe.</p>

@@ -1,0 +1,47 @@
+<p>No desenvolvimento de software moderno, saber versionar código é tão importante quanto saber escrever código. É comum que iniciantes confundam a ferramenta (Git) com a plataforma (GitHub), mas entender essa distinção é o primeiro passo para um fluxo de trabalho profissional.</p>
+
+<h2>1. A Diferença Fundamental</h2>
+<p>Para facilitar, podemos usar uma analogia simples:</p>
+<ul>
+    <li><strong>Git (A Máquina do Tempo):</strong> É o sistema instalado no seu computador. Ele cria "pontos de salvamento" (snapshots) do seu projeto. Se você quebrar o código, pode voltar para uma versão anterior. Ele funciona 100% offline.</li>
+    <li><strong>GitHub (A Rede Social):</strong> É um serviço na nuvem que hospeda seus repositórios Git. É lá que o código fica guardado para que outros desenvolvedores possam baixar, contribuir ou analisar. Existem concorrentes, como GitLab e Bitbucket, mas o GitHub é o mais popular.</li>
+</ul>
+
+<h2>2. O Fluxo de Trabalho (Workflow)</h2>
+<p>Antes de decorar comandos, é interessante entender o ciclo de vida de um arquivo no Git:</p>
+<ol>
+    <li><strong>Working Directory:</strong> Onde você edita os arquivos.</li>
+    <li><strong>Staging Area:</strong> Uma área de preparação. Você escolhe quais arquivos vão para o próximo "pacote".</li>
+    <li><strong>Repository:</strong> Onde a versão final é gravada permanentemente.</li>
+</ol>
+
+<h2>3. Comandos Vitais para o Dia a Dia</h2>
+<p>Embora o Git tenha centenas de comandos, um desenvolvedor júnior costuma resolver 90% dos problemas com estes:</p>
+
+<ul>
+    <li><code>git status</code><br>
+    O comando mais importante para iniciantes. Ele diz em que estado seus arquivos estão (modificados, preparados ou não rastreados).</li>
+
+    <li><code>git add .</code><br>
+    Move as alterações do seu computador para a <em>Staging Area</em>. É como colocar os itens no carrinho de compras antes de pagar.</li>
+
+    <li><code>git commit -m "Mensagem explicativa"</code><br>
+    Cria efetivamente a nova versão. A mensagem deve ser clara (ex: "Corrige bug no login" em vez de "ajustes"). É como fechar a compra e gerar a nota fiscal.</li>
+
+    <li><code>git push origin main</code><br>
+    Envia seus commits locais para o servidor (GitHub). É o momento de fazer backup ou entregar a tarefa.</li>
+
+    <li><code>git pull</code><br>
+    Baixa as atualizações que outros desenvolvedores fizeram no repositório remoto para o seu computador.</li>
+</ul>
+
+<h2>4. O Temido "Merge Conflict"</h2>
+<p>Muitos estudantes entram em pânico quando veem a mensagem de conflito. Isso acontece quando duas pessoas alteram a mesma linha de código ao mesmo tempo.</p>
+<p>O Git não tenta adivinhar qual está certa; ele para e pede para você decidir. Para resolver, basta abrir o arquivo, escolher a versão correta (a sua ou a do colega), salvar e fazer um novo commit. Encarar conflitos com naturalidade faz parte da rotina de um time.</p>
+
+<hr>
+
+<h2>Referência de Autoridade</h2>
+<p>O Git foi criado em 2005 por <strong>Linus Torvalds</strong> (o mesmo criador do Linux) para gerenciar o desenvolvimento do kernel do sistema operacional, já que nenhuma ferramenta da época atendia à demanda de velocidade e descentralização.</p>
+
+<p>Para quem deseja se aprofundar, a recomendação oficial é o livro <strong>"Pro Git"</strong> (disponível gratuitamente na documentação oficial), considerado a bíblia do versionamento.</p>

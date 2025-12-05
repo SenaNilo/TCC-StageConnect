@@ -74,8 +74,7 @@
     <div class="thank-you-card">
         <i class="bi bi-check-circle-fill icon-check"></i>
         <h1>Mensagem Enviada!</h1>
-        <p>Recebemos seu contato com sucesso. <br> Responderemos o mais breve possível no seu e-mail.</p>
-        
+        <p>Recebemos seu contato com sucesso! <br> Responderemos (caso necessário) o mais breve possível no seu e-mail.</p>
         <a href="{{ url('/') }}" class="btn-voltar">Voltar ao Início</a>
     </div>
 

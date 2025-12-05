@@ -1,0 +1,48 @@
+<p>Recrutadores de TI leem centenas de currículos por dia. Nesse cenário, palavras soltas como "proativo", "esforçado" ou "focado" perderam o sentido. Elas são apenas opiniões, não fatos.</p>
+
+<p>Para facilitar isso temos <strong>Método STAR</strong>.</p>
+
+<p>Originalmente desenvolvida para entrevistas comportamentais, essa técnica estruturada é a melhor forma de transformar suas experiências (mesmo as de estágio ou projetos acadêmicos) em histórias de sucesso convincentes.</p>
+
+<h2>O Framework STAR</h2>
+<p>A sigla funciona como um roteiro para você não se perder na explicação e garantir que o recrutador entenda o seu valor.</p>
+
+<ul>
+    <li><strong>S (Situação):</strong> O contexto. Onde você estava? Qual era o cenário? Seja breve aqui.
+        <br><em>Ex: "No meu estágio na empresa X, o sistema de login caía toda sexta-feira devido ao alto tráfego."</em>
+    </li>
+    
+    <li><strong>T (Tarefa):</strong> O desafio. Qual era sua responsabilidade ou o problema a ser resolvido?
+        <br><em>Ex: "Eu precisava identificar o gargalo no banco de dados e garantir a estabilidade do acesso."</em>
+    </li>
+    
+    <li><strong>A (Ação):</strong> O clímax da história. O que <strong>VOCÊ</strong> fez? Evite dizer "nós fizemos". O recrutador quer contratar você, não seu time. Use verbos de ação (Codifiquei, Implementei, Lider, Negociei).
+        <br><em>Ex: "Analisei os logs do servidor, identifiquei querys lentas, implementei um sistema de cache com Redis e refatorei a consulta SQL principal."</em>
+    </li>
+    
+    <li><strong>R (Resultado):</strong> O impacto final. Se possível, use números. Dados quantitativos brilham aos olhos de gestores.
+        <br><em>Ex: "O tempo de resposta caiu de 5s para 200ms e o sistema parou de cair, resultando em zero chamados de suporte sobre login no mês seguinte."</em>
+    </li>
+</ul>
+
+<h2>Aplicação Prática: Antes e Depois no Currículo</h2>
+<p>Veja a diferença que o método faz na descrição de uma experiência profissional:</p>
+
+<p><strong>❌ O jeito errado (Genérico):</strong><br>
+"Trabalhei com manutenção de banco de dados e melhoria de performance."</p>
+
+<p><strong>✅ O jeito STAR (Vencedor):</strong><br>
+"Otimizei a performance do banco de dados principal refatorando queries legadas e implementando cache (Redis), reduzindo o tempo de carregamento em 90%."</p>
+
+<h2>Dicas para Entrevistas</h2>
+<p>Grandes empresas usam perguntas como <em>"Conte-me sobre uma vez que você falhou"</em> ou <em>"Fale sobre um desafio técnico complexo"</em>. Eles esperam que você responda usando STAR.</p>
+<p>Prepare 3 histórias "coringas" usando essa estrutura antes da entrevista. Assim, você não gagueja e nem esquece os detalhes importantes na hora do nervosismo.</p>
+
+<hr>
+
+<h2>Por que isso funciona? (A Autoridade)</h2>
+<p>O Método STAR não é apenas uma "dica de internet". Ele é o padrão industrial para contratação em tecnologia.</p>
+
+<p>Ele é a base das entrevistas nas <strong>FAANG</strong> (Facebook/Meta, Amazon, Apple, Netflix, Google). A Amazon, por exemplo, baseia seus famosos "Leadership Principles" inteiramente em respostas STAR. Se você não estruturar sua resposta assim, é muito difícil passar nessas empresas.</p>
+
+<p>Além disso, a <strong>SHRM (Society for Human Resource Management)</strong>, a maior associação de RH

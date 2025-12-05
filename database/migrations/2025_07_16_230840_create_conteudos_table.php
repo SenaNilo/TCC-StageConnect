@@ -25,7 +25,7 @@ return new class extends Migration
             $table->string('titulo', 255)->nullable();
 
             // Descrição do conteúdo, VARCHAR(55)
-            $table->string('descricao', 9999)->nullable();
+            $table->longText('descricao')->nullable();
 
             // Data de criação, DATETIME default CURRENT_TIMESTAMP
             $table->timestamp('dt_created')->useCurrent();

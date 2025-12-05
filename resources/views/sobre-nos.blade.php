@@ -75,15 +75,17 @@
 
             <p class="subtitulo">Preencha o formulário e envie para entrar em contato conosco.</p>
 
-            <form method="POST" action="https://formsubmit.co/stageconnect8@gmail.com">
-                <input type="hidden" name="_next" value="{{ url('/obrigado') }}">
-                <input type="hidden" name="_captcha" value="false">
 
-                <input type="text" name="nome" id="nome" placeholder="Seu nome completo *" required>
+            <form method="POST" action="{{ route('contato.send') }}">
+                @csrf <input type="text" name="nome" id="nome" placeholder="Seu nome completo *" required>
                 <input type="email" name="email" id="email" placeholder="Seu e-mail *" required>
                 <input type="tel" name="telefone" id="telefone" placeholder="Seu telefone (opcional)">
-                <textarea name="mensagem" id="mensagem" placeholder="Escreva sua mensagem aqui..." required></textarea>
-
+                <textarea name="mensagem" minlength="10" id="mensagem" placeholder="Escreva sua mensagem aqui..." required></textarea>
+                @error('mensagem')
+                <div class="text-red-500 text-sm mt-1">
+                    {{ $message }}
+                </div>
+                @enderror
                 <div class="btn-enviar">
                     <input type="submit" value="ENVIAR MENSAGEM">
                 </div>

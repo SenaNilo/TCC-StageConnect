@@ -100,12 +100,14 @@
                         <input type="file" id="profilePicture" name="profilePicture" accept="image/*" style="display: none;">
                     </div>
 
-                   
-                    <button type="submit" class="confirm-button">Confirmar Alterações</button>
 
-                    <button id="open-deactivate-modal-btn" type="button" class="deactivate-button" style="margin-top: -30px;">
-                        Desativar Minha Conta
-                    </button>
+                    <div class="form-actions">
+                        <button type="submit" class="confirm-button">Confirmar Alterações</button>
+
+                        <button id="open-deactivate-modal-btn" type="button" class="deactivate-button">
+                            Desativar Minha Conta
+                        </button>
+                    </div>
                 </form>
 
 
@@ -116,28 +118,29 @@
 
     <form id="deactivate-form" action="{{ route('aluno.config.deactivate') }}" method="POST" style="display: none;">
         @csrf
-        @method('DELETE') 
+        @method('DELETE')
     </form>
 
-    <div id="deactivate-modal" class="modal-overlay modal-hidden"> 
-      <div class="card-cancelar"> <div class="header-cancelar"> 
-          <div class="image"> 
-             <span class="material-symbols-rounded">dangerous</span> 
-          </div> 
-          <div class="content">
-             <span class="title">Desativar Conta</span> 
-             <p class="message">
-               Você tem certeza? Esta ação é permanente e marcará sua conta como inativa.
-             </p> 
-          </div> 
-          <div class="actions"> 
-             <button id="confirm-deactivate-btn" class="desactivate" type="button">Confirmar Desativação</button> 
-            <button id="cancel-deactivate-btn" class="cancel" type="button">Cancelar</button> 
-          </div> 
-        </div> 
-      </div> 
+    <div id="deactivate-modal" class="modal-overlay modal-hidden">
+        <div class="card-cancelar">
+            <div class="header-cancelar">
+                <div class="image">
+                    <span class="material-symbols-rounded">dangerous</span>
+                </div>
+                <div class="content">
+                    <span class="title">Desativar Conta</span>
+                    <p class="message">
+                        Você tem certeza? Esta ação é permanente e marcará sua conta como inativa.
+                    </p>
+                </div>
+                <div class="actions">
+                    <button id="confirm-deactivate-btn" class="desactivate" type="button">Confirmar Desativação</button>
+                    <button id="cancel-deactivate-btn" class="cancel" type="button">Cancelar</button>
+                </div>
+            </div>
+        </div>
     </div>
-    <!--modal de sucesso --> 
+    <!--modal de sucesso -->
     <div id="success-modal" class="modal-overlay modal-hidden">
         <div class="card-success">
             <button id="success-modal-close-btn" type="button" class="dismiss">
@@ -162,93 +165,93 @@
         </div>
     </div>
 
-<script>
-    document.addEventListener('DOMContentLoaded', () => { // Garante que o HTML carregou
+    <script>
+        document.addEventListener('DOMContentLoaded', () => { // Garante que o HTML carregou
 
-    /* === LÓGICA PARA O MODAL DE DESATIVAR CONTA === */
-    
-    // Seleciona os elementos pelo ID
-    const openBtn = document.getElementById('open-deactivate-modal-btn');
-    const modal = document.getElementById('deactivate-modal');
-    const cancelBtn = document.getElementById('cancel-deactivate-btn');
-    const confirmBtn = document.getElementById('confirm-deactivate-btn');
-    const form = document.getElementById('deactivate-form');
+            /* === LÓGICA PARA O MODAL DE DESATIVAR CONTA === */
 
-    // Verifica se todos os elementos existem nesta página antes de adicionar eventos
-    if (openBtn && modal && cancelBtn && confirmBtn && form) {
+            // Seleciona os elementos pelo ID
+            const openBtn = document.getElementById('open-deactivate-modal-btn');
+            const modal = document.getElementById('deactivate-modal');
+            const cancelBtn = document.getElementById('cancel-deactivate-btn');
+            const confirmBtn = document.getElementById('confirm-deactivate-btn');
+            const form = document.getElementById('deactivate-form');
 
-        // 1. Abrir o modal
-        openBtn.addEventListener('click', () => {
-            modal.classList.remove('modal-hidden'); 
-        });
+            // Verifica se todos os elementos existem nesta página antes de adicionar eventos
+            if (openBtn && modal && cancelBtn && confirmBtn && form) {
 
-        // 2. Fechar no botão Cancelar
-        cancelBtn.addEventListener('click', () => {
-            modal.classList.add('modal-hidden'); 
-        });
+                // 1. Abrir o modal
+                openBtn.addEventListener('click', () => {
+                    modal.classList.remove('modal-hidden');
+                });
 
-        // 3. Fechar clicando no fundo (overlay)
-        modal.addEventListener('click', (event) => {
-            // Verifica se o clique foi diretamente no overlay
-            if (event.target === modal) { 
-                modal.classList.add('modal-hidden');
+                // 2. Fechar no botão Cancelar
+                cancelBtn.addEventListener('click', () => {
+                    modal.classList.add('modal-hidden');
+                });
+
+                // 3. Fechar clicando no fundo (overlay)
+                modal.addEventListener('click', (event) => {
+                    // Verifica se o clique foi diretamente no overlay
+                    if (event.target === modal) {
+                        modal.classList.add('modal-hidden');
+                    }
+                });
+
+                // 4. Confirmar e enviar o formulário escondido
+                confirmBtn.addEventListener('click', () => {
+                    form.submit(); // Envia o <form id="deactivate-form">
+                });
+
             }
-        });
+            // Se os elementos não forem encontrados, não faz nada (evita erros em outras páginas)
 
-        // 4. Confirmar e enviar o formulário escondido
-        confirmBtn.addEventListener('click', () => {
-            form.submit(); // Envia o <form id="deactivate-form">
-        });
+            /* === FIM DA LÓGICA DE DESATIVAR === */
 
-    } 
-    // Se os elementos não forem encontrados, não faz nada (evita erros em outras páginas)
+            // (Aqui pode vir a lógica do seu modal de LOGOUT, se estiver no mesmo arquivo)
 
-    /* === FIM DA LÓGICA DE DESATIVAR === */
+        }); // Fim do DOMContentLoaded
+    </script>
 
-    // (Aqui pode vir a lógica do seu modal de LOGOUT, se estiver no mesmo arquivo)
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // --- Lógica do Modal de Sucesso ---
+            // ... (seu código do modal de sucesso aqui) ...
 
-}); // Fim do DOMContentLoaded
-</script>
+            // --- LÓGICA DO PREVIEW DA FOTO DE PERFIL ---
+            const fileInput = document.getElementById('profilePicture');
+            const imagePreview = document.querySelector('.profile-picture-preview'); // Pega pela classe
 
-<script>
-document.addEventListener('DOMContentLoaded', () => {
-    // --- Lógica do Modal de Sucesso ---
-    // ... (seu código do modal de sucesso aqui) ...
+            if (fileInput && imagePreview) { // Garante que ambos elementos existem
+                fileInput.addEventListener('change', function(event) {
+                    // Pega o arquivo selecionado (o primeiro, se houver)
+                    const file = event.target.files[0];
 
-    // --- LÓGICA DO PREVIEW DA FOTO DE PERFIL ---
-    const fileInput = document.getElementById('profilePicture');
-    const imagePreview = document.querySelector('.profile-picture-preview'); // Pega pela classe
+                    if (file) { // Verifica se um arquivo foi realmente selecionado
+                        // 1. Cria um objeto FileReader
+                        const reader = new FileReader();
 
-    if (fileInput && imagePreview) { // Garante que ambos elementos existem
-        fileInput.addEventListener('change', function(event) {
-            // Pega o arquivo selecionado (o primeiro, se houver)
-            const file = event.target.files[0]; 
+                        // 2. Define o que fazer QUANDO o arquivo for lido
+                        reader.onload = function(e) {
+                            // 'e.target.result' contém a Data URL da imagem
+                            imagePreview.src = e.target.result;
+                        }
 
-            if (file) { // Verifica se um arquivo foi realmente selecionado
-                // 1. Cria um objeto FileReader
-                const reader = new FileReader();
-
-                // 2. Define o que fazer QUANDO o arquivo for lido
-                reader.onload = function(e) {
-                    // 'e.target.result' contém a Data URL da imagem
-                    imagePreview.src = e.target.result; 
-                }
-
-                // 3. Pede ao FileReader para LER o arquivo como Data URL
-                // Isso vai disparar o 'onload' quando terminar
-                reader.readAsDataURL(file); 
-            } else {
-                // Opcional: Se o usuário cancelar a seleção, 
-                // você pode voltar para a imagem original ou um placeholder
-                // imagePreview.src = "{{ $user->getAvatarUrl() }}"; // Exemplo
+                        // 3. Pede ao FileReader para LER o arquivo como Data URL
+                        // Isso vai disparar o 'onload' quando terminar
+                        reader.readAsDataURL(file);
+                    } else {
+                        // Opcional: Se o usuário cancelar a seleção, 
+                        // você pode voltar para a imagem original ou um placeholder
+                        // imagePreview.src = "{{ $user->getAvatarUrl() }}"; // Exemplo
+                    }
+                });
             }
-        });
-    }
-    // --- FIM DA LÓGICA DO PREVIEW ---
+            // --- FIM DA LÓGICA DO PREVIEW ---
 
-}); // Fim do DOMContentLoaded
-</script>
-    <!-- modal de sair --> 
+        }); // Fim do DOMContentLoaded
+    </script>
+    <!-- modal de sair -->
     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
         @csrf
     </form>

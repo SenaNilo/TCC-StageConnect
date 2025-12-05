@@ -38,7 +38,7 @@
     /* ISSO vai separar os dois blocos */
     align-items: flex-start;
     /* Alinha os itens no topo */
-    gap: 40px;
+    gap: 25px;
     /* Uma forma moderna de adicionar espaço entre os blocos */
     width: 100%;
 }
@@ -122,13 +122,14 @@
         width: 100%;
     }
 
-    .form-fields {
-        order: 2;
+    .form-actions {
+        order: 3; /* Força ele a ficar por último */
         width: 100%;
+        margin-top: 20px; /* Espaço para não grudar nos campos */
     }
 
-    .confirm-button {
-        order: 3;
+    .form-fields {
+        order: 2;
         width: 100%;
     }
 
@@ -441,10 +442,24 @@
 }
 
 /* Remove o margin-top do primeiro botão (Confirmar) se ele for o primeiro */
-.form-configuracoes .confirm-button:first-of-type {
-    margin-top: 5px; /* Mantém o margin-top original do .confirm-button */
-}
+/* .form-configuracoes .confirm-button:first-of-type {
+    margin-top: 5px; /* Mantém o margin-top original do .confirm-button } */
+*/
 
+.form-actions {
+    width: 100%; /* Força a cair para a linha de baixo */
+    display: flex;
+    flex-direction: column; /* Um embaixo do outro */
+    gap: 15px; /* Espaço de 15px entre o botão Confirmar e Desativar */
+    margin-top: 10px; /* Um pequeno espaço entre a foto e os botões */
+}
+.form-actions {
+    width: 100%; /* Força a cair para a linha de baixo */
+    display: flex;
+    flex-direction: column; /* Um embaixo do outro */
+    gap: 15px; /* Espaço de 15px entre o botão Confirmar e Desativar */
+    margin-top: 10px; /* Um pequeno espaço entre a foto e os botões */
+}
 
 
 /* Card interno (estilo do modal de logout que você mandou) */

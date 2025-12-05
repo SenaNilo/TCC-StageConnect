@@ -53,14 +53,8 @@ sidebarToggleBtns.forEach((btn) => {
   });
 });
 
-searchForm.addEventListener("click", () => {
-  if (sidebar.classList.contains("collapsed")) {
-    sidebar.classList.remove("collapsed");
-    searchForm.querySelector("input").focus();
-  }
-});
 
-if (window.innerWidth > 768) sidebar.classList.remove("collapsed");
+// if (window.innerWidth > 768) sidebar.classList.remove("collapsed");
 
 // Lógica para o Toggle de Tema
 const changeThemeBtn = document.querySelector("#change-theme");

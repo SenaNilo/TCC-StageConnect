@@ -188,6 +188,41 @@
     animation: spin 1s linear infinite;
 }
 
+@media (max-width: 768px) {
+    
+    /* 1. Reduz o espaçamento geral da tela */
+    .main-content {
+        padding: 1rem; /* Antes era 2rem */
+        align-items: flex-start; /* Evita que o card fique centralizado verticalmente se for muito alto */
+    }
+
+    /* 2. Reduz a borda branca interna do card */
+    .card-content {
+        padding: 1.5rem; /* Antes era 2.5rem (Muito grande pro celular) */
+    }
+
+    /* 3. Ajuste específico para o Card de Aviso */
+    .aviso {
+        flex-direction: column; /* Coloca o ícone em cima e o texto embaixo */
+        align-items: center; /* Centraliza o ícone */
+        text-align: center; /* Centraliza o texto (opcional, se preferir alinhado a esquerda tire isso) */
+        gap: 0.5rem;
+    }
+
+    .aviso svg {
+        width: 2rem; /* Aumenta um pouco o ícone já que agora ele tem espaço */
+        height: 2rem;
+        margin-top: 0;
+        margin-bottom: 5px;
+    }
+    
+    .aviso-content ul {
+        list-style-position: inside; /* Garante que as bolinhas da lista não fiquem fora */
+        padding-left: 0;
+        text-align: left; /* Mantém a lista alinhada a esquerda para facilitar leitura */
+    }
+}
+
 @keyframes spin {
     from {
         transform: rotate(0deg);

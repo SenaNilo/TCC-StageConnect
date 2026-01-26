@@ -182,20 +182,18 @@ class PagesController extends Controller
      */
     public function storeCadastro(Request $request)
     {
-        // ... (Sua validação permanece igual) ...
         $validator = Validator::make($request->all(), [
             'name_user' => ['required', 'string', 'max:65'],
             'email' => ['required', 'string', 'email', 'max:200'], 
             'password' => ['required', 'string', 'min:6', 'confirmed'], 
         ], [
-            // ... (Suas mensagens) ...
         ]);
 
         if ($validator->fails()) {
             return redirect()->back()->withErrors($validator)->withInput();
         }
 
-        // ... (Sua lógica de verificação de e-mail e reconexão permanece igual) ...
+       
         $emailExists = false;
         try {
             $emailExists = Usuario::where('email', $request->email)->exists();
@@ -204,7 +202,7 @@ class PagesController extends Controller
                 DB::reconnect();
                 $emailExists = Usuario::where('email', $request->email)->exists();
             } else {
-                throw $e; //talvez seja aqui que volte o erro 419
+                throw $e; 
             }
         }
         
@@ -339,7 +337,7 @@ class PagesController extends Controller
             'password' => 'required|confirmed|min:8', // 'confirmed' = checa se 'password' e 'password_confirmation' são iguais
         ]);
 
-        // A "mágica" do Laravel para redefinir a senha
+        // Redefinindo senha com o laravel
         $status = Password::reset($request->only(
             'email', 'password', 'password_confirmation', 'token'
         ), function ($user, $password) {

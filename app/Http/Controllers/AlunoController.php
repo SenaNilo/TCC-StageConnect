@@ -7,10 +7,8 @@ use Illuminate\View\View;
 
 class AlunoController extends Controller
 {
-      public function showIndex(): View  // <-- MÉTODO ADICIONADO
+      public function showIndex(): View
     {
-        // Agora sim, retornamos a view correta, que está em:
-        // resources/views/aluno/index.blade.php
         return view('pages.aluno.index');
     }
 
@@ -21,8 +19,6 @@ class AlunoController extends Controller
 
        public function showConfiguracoes(): View
     {
-        // Crie um arquivo em 'resources/views/aluno/areas_tecnicas.blade.php'
-        // para esta página.
         return view('pages.aluno.configuracoes-aluno');
     }
 }
